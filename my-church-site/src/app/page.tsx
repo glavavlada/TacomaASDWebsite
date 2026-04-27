@@ -1,3 +1,7 @@
 export default function Home() {
-  return <h1>Hello</h1>;
+  return (
+    <main>
+      <h1>Welcome to Our Church</h1>
+    </main>
+  );
 }

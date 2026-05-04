@@ -26,3 +26,25 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/*some base style for header and footer, feel free to change it*/
+header {
+  padding: 20px;
+  background-color: #0c0b0b;
+  color: white;
+
+}
+
+/*navigation link turns into a so a */
+header a {
+  margin-right: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  padding: 20px;
+  background-color: #0c0b0b;
+  color: white;
+  margin-top: 20px;
+}

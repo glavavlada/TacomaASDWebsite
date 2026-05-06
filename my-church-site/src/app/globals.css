@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss"; 
 
 :root {
   --background: #ffffff;
@@ -33,6 +33,12 @@ header {
   background-color: #0c0b0b;
   color: white;
 
+  /*for making header a flex*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
 }
 
 /*navigation link turns into a so a */
@@ -42,9 +48,40 @@ header a {
   text-decoration: none;
 }
 
+header a:hover{
+  background-color: #333;
+  border-radius: 5px;
+}
+
 footer {
   padding: 20px;
   background-color: #0c0b0b;
   color: white;
   margin-top: 20px;
+}
+
+header nav {
+  display: flex;
+  gap: 15px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.pages {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain; 
 }

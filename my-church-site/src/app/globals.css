@@ -85,3 +85,26 @@ html, body {
   height: 60px;
   object-fit: contain; 
 }
+
+/* ABOUT PAGE */
+
+.aboutPage {
+  padding: 40px
+}
+
+/*could become universal later */
+.infoSection {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.textContent {
+  flex:1;
+}
+
+
+

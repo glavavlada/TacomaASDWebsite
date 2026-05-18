@@ -119,5 +119,20 @@ html, body {
   background-color: #333;
 }
 
+.pdfSection {
+  margin-top: 40px;
+  padding: 20px;
+
+  border: 1px solid #ccc;
+  border-radius: 10px;
+
+  background-color: #f5f5f5;
+}
+
+.pdfSection h2 {
+  margin-bottom: 20px;
+  color: black;
+}
+
 
 

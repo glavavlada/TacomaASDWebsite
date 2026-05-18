@@ -1,9 +1,13 @@
+import LiveStreamEmbed from "@/components/LiveStream";
+
 export default function About() {
   return (
     <div className = "aboutPage">
-      
+      <LiveStreamEmbed />
+
     {/* History Section */}
     <section className="infoSection">
+      
       <div className="textContent" >
         <h2>History</h2>
 

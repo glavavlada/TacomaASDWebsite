@@ -1,19 +1,19 @@
-"use client";
+"use client"; // runs on client side
 
 import { useEffect, useState } from "react";
 
+// api response definition
 type LiveResponse = {
   live: boolean;
   videoId?: string;
 };
 
 export default function LiveStreamEmbed() {
-  const [mounted, setMounted] = useState(false);
+  // state hook
   const [data, setData] = useState<LiveResponse | null>(null);
 
+  // component initialization
   useEffect(() => {
-    setMounted(true);
-
     async function checkLive() {
       try {
         const res = await fetch("/api/youtube-live");
@@ -26,21 +26,19 @@ export default function LiveStreamEmbed() {
 
     checkLive();
 
+    // ping every 60 seconds
     const interval = setInterval(checkLive, 60000);
 
+    // clean up
     return () => clearInterval(interval);
   }, []);
 
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return null;
-  }
-
-  // Collapse entirely if not live
+  // collapse component if not live
   if (!data || !data.live || !data.videoId) {
     return null;
   }
 
+  // component render
   return (
     <div className="aspect-video w-full">
       <iframe

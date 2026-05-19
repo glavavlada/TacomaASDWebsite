@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
+  // local environmental variables
   const apiKey = process.env.YOUTUBE_API_KEY;
   const channelId = process.env.YOUTUBE_CHANNEL_ID;
 
@@ -21,11 +22,13 @@ export async function GET() {
 
   try {
     const res = await fetch(url, {
+      // cache response for 60 seconds
       next: { revalidate: 60 },
     });
 
     const data = await res.json();
 
+    // no livestream
     if (!data.items || data.items.length === 0) {
       return NextResponse.json({ live: false });
     }

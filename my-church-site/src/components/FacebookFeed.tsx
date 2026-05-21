@@ -1,38 +1,54 @@
 "use client";
 
+import { useEffect } from "react";
 import Script from "next/script";
 
-export default function FacebookFeed() {
-  return (
-    <div className="w-full flex justify-center">
-      <Script
-        async
-        defer
-        crossOrigin="anonymous"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
-        strategy="lazyOnload"
-      />
+declare global {
+    interface Window {
+        FB: any;
+    }
+}
 
-      <div
-        className="fb-page"
-        data-href="https://www.facebook.com/tacomarussian"
-        data-tabs="timeline"
-        data-width="500"
-        data-height="700"
-        data-small-header="false"
-        data-adapt-container-width="true"
-        data-hide-cover="false"
-        data-show-facepile="true"
-      >
-        <blockquote
-          cite="https://www.facebook.com/tacomarussian"
-          className="fb-xfbml-parse-ignore"
-        >
-          <a href="https://www.facebook.com/tacomarussian">
-            Tacoma SDA Church
-          </a>
-        </blockquote>
-      </div>
-    </div>
-  );
+export default function FacebookFeed() {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (window.FB) {
+                window.FB.XFBML.parse();
+            }
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    return (
+        <div className="w-full flex justify-center">
+            <div id="fb-root"></div>
+
+            <Script
+                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
+                strategy="lazyOnload"
+                crossOrigin="anonymous"
+            />
+
+            <div
+                className="fb-page"
+                data-href="https://www.facebook.com/tacomarussian"
+                data-tabs="timeline"
+                data-width="1000"
+                data-height="700"
+                data-adapt-container-width="false"
+                data-hide-cover="false"
+                data-show-facepile="true"
+            >
+                <blockquote
+                    cite="https://www.facebook.com/tacomarussian"
+                    className="fb-xfbml-parse-ignore"
+                >
+                    <a href="https://www.facebook.com/tacomarussian">
+                        Tacoma SDA Church
+                    </a>
+                </blockquote>
+            </div>
+        </div>
+    );
 }

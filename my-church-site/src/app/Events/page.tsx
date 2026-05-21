@@ -1,3 +1,10 @@
+import FacebookFeed from "@/components/FacebookFeed";
+
 export default function Events() {
-  return <h1>Events </h1>;
+  return (
+    <div>
+      <h1>Events</h1>
+      <FacebookFeed />
+    </div>
+  );
 }

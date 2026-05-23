@@ -40,7 +40,8 @@ export default function LiveStreamEmbed() {
 
   // component render
   return (
-    <div className="aspect-video w-full">
+    <div className="aspect-video max-w-3xl mx-auto">
+      <h1 className="text-2xl font-bold text-center pb-2">Live Event Stream</h1>
       <iframe
         className="w-full h-full rounded-xl"
         src={`https://www.youtube.com/embed/${data.videoId}`}

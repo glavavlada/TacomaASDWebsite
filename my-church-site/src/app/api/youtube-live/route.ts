@@ -20,6 +20,7 @@ export async function GET() {
     `&type=video` +
     `&key=${apiKey}`;
 
+    
   try {
     const res = await fetch(url, {
       // cache response for 60 seconds

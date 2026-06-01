@@ -1,0 +1,16 @@
+.fb-page {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.fb-page > span {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.fb-page iframe {
+    margin: 0 auto !important;
+    
+}

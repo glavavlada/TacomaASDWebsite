@@ -7,7 +7,7 @@ export default function BibleLessons() {
  const [activePDF, setActivePDF] = useState("");
 
   return (
-    <div className="lessonPage">
+    <div className="lessonPage min-w-5xl w-full">
 
       <h1>Bible Lessons</h1>
 
@@ -59,7 +59,7 @@ export default function BibleLessons() {
 
           <h2>Student RU Version</h2>
 
-        <iframe
+        <iframe 
           src="/Субботняя_школа_May15_2026.pdf"
           width="100%"
           height="600px"

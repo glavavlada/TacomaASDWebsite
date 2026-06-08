@@ -7,7 +7,10 @@ export default function Foot() {
   return (
     <>
       <footer className="Footer">
+        <p>9241 S D St <br></br>Tacoma, WA 98444 <br></br>United States</p>
+
         <p>Contact Us at tacomaRussianASD@gmail.com</p>
+
         <button className="donateButton" onClick={() => setShowDonate(true)}>
           Donate
         </button>

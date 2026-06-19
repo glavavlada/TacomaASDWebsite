@@ -1,0 +1,60 @@
+.eventsPage {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.eventsTitle {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.eventsGrid {
+  display: grid;
+  /* News column | Facebook column */
+  grid-template-columns: 400px 700px;
+  gap: 80px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.newsSection {
+  justify-self: start;
+}
+
+.facebookSection {
+  justify-self: end;
+
+  width: 700px;
+  min-width: 700px;
+}
+
+
+.newsCard {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border-left: 4px solid #8b0000;
+}
+
+.newsCard h3 {
+  margin-bottom: 10px;
+}
+
+.facebookSection {
+  width: 700px;
+  min-width: 700px;
+}
+
+
+/* mobile perhaps ??? */ 
+@media (max-width: 900px) {
+  .eventsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .facebookColumn {
+    position: static;
+  }
+}

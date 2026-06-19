@@ -1,5 +1,6 @@
 # TacomaASDWebsite
-This is a website for Tacoma ASD Church
+This is the website for the Russian Tacoma ASD Church. Hosted on Vercel: https://tacoma-asd-website.vercel.app/
 
-This site will be used for people there if unable to attned in person meeting to come here to see if theres a live stream happening. Along side the livestream the website will have a about page, crew, sabbath school lessons page, and current events happening.
-Made in Next.js and potentially being hosted by AWS in the future
+This site provides access to church resources for members who are unable to attend in-person events. It features an embedded livestream of current events, mission statement, sabbath school lesson, the team, current events.
+
+Made with Next.js and TypeScript

@@ -4,11 +4,11 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Foot from "@/components/Foot";
 
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="pages">
-
         <Navbar />
         
         {/* Page Countent  not sure how this functions yet but export above doesnt work without*/}
@@ -18,7 +18,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
 
         <Foot />
-        
       </body>
     </html>
   );

@@ -1,33 +1,47 @@
 import FacebookFeed from "@/components/FacebookFeed";
 
 export default function Events() {
+
+  const news = [
+    {
+      title: "Sabbath Worship Service",
+      text: "Saturday at 10:00 AM"
+    },
+    {
+      title: "Prayer Meeting",
+      text: "Wednesday at 7:00 PM"
+    },
+    {
+      title: "Bible Study",
+      text: "Friday at 7:00 PM"
+    }
+  ];
+
   return (
     <div className="eventsPage">
+      <h1 className="eventsTitle">Events & Announcements</h1>
+      <div className="eventsGrid">
 
-  <h1 className="eventsTitle">Events & Announcements</h1>
+        {/* Left side */}
+        <div className="newsSection">
+          <h2>Latest News</h2>
 
-  <div className="eventsGrid">
+          {news.map((item, index) => (
+            <div className="newsCard" key={index}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
 
-    <div className="newsColumn">
-      <h2>Latest News</h2>
+        {/* Right side */}
+        <div className="facebookSection">
+          <h2>Facebook Updates</h2>
+          <FacebookFeed />
+        </div>
 
-      <div className="newsCard">
-        <h1>Church service at 10:00 AM</h1>
       </div>
 
-      <div className="newsCard">
-        <h1>sabbath class at 8:00 PM</h1>
-      </div>
     </div>
-
-    <div className="facebookColumn">
-      <h2>Facebook Updates</h2>
-
-      <FacebookFeed />
-    </div>
-
-  </div>
-
-</div>
   );
 }

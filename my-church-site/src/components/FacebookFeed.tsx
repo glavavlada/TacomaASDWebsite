@@ -34,9 +34,9 @@ export default function FacebookFeed() {
                 className="fb-page"
                 data-href="https://www.facebook.com/tacomarussian"
                 data-tabs="timeline"
-                data-width="1000"
+                data-width="500"
                 data-height="700"
-                data-adapt-container-width="false"
+                data-adapt-container-width="true"
                 data-hide-cover="false"
                 data-show-facepile="true"
             >

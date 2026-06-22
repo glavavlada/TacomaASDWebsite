@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@/styles/team.css";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";

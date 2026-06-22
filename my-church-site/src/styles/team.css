@@ -1,0 +1,26 @@
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.teamColumn {
+  text-align: center;
+}
+
+.teamColumn h3 {
+  margin-bottom: 0.75rem;
+  border: 2px solid #7b4a06;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.teamColumn ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.teamColumn li {
+  margin-bottom: 0.25rem;
+}

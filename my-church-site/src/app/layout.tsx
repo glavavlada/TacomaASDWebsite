@@ -1,8 +1,6 @@
 import "./globals.css";
-import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import Foot from "@/components/Foot";
+import Footer from "@/components/Footer";
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -17,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
 
-        <Foot />
+        <Footer />
       </body>
     </html>
   );

@@ -9,11 +9,33 @@ export default function Foot() {
       <footer className="Footer">
         <p>9241 S D St <br></br>Tacoma, WA 98444 <br></br>United States</p>
 
-        <p>Contact Us at tacomaRussianASD@gmail.com</p>
+        <div className="contactSection">
 
-        <button className="donateButton" onClick={() => setShowDonate(true)}>
-          Donate
-        </button>
+  <p>
+    <a
+      href="mailto:tacomaRussianASD@gmail.com"
+      className="footerLink"
+    >Email us at tacomaRussianASD@gmail.com!</a>
+  </p>
+
+  <p>
+    <a
+      href="https://www.facebook.com/tacomarussian/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="footerLink"
+    >
+      Find us on Facebook!
+    </a>
+  </p>
+</div>
+
+<button
+    className="donateButton"
+    onClick={() => setShowDonate(true)}
+  >
+    Donate
+  </button>
 
       </footer>
       {showDonate && (
@@ -25,7 +47,7 @@ export default function Foot() {
 
             <h2>Support Our Church</h2>
 
-            <img src="/donationLink.png" alt="Donation QR Code" className="QrCode"
+            <img src="/DonationLink.png" alt="Donation QR Code" className="qrCode"
             />
 
             <a href="https://adventistgiving.org/donate/ANIMTR" target="_blank" rel="noopener noreferrer">

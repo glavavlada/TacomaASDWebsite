@@ -20,7 +20,6 @@ export default function Events() {
   return (
     <div className="eventsPage">
       <h1 className="eventsTitle">Events & Announcements</h1>
-      <div className="eventsGrid">
 
         {/* Left side */}
         <div className="newsSection">
@@ -35,12 +34,6 @@ export default function Events() {
         </div>
 
         {/* Right side */}
-        <div className="facebookSection">
-          <h2>Facebook Updates</h2>
-          <FacebookFeed />
-        </div>
-
-      </div>
 
     </div>
   );

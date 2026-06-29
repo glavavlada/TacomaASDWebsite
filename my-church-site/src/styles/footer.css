@@ -8,7 +8,8 @@
   align-items: center;
 }
 
-donateButton {
+/* Donate Button */
+.donateButton {
   background-color: white;
   color: black;
 
@@ -25,7 +26,32 @@ donateButton {
   background-color: #ddd;
 }
 
-/* donate popup */
+/* Contact Section */
+.contactSection {
+  text-align: center;
+}
+
+.contactSection h3 {
+  margin-bottom: 10px;
+}
+
+.contactSection p {
+  margin: 6px 0;
+}
+
+/* Footer Links */
+.footerLink {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+  color: #4da3ff;
+  text-decoration: underline;
+}
+
+/* Donate Popup */
 .donatePopup {
   position: fixed;
 
@@ -44,28 +70,31 @@ donateButton {
   z-index: 1000;
 }
 
-/* popup content */
+/* Popup Content */
 .popupContent {
   background-color: white;
   color: black;
+
   width: 400px;
   max-width: 90%;
 
   padding: 30px;
   border-radius: 15px;
+
   text-align: center;
   position: relative;
 
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
   animation: popupAppear 0.2s ease-out;
 }
 
-/* close button */
+/* Close Button */
 .closeButton {
   position: absolute;
 
   top: 12px;
   right: 12px;
+
   width: 35px;
   height: 35px;
 
@@ -88,7 +117,7 @@ donateButton {
   transform: scale(1.05);
 }
 
-/* popup animation */
+/* Popup Animation */
 @keyframes popupAppear {
   from {
     opacity: 0;
@@ -101,7 +130,7 @@ donateButton {
   }
 }
 
-/* qr */
+/* QR Code */
 .qrCode {
   width: 220px;
   max-width: 100%;
@@ -110,7 +139,6 @@ donateButton {
   margin-bottom: 20px;
 
   border-radius: 10px;
-
   border: 3px solid #ddd;
 }
 

@@ -8,10 +8,10 @@ export default function Navbar() {
             <h1>Tacoma Russian Seventh-day Adventist Church</h1>
             {/* navigation */}
             <nav>
-                <Link href="/">About</Link>
-                <Link href="/BibleLessons">Bible Lessons</Link>
-                <Link href="/Team">Team</Link>
-                <Link href="/Events">Events</Link>
+                <Link href="/"className="button">About</Link>
+                <Link href="/BibleLessons" className="button">Bible Lessons</Link>
+                <Link href="/Team" className="button">Team</Link>
+                <Link href="/Events" className="button">Events</Link>
             </nav>
         </header>
     );

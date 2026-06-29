@@ -22,7 +22,7 @@ const teamGroups: TeamGroup[] = [
   },
   {
     role: "Deacon",
-    members: ["Victor Kasap", "Valerii Croitor", "Illia Kostiuk", "Pavlo Kostiuk", "Valentin Lala", "Timur Lechiev", "Maxim Lukin", "Oleksandr Shevchuk", "Vialii Vyshnevskyi"]
+    members: ["Victor Kasap", "Valerii Croitor", "Illia Kostiuk", "Pavlo Kostiuk", "Valentin Lala", "Timur Lechiev", "Maxim Lukin", "Oleksandr Shevchuk", "Vitalii Vyshnevskyi"]
   },
   {
     role: "Deaconess",

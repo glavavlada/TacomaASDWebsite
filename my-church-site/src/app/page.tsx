@@ -14,7 +14,6 @@ export default function About() {
       {/* History Section */}
       <h1>History</h1>
       <section className="infoSection">
-
         <section className="imgWrapper">
           <Image
             src={churchImgOut}
@@ -47,10 +46,9 @@ export default function About() {
       </section>
 
       {/*Beliefs Section*/}
-      {/* the idea is that this text and the one above and potentially fiture one use same styling */}
+      <h1>Beliefs</h1>
       <section className="infoSection">
         <div className="textContent">
-          <h1>Beliefs</h1>
           <p>
             We are Seventh-day Adventists, Christians who strive to live according to biblical principles, following the teachings of Jesus Christ.
             At the center of our faith is God&apos;s love, revealed through Christ, who died for our sins and rose again to give us the hope of eternal life. We believe that the Bible is the Word of God, the only true source of truth, and a guide for our lives.
@@ -64,7 +62,6 @@ export default function About() {
             We engage in educational, medical, and charitable projects, striving to benefit society and inspire those around us. We are a large spiritual family, united by faith, hope, and the desire to serve God and people.
             Our doors are always open to those searching for truth, meaning, and connection. If you are looking for a place where you can grow spiritually, find purpose, and receive support, we would be happy to welcome you among us!
           </p>
-
         </div>
 
         <section className="imgWrapper">

@@ -4,6 +4,7 @@
   text-align: center;
   padding: 1rem 2rem;
   background: var(--background);
+  border-radius: 1rem;
 }
 
 .imgWrapper h1 {

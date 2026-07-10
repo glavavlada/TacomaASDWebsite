@@ -12,7 +12,7 @@ export default function About() {
       <LiveStreamEmbed />
 
       {/* History Section */}
-      <h1>About</h1>
+      <h1>History</h1>
       <section className="infoSection">
 
         <section className="imgWrapper">
@@ -50,13 +50,13 @@ export default function About() {
       {/* the idea is that this text and the one above and potentially fiture one use same styling */}
       <section className="infoSection">
         <div className="textContent">
-
+          <h1>Beliefs</h1>
           <p>
             We are Seventh-day Adventists, Christians who strive to live according to biblical principles, following the teachings of Jesus Christ.
             At the center of our faith is God&apos;s love, revealed through Christ, who died for our sins and rose again to give us the hope of eternal life. We believe that the Bible is the Word of God, the only true source of truth, and a guide for our lives.
             A special part of our faith is the seventh day of the week—Sabbath—which was established by God as a day of rest, worship, and spiritual renewal.
             Observing the Sabbath allows us to step away from daily concerns, focus on God&apos;s presence, and strengthen our relationships with Him and with one another.
-            Our greatest hope is the soon return of Jesus Christ. 
+            Our greatest hope is the soon return of Jesus Christ. We believe that He will come again to establish His eternal Kingdom, resurrect the righteous, and grant His followers a life free from suffering and death.
           </p>
 
           <p>

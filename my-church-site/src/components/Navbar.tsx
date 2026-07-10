@@ -5,7 +5,7 @@ export default function Navbar() {
         <header className="Header">
             {/*logo messing with how to import images needs to be changed later for optimization */}
             <img src="/SeventhDayLogo.png" alt="ChurchLogo" className="logo" />
-            <h1>Tacoma Russian Seventh-day Adventist Church</h1>
+            <h1>Tacoma Seventh-day Adventist Church</h1>
             {/* navigation */}
             <nav>
                 <Link href="/"className="button">About</Link>

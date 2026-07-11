@@ -1,14 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
+
+var churchLogo = "/SeventhDayLogo.png";
 
 export default function Navbar() {
     return (
         <header className="Header">
-            {/*logo messing with how to import images needs to be changed later for optimization */}
-            <img src="/SeventhDayLogo.png" alt="ChurchLogo" className="logo" />
+            <Image
+                src={churchLogo}
+                alt="Church Logo"
+                width={60}
+                height={60}
+                className="logo"
+            />
+
             <h1>Tacoma Seventh-day Adventist Church</h1>
-            {/* navigation */}
             <nav>
-                <Link href="/"className="button">About</Link>
+                <Link href="/" className="button">About</Link>
                 <Link href="/BibleLessons" className="button">Bible Lessons</Link>
                 <Link href="/Team" className="button">Team</Link>
                 <Link href="/Events" className="button">Events</Link>

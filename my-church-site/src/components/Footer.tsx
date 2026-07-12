@@ -11,31 +11,31 @@ export default function Foot() {
 
         <div className="contactSection">
 
-  <p>
-    <a
-      href="mailto:tacomaRussianASD@gmail.com"
-      className="footerLink"
-    >Email us at tacomaRussianASD@gmail.com!</a>
-  </p>
+          <p>
+            <a
+              href="mailto:tacomaRussianASD@gmail.com"
+              className="footerLink"
+            >Email us at tacomaRussianASD@gmail.com!</a>
+          </p>
 
-  <p>
-    <a
-      href="https://www.facebook.com/tacomarussian/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="footerLink"
-    >
-      Find us on Facebook!
-    </a>
-  </p>
-</div>
+          <p>
+            <a
+              href="https://www.facebook.com/tacomarussian/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footerLink"
+            >
+              Find us on Facebook!
+            </a>
+          </p>
+        </div>
 
-<button
-    className="donateButton"
-    onClick={() => setShowDonate(true)}
-  >
-    Donate
-  </button>
+        <button
+          className="donateButton"
+          onClick={() => setShowDonate(true)}
+        >
+          Donate
+        </button>
 
       </footer>
       {showDonate && (

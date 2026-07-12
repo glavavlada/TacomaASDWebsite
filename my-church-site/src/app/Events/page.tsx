@@ -1,5 +1,3 @@
-import FacebookFeed from "@/components/FacebookFeed";
-
 export default function Events() {
 
   const news = [
@@ -18,8 +16,8 @@ export default function Events() {
   ];
 
   return (
-    <div className="eventsPage">
-      <h1 className="eventsTitle">Events & Announcements</h1>
+    <div>
+      <h1>Events & Announcements</h1>
 
         {/* Left side */}
         <div className="newsSection">

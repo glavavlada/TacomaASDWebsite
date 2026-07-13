@@ -12,6 +12,7 @@ export default function Navbar() {
                 width={60}
                 height={60}
                 className="logo"
+                priority
             />
 
             <h1>Tacoma Seventh-day Adventist Church</h1>

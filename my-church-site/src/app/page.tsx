@@ -21,6 +21,7 @@ export default function About() {
             width={800}
             height={1200}
             className="outImage"
+            priority
           />
           <p>
             Our welcoming multiethnic Seventh-day Adventist church in Tacoma.

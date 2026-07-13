@@ -1,51 +1,50 @@
-.aboutIntro {
-  min-height: 50vh;
-
+.imgWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   text-align: center;
-
-  padding: 80px 20px;
-
-  background: linear-gradient(
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0.6)
-  ),
-  url("/church-placeholder.jpg");
-
-  background-size: cover;
-  background-position: center;
-
-  color: white;
+  padding: 1rem 2rem;
+  background: var(--background);
+  border-radius: 1rem;
 }
 
-.aboutIntro h1 {
-  font-size: 60px;
-  margin-bottom: 20px;
+.imgWrapper h1 {
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;  
 }
 
-.aboutIntro p {
-  font-size: 22px;
-  max-width: 700px;
+.imgWrapper p {
+  font-size: 18px;
 }
 
-.imagePlaceholder {
-  width: 400px;
-  height: 300px;
+.outImage {
+  width: 100%;
+  min-width: 19rem;
+  height: auto;
+  padding: 1rem 0rem;
+}
 
-  background-color: #1a1a1a;
+.inImage {
+  width: 100%;
+  min-width: 24rem;
+  height: auto;
+  padding: 1rem 0rem;
+}
 
-  border-radius: 15px;
+.infoSection {
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
 
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.textContent {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 18px;
 
-  color: #888;
-
-  flex-shrink: 0;
+  line-height: 1.8;
 }
 

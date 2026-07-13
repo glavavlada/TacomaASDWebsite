@@ -2,30 +2,11 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .content {
+  align-self: center;
   flex: 1;
-  padding: 2rem 2rem;
-}
-
-.infoSection {
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-
-  gap: 40px;
-  margin-bottom: 60px;
-}
-
-.reverseSection {
-  flex-direction: row-reverse;
-}
-
-.textContent {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-
-  line-height: 1.8;
+  padding: 2rem 9rem;
 }

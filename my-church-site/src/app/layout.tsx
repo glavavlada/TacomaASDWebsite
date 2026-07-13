@@ -1,8 +1,6 @@
 import "./globals.css";
-import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import Foot from "@/components/Foot";
+import Footer from "@/components/Footer";
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -13,11 +11,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         
         {/* Page Countent  not sure how this functions yet but export above doesnt work without*/}
         {/* keeps content separted from header and footer */}
-        <main className="content max-w-6xl mx-auto px-4">
+        <main className="content">
           {children}
         </main>
 
-        <Foot />
+        <Footer />
       </body>
     </html>
   );

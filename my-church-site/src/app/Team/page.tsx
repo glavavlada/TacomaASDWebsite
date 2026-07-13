@@ -22,28 +22,31 @@ const teamGroups: TeamGroup[] = [
   },
   {
     role: "Deacon",
-    members: ["Victor Kasap", "Valerii Croitor", "Illia Kostiuk", "Pavlo Kostiuk", "Valentin Lala", "Timur Lechiev", "Maxim Lukin", "Oleksandr Shevchuk", "Vialii Vyshnevskyi"]
+    members: ["Victor Kasap", "Valerii Croitor", "Illia Kostiuk", "Pavlo Kostiuk", "Valentin Lala", "Timur Lechiev", "Maxim Lukin", "Oleksandr Shevchuk", "Vitalii Vyshnevskyi"]
   },
   {
     role: "Deaconess",
-    members: ["Maria Kasap","Tatiana Croitor", "Irina Gerasimchuk", "Yelena Kuzmina", "Liudmila Lala", "Elena Pindiurina", "Irina Pindiurina", "Elena Railean", "Lesya Voroniuk"]
+    members: ["Maria Kasap", "Tatiana Croitor", "Irina Gerasimchuk", "Yelena Kuzmina", "Liudmila Lala", "Elena Pindiurina", "Irina Pindiurina", "Elena Railean", "Lesya Voroniuk"]
   },
 ];
 
 export default function Team() {
   return (
-    <section className="teamGrid">
-      {teamGroups.map((group) => (
-        <div key={group.role} className="teamColumn">
-          <h3>{group.role}</h3>
+    <section className="teamPage">
+      <h1>Team</h1>
+      <section className="teamGrid">
+        {teamGroups.map((group) => (
+          <div key={group.role} className="teamColumn">
+            <h3>{group.role}</h3>
 
-          <ul>
-            {group.members.map((member) => (
-              <li key={member}>{member}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+            <ul>
+              {group.members.map((member) => (
+                <li key={member}>{member}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
     </section>
   );
 }

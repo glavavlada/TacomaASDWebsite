@@ -14,6 +14,10 @@
   }
 }
 
+h1{
+  font-size: 2rem;
+}
+
 body {
   background: var(--body);
   color: var(--foreground);
@@ -24,5 +28,4 @@ body {
   border: 2px solid var(--earth);
   border-radius: 8px;
   padding: 0.5rem 1rem;
-  /* background-color: var(--surface); */
 }

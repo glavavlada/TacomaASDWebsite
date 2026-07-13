@@ -1,8 +1,6 @@
 .Footer {
   padding: 20px;
-  background-color: #0c0b0b;
-  color: white;
-
+  background-color: var(--background);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,7 +13,6 @@
 
   padding: 10px 18px;
 
-  border: none;
   border-radius: 6px;
 
   cursor: pointer;
@@ -41,14 +38,13 @@
 
 /* Footer Links */
 .footerLink {
-  color: white;
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.2s ease;
 }
 
 .footerLink:hover {
   color: #4da3ff;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 /* Donate Popup */

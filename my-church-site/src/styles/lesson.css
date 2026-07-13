@@ -1,29 +1,92 @@
-.lessonButtons button {
-  background-color: #0c0b0b;
-  color: white;
-
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-
-  cursor: pointer;
+.lessonPage{
+    width:100%;
+    max-width:2200px;
+    margin:0 auto;
+    padding:40px 60px;
 }
 
-.lessonButtons button:hover {
-  background-color: #333;
+.lessonPage h1{
+    text-align:center;
+    margin-bottom:40px;
 }
 
-.pdfSection {
-  margin-top: 40px;
-  padding: 20px;
-
-  border: 1px solid #ccc;
-  border-radius: 10px;
-
-  background-color: #f5f5f5;
+.lessonLayout{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:50px;
+    align-items:start;
 }
 
-.pdfSection h2 {
-  margin-bottom: 20px;
-  color: black;
+
+.lessonSidebar{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+
+.lessonOptions{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-bottom:25px;
+    background:#111;
+    padding:20px;
+    border-radius:12px;
+}
+
+.lessonOptions label{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.lessonItem{
+    background:#111;
+    color:white;
+    border:none;
+    border-left:5px solid transparent;
+    border-radius:12px;
+    padding:18px;
+    text-align:left;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.lessonItem:hover{
+    background:#1b1b1b;
+    transform:translateX(5px);
+}
+
+.lessonItem.active{
+    border-left:5px solid darkred;
+}
+
+.pdfViewer{
+    background:#111;
+    padding:15px;
+    border-radius:12px;
+}
+
+.pdfViewer iframe{
+    width:225%;
+    height:900px;
+    border:none;
+    border-radius:8px;
+    background:white;
+}
+
+
+@media(max-width:1000px){
+
+    .lessonLayout{
+        grid-template-columns:1fr;
+    }
+
+    .lessonSidebar{
+        width:100%;
+    }
+
 }

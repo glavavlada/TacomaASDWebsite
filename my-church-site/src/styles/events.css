@@ -1,5 +1,6 @@
 .newsSection {
   justify-self: start;
+  display:inline-block;
 }
 
 .newsCard {

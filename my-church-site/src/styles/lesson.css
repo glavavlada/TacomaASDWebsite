@@ -1,55 +1,36 @@
-.lessonPage{
-    width:100%;
-    max-width:2200px;
-    margin:0 auto;
-    padding:40px 60px;
-}
-
-.lessonPage h1{
-    text-align:center;
-    margin-bottom:40px;
-}
-
 .lessonLayout{
     display:grid;
-    grid-template-columns:320px 1fr;
-    gap:50px;
+    grid-template-columns:20rem 1fr;
+    gap: 1rem;
     align-items:start;
 }
-
 
 .lessonSidebar{
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap: 0.5rem;
 }
-
 
 .lessonOptions{
     display:flex;
     flex-direction:column;
-    gap:15px;
-    margin-bottom:25px;
-    background:#111;
-    padding:20px;
-    border-radius:12px;
+    background: var(--background);
+    padding:1rem;
+    border-radius:1rem;
 }
 
 .lessonOptions label{
     display:flex;
-    gap:12px;
-    align-items:center;
+    gap:0.5rem;
     font-size:18px;
     cursor:pointer;
 }
 
 .lessonItem{
-    background:#111;
-    color:white;
-    border:none;
+    background: var(--background);
     border-left:5px solid transparent;
-    border-radius:12px;
-    padding:18px;
+    border-radius:1rem;
+    padding:1rem;
     text-align:left;
     cursor:pointer;
     transition:.2s;
@@ -57,36 +38,14 @@
 
 .lessonItem:hover{
     background:#1b1b1b;
-    transform:translateX(5px);
+    transform:translateX(0.3rem);
 }
 
 .lessonItem.active{
-    border-left:5px solid darkred;
+    border-left:0.3rem solid var(--earth);
 }
 
-.pdfViewer{
-    background:#111;
-    padding:15px;
-    border-radius:12px;
-}
-
-.pdfViewer iframe{
-    width:225%;
-    height:900px;
-    border:none;
-    border-radius:8px;
-    background:white;
-}
-
-
-@media(max-width:1000px){
-
-    .lessonLayout{
-        grid-template-columns:1fr;
-    }
-
-    .lessonSidebar{
-        width:100%;
-    }
-
+.pdfViewer iframe {
+    height: 35rem;
+    border-radius: 0.4rem;
 }

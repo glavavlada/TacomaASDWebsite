@@ -1,38 +1,70 @@
 export default function Events() {
 
-  const news = [
+  const events = [
     {
-      title: "Sabbath Worship Service",
-      text: "Saturday at 10:00 AM"
+      day: "Saturday",
+      time: "10:00 AM",
+      title: "Worship Service"
     },
     {
+      day: "Tuesday",
+      time: "8:30 PM",
       title: "Prayer Meeting",
-      text: "Wednesday at 7:00 PM"
+
+      announcement: {
+        title: "Online via Zoom",
+        text: `Дорогие братья и сёстры! 🙏
+
+        Напоминаем, что во вторник в 8:30 PM (вечером) состоится молитвенное служение онлайн в Zoom.
+        Приглашаем вместе вознести молитвы за людей, которым были переданы книги, за наши семьи, церковь и духовное пробуждение.
+        Пусть Господь благословит посеянные семена истины и коснётся сердец людей через действие Святого Духа.
+        Будем рады видеть каждого! 🙏`,
+
+        button: "Join Zoom Meeting",
+        link: "https://us06web.zoom.us/j/84556994253?pwd=Bwxhu4zBOamT0arIaqEss9TnF5ve9d.1"
+      }
     },
-    {
-      title: "Bible Study",
-      text: "Friday at 7:00 PM"
-    }
   ];
 
   return (
-    <div>
+    <div className="eventsPage">
       <h1>Events & Announcements</h1>
+      <div className="scheduleSection">
+        {events.map((event, index) => (
+          <div className="scheduleItem" key={index}>
+            <div className="scheduleDate">
 
-        {/* Left side */}
-        <div className="newsSection">
-          <h2>Latest News</h2>
+              <span className="day">
+                {event.day}
+              </span>
 
-          {news.map((item, index) => (
-            <div className="newsCard" key={index}>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              <span className="time">
+                {event.time}
+              </span>
+
             </div>
-          ))}
-        </div>
+            <div className="scheduleInfo">
+              <h3>{event.title}</h3>
 
-        {/* Right side */}
+              {event.announcement && (
+                <div className="eventAnnouncement">
+                  <h4>
+                    {event.announcement.title}
+                  </h4>
 
+                  <p className="announcementText">
+                    {event.announcement.text}
+                  </p>
+
+                  <a href={event.announcement.link} target="_blank" rel="noopener noreferrer" className="announcementButton" >
+                    {event.announcement.button}
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

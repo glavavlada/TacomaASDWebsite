@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Donations from "./Donations";
 
 export default function Foot() {
   const [showDonate, setShowDonate] = useState(false);
@@ -38,26 +39,10 @@ export default function Foot() {
         </button>
 
       </footer>
-      {showDonate && (
-        <div className="donatePopup">
-          <div className="popupContent">
-            <button className="closeButton" onClick={() => setShowDonate(false)} >
-              X
-            </button>
-
-            <h2>Support Our Church</h2>
-
-            <img src="/DonationLink.png" alt="Donation QR Code" className="qrCode"
-            />
-
-            <a href="https://adventistgiving.org/donate/ANIMTR" target="_blank" rel="noopener noreferrer">
-              Open Donation Link
-            </a>
-
-          </div>
-
-        </div>
-      )}
+      <Donations
+        open={showDonate}
+        onClose={() => setShowDonate(false)}
+      />
     </>
   );
 }

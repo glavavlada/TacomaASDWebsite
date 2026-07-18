@@ -14,20 +14,18 @@
 }
 
 .imgWrapper p {
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 .outImage {
   width: 100%;
-  min-width: 19rem;
-  height: auto;
+  min-width: 20rem;
   padding: 1rem 0rem;
 }
 
 .inImage {
   width: 100%;
   min-width: 24rem;
-  height: auto;
   padding: 1rem 0rem;
 }
 
@@ -35,16 +33,14 @@
   display:flex;
   justify-content: space-between;
   align-items: flex-start;
-
-  gap: 40px;
-  margin-bottom: 60px;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .textContent {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-
+  gap: 1rem;
   line-height: 1.8;
 }
 

@@ -14,12 +14,6 @@
   padding: 0.5rem;
 }
 
-.teamColumn ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 .teamColumn li {
   margin-bottom: 0.25rem;
 }

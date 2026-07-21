@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {/* Page Countent  not sure how this functions yet but export above doesnt work without*/}
           {/* keeps content separted from header and footer */}
-          <main className="content">
+          <main className="self-center w-full max-w-[80rem] px-6 py-8 lg:px-36">
             {children}
           </main>
 

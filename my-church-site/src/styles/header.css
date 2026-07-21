@@ -19,7 +19,7 @@ header a {
   text-decoration: none;
 }
 
-header a:hover{
+header a:hover {
   background-color: #333;
   border-radius: 5px;
 }
@@ -28,4 +28,33 @@ header a:hover{
   width: 60px;
   height: 60px;
   object-fit: contain;
+}
+
+/* Language Toggle Styles */
+
+.languageToggle {
+  display: flex;
+  gap: 8px;
+  margin-left: 20px;
+}
+
+.languageToggle button {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.languageToggle button:hover {
+  background: white;
+  color: black;
+}
+
+.languageToggle .active {
+  background: white;
+  color: black;
+  font-weight: bold;
 }

@@ -1,27 +1,77 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
-var churchLogo = "/SeventhDayLogo.png";
+//import translation files
+import en from "@/app/locale/en.json";
+import ru from "@/app/locale/ru.json";
+
+//import custom language need to be called LanguageContext to not mess with system
+import { useLanguage } from "@/app/context/LanguageContext";
+
+const churchLogo = "/SeventhDayLogo.png";
 
 export default function Navbar() {
-    return (
-        <header className="Header">
-            <Image
-                src={churchLogo}
-                alt="Church Logo"
-                width={60}
-                height={60}
-                className="logo"
-                priority
-            />
+	//get current language and function that changes it
+	const { language, setLanguage } = useLanguage();
+	//pick correct translation file depending on current language
+	const t = language === "en" ? en : ru;
 
-            <h1>Tacoma Seventh-day Adventist Church</h1>
-            <nav>
-                <Link href="/" className="button">About</Link>
-                <Link href="/BibleLessons" className="button">Bible Lessons</Link>
-                <Link href="/Team" className="button">Team</Link>
-                <Link href="/Events" className="button">Events</Link>
-            </nav>
-        </header>
-    );
+	return (
+		<header>
+			<Image
+				src={churchLogo}
+				alt="Church Logo"
+				width={60}
+				height={60}
+				className="logo"
+				priority
+			/>
+
+			{/* Website title which now depends on the selected language */}
+			<h1>{t.navbar.title}</h1>
+
+			{/* Navigation Links */}
+			<nav>
+
+				{/* About Page - same situation as the website title and others bellow  */}
+				<Link href="/">
+					{t.navbar.about}
+				</Link>
+
+				<Link href="/BibleLessons">
+					{t.navbar.lessons}
+				</Link>
+
+				<Link href="/Team">
+					{t.navbar.team}
+				</Link>
+
+				<Link href="/Events">
+					{t.navbar.events}
+				</Link>
+
+			</nav>
+
+			<div className="languageToggle">
+
+				{/*switch website to English */}
+				<button
+					onClick={() => setLanguage("en")}
+					className={language === "en" ? "active" : ""}
+				>
+					EN
+				</button>
+
+				{/* Switch website to Russian */}
+				<button
+					onClick={() => setLanguage("ru")}
+					className={language === "ru" ? "active" : ""}
+				>
+					RU
+				</button>
+			</div>
+		</header>
+	);
 }

@@ -1,39 +1,10 @@
-type TeamGroup = {
-  role: string;
-  members: string[];
-};
-
-const teamGroups: TeamGroup[] = [
-  {
-    role: "Pastor",
-    members: ["Vitalii Glavatskyi"]
-  },
-  {
-    role: "Clerk",
-    members: ["Dianna Croitor"]
-  },
-  {
-    role: "Treasurer",
-    members: ["Ala Cleofas"]
-  },
-  {
-    role: "Elder",
-    members: ["Serhii Kostiuk", "Ivan Bokov", "Maksym Briukhovets"]
-  },
-  {
-    role: "Deacon",
-    members: ["Victor Kasap", "Valerii Croitor", "Illia Kostiuk", "Pavlo Kostiuk", "Valentin Lala", "Timur Lechiev", "Maxim Lukin", "Oleksandr Shevchuk", "Vitalii Vyshnevskyi"]
-  },
-  {
-    role: "Deaconess",
-    members: ["Maria Kasap", "Tatiana Croitor", "Irina Gerasimchuk", "Yelena Kuzmina", "Liudmila Lala", "Elena Pindiurina", "Irina Pindiurina", "Elena Railean", "Lesya Voroniuk"]
-  },
-];
+import teamGroups from "@/data/team.json";
 
 export default function Team() {
   return (
     <section className="teamPage">
       <h1>Team</h1>
+
       <section className="teamGrid">
         {teamGroups.map((group) => (
           <div key={group.role} className="teamColumn">

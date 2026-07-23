@@ -1,4 +1,4 @@
-import teamGroups from "@/data/team.json";
+import teamGroups from "@/locale/en/team.json";
 
 export default function Team() {
   return (

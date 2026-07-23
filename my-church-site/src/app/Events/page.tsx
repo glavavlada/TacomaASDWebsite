@@ -1,4 +1,4 @@
-import events from "@/data/events.json";
+import events from "@/locale/en/events.json";
 
 export default function Events() {
   return (

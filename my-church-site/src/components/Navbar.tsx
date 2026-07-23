@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 //import translation files
-import en from "@/app/locale/en.json";
-import ru from "@/app/locale/ru.json";
+import en from "@/locale/en/navbar.json";
+import ru from "@/locale/ru/navbar.json";
 
 //import custom language need to be called LanguageContext to not mess with system
 import { useLanguage } from "@/app/context/LanguageContext";

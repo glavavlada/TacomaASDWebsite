@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import lessons from "@/data/bibleLessons.json";
+import lessons from "@/locale/en/bibleLessons.json";
 
 export default function BibleLessons() {
   const [selectedLesson, setSelectedLesson] = useState(0);

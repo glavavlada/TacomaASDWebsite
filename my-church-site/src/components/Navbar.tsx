@@ -36,19 +36,19 @@ export default function Navbar() {
 			<nav>
 
 				{/* About Page - same situation as the website title and others bellow  */}
-				<Link href="/">
+				<Link href="/" className="button">
 					{t.navbar.about}
 				</Link>
 
-				<Link href="/BibleLessons">
+				<Link href="/BibleLessons" className="button">
 					{t.navbar.lessons}
 				</Link>
 
-				<Link href="/Team">
+				<Link href="/Team" className="button">
 					{t.navbar.team}
 				</Link>
 
-				<Link href="/Events">
+				<Link href="/Events" className="button">
 					{t.navbar.events}
 				</Link>
 

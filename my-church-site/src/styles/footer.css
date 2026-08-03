@@ -17,7 +17,7 @@
 }
 
 .donateButton:hover {
-  background-color: #ddd;
+  background-color: var(--lightHover);
 }
 
 .contactSection {

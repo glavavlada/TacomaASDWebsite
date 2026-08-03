@@ -16,7 +16,7 @@ header a {
 }
 
 header a:hover {
-  background-color: var(--surface);
+  background-color: var(--darkHover);
 }
 
 .logo {
@@ -35,8 +35,8 @@ header a:hover {
 
 .languageToggle button {
   background: transparent;
-  color: white;
-  border: 1px solid white;
+  color: var(--text);
+  border: 1px solid var(--text);
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
@@ -44,12 +44,12 @@ header a:hover {
 }
 
 .languageToggle button:hover {
-  background: white;
-  color: black;
+  background: var(--text);
+  color: var(--background);
 }
 
 .languageToggle .active {
-  background: white;
-  color: black;
+  background: var(--text);
+  color: var(--background);
   font-weight: bold;
 }

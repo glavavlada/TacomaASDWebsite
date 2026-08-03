@@ -37,7 +37,7 @@
 }
 
 .lessonItem:hover{
-    background:#1b1b1b;
+    background:var(--darkHover);
     transform:translateX(0.3rem);
 }
 

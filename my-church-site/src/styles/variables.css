@@ -1,7 +1,11 @@
 :root {
   --background: #161616;
-  --foreground: #ededed;
-  --earth: #5e3929;
   --body: #242424;
-  --surface: #333;
+  --text: #ededed;
+  --highlight: #a66448;
+
+  --darkHover: #363636;
+  --lightHover: #c9c9c9;
+
+  --earth: #5e3929;
 }

@@ -36,7 +36,7 @@
     font-size: 2rem;
     font-weight: bold;
 
-    color: var(--earth);
+    color: var(--highlight);
 
     margin-bottom: .5rem;
 }
@@ -86,7 +86,7 @@
 
     margin-bottom: 1rem;
 
-    color: var(--earth);
+    color: var(--highlight);
 
     font-size: 1.25rem;
 }

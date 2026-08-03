@@ -13,3 +13,7 @@ body {
   border-radius: 8px;
   padding: 0.5rem 1rem;
 }
+
+.button:hover {
+  background-color: var(--darkHover);
+}

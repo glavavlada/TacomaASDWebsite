@@ -11,10 +11,6 @@ header nav {
   gap: 1rem;
 }
 
-header a:hover {
-  background-color: var(--darkHover);
-}
-
 .logo {
   width: 60px;
   height: 60px;

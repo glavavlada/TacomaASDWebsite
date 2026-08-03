@@ -1,0 +1,75 @@
+{
+  "labels": {
+    "pageTitle": "Уроки субботней школы",
+    "teacher": "Учительская версия",
+    "student": "Версия для учеников",
+    "openLesson": "Открыть урок"
+  },
+  "lessons": [
+    {
+      "title": "Урок 1 — Служение Павла в Коринфе",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/01/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/01/01"
+    },
+    {
+      "title": "Урок 2 — Весть о кресте",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/02/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/02/01"
+    },
+    {
+      "title": "Урок 3 — Единство во Христе",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/03/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/03/01"
+    },
+    {
+      "title": "Урок 4 — Грех в церкви",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/04/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/04/01"
+    },
+    {
+      "title": "Урок 5 — Всё во славу Божью",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/05/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/05/01"
+    },
+    {
+      "title": "Урок 6 — Духовные дары",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/06/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/06/01"
+    },
+    {
+      "title": "Урок 7 — Портрет любви",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/07/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/07/01"
+    },
+    {
+      "title": "Урок 8 — Сила воскресения Христа",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/08/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/08/01"
+    },
+    {
+      "title": "Урок 9 — Служение, движимое любовью",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/09/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/09/01"
+    },
+    {
+      "title": "Урок 10 — Подлинное христианское служение",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/10/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/10/01"
+    },
+    {
+      "title": "Урок 11 — Управление ресурсами и миссия",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/11/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/11/01"
+    },
+    {
+      "title": "Урок 12 — Как поступать с лжеучителями",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/12/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/12/01"
+    },
+    {
+      "title": "Урок 13 — Благодать, любовь и общение",
+      "student": "https://sabbath-school.adventech.io/ru/2026-03/13/01",
+      "teacher": "https://sabbath-school.adventech.io/ru/2026-03/13/01"
+    }
+  ]
+}

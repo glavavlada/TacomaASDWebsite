@@ -1,29 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import lessons from "@/locale/en/bibleLessons.json";
+
+import englishData from "@/locale/en/bibleLessons.json";
+import russianData from "@/locale/ru/bibleLessons.json";
+
+import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function BibleLessons() {
+  //read language selected in header
+  const { language } = useLanguage();
+  //read what lesson is selected
   const [selectedLesson, setSelectedLesson] = useState(0);
   const [teacherMode, setTeacherMode] = useState(false);
-  const [russianMode, setRussianMode] = useState(false);
 
+  //selects which languge data
+  const data = language === "en" ? englishData : russianData;
+
+  //seperate the lables and lessons 
+  const labels = data.labels;
+  const lessons = data.lessons;
+
+  //getter for the lesson
   const lesson = lessons[selectedLesson];
 
-  const pdf = teacherMode
-    ? russianMode
-      ? lesson.teacherRU
-      : lesson.teacher
-    : russianMode
-      ? lesson.studentRU
-      : lesson.student;
+  //chooses between the teacher and student
+  const lessonUrl = teacherMode ? lesson.teacher : lesson.student;
 
   return (
     <div className="lessonPage">
-      <h1>Bible Lessons</h1>
+      <h1>{labels.pageTitle}</h1>
 
       <div className="lessonLayout">
-        <div className="lessonSidebar">
+        {/* Left-hand lesson menu */}
+        <aside className="lessonSidebar">
           <div className="lessonOptions">
             <label>
               <input
@@ -31,22 +41,15 @@ export default function BibleLessons() {
                 checked={teacherMode}
                 onChange={() => setTeacherMode(!teacherMode)}
               />
-              Teacher
-            </label>
 
-            <label>
-              <input
-                type="checkbox"
-                checked={russianMode}
-                onChange={() => setRussianMode(!russianMode)}
-              />
-              Russian
+              {teacherMode ? labels.teacher : labels.student}
             </label>
           </div>
 
-          {lessons.map((lesson, index) => (
+          {lessons.map((lessonItem, index) => (
             <button
-              key={lesson.title}
+              key={`${language}-${index}`}
+              type="button"
               className={
                 selectedLesson === index
                   ? "lessonItem active"
@@ -54,19 +57,32 @@ export default function BibleLessons() {
               }
               onClick={() => setSelectedLesson(index)}
             >
-              {lesson.title}
+              {lessonItem.title}
             </button>
           ))}
-        </div>
+        </aside>
 
-        <div className="pdfViewer">
+        {/* Right-hand lesson viewer */}
+        <section className="pdfViewer">
+          <h2>{lesson.title}</h2>
+
           <iframe
-            src={pdf}
+            key={lessonUrl}
+            src={lessonUrl}
             width="100%"
             height="900"
             title={lesson.title}
           />
-        </div>
+
+          <a
+            href={lessonUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="openLessonButton"
+          >
+            {labels.openLesson}
+          </a>
+        </section>
       </div>
     </div>
   );

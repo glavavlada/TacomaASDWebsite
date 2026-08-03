@@ -4,11 +4,6 @@
     margin: 0 auto;
 }
 
-.eventsPage h1 {
-    margin-bottom: 3rem;
-    font-size: 3rem;
-}
-
 .scheduleSection {
     display: flex;
     flex-direction: column;

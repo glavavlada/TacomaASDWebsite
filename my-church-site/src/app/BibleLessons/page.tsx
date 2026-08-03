@@ -6,6 +6,7 @@ import englishData from "@/locale/en/bibleLessons.json";
 import russianData from "@/locale/ru/bibleLessons.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
+import Link from "next/dist/client/link";
 
 export default function BibleLessons() {
   //read language selected in header
@@ -35,15 +36,28 @@ export default function BibleLessons() {
         {/* Left-hand lesson menu */}
         <aside className="lessonSidebar">
           <div className="lessonOptions">
-            <label>
-              <input
-                type="checkbox"
-                checked={teacherMode}
-                onChange={() => setTeacherMode(!teacherMode)}
-              />
+            <div className="lessonButtons">
 
-              {teacherMode ? labels.teacher : labels.student}
-            </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={teacherMode}
+                  onChange={() => setTeacherMode(!teacherMode)}
+                />
+
+                {teacherMode ? labels.teacher : labels.student}
+              </label>
+
+              <Link
+                href={lessonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button"
+              >
+                {labels.openLesson}
+              </Link>
+
+            </div>
           </div>
 
           {lessons.map((lessonItem, index) => (
@@ -74,14 +88,7 @@ export default function BibleLessons() {
             title={lesson.title}
           />
 
-          <a
-            href={lessonUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="openLessonButton"
-          >
-            {labels.openLesson}
-          </a>
+
         </section>
       </div>
     </div>

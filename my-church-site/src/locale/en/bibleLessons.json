@@ -1,8 +1,8 @@
 {
   "labels": {
     "pageTitle": "Bible Lessons",
-    "teacher": "Teacher Version",
-    "student": "Student Version",
+    "teacher": "Teacher",
+    "student": "Student",
     "openLesson": "Open Lesson"
   },
   "lessons": [

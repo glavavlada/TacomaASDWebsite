@@ -1,0 +1,46 @@
+[
+  {
+    "role": "пастор",
+    "members": ["Виталий Главатский"]
+  },
+  {
+    "role": "клерк",
+    "members": ["Дианна Кройтор"]
+  },
+  {
+    "role": "казначей",
+    "members": ["Ала Клеофас"]
+  },
+  {
+    "role": "старший",
+    "members": ["Serhii Kostiuk", "Ivan Bokov", "Maksym Briukhovets"]
+  },
+  {
+    "role": "Дьякон",
+    "members": [
+      "Victor Kasap",
+      "Valerii Croitor",
+      "Illia Kostiuk",
+      "Pavlo Kostiuk",
+      "Valentin Lala",
+      "Timur Lechiev",
+      "Maxim Lukin",
+      "Oleksandr Shevchuk",
+      "Vitalii Vyshnevskyi"
+    ]
+  },
+  {
+    "role": "Дьяконесса",
+    "members": [
+      "Maria Kasap",
+      "Tatiana Croitor",
+      "Irina Gerasimchuk",
+      "Yelena Kuzmina",
+      "Liudmila Lala",
+      "Elena Pindiurina",
+      "Irina Pindiurina",
+      "Elena Railean",
+      "Lesya Voroniuk"
+    ]
+  }
+]

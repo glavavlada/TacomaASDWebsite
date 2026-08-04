@@ -1,32 +1,38 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 import englishData from "@/locale/en/bibleLessons.json";
 import russianData from "@/locale/ru/bibleLessons.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
-import Link from "next/dist/client/link";
 
 export default function BibleLessons() {
-  //read language selected in header
+  // Read the language selected in the header.
   const { language } = useLanguage();
-  //read what lesson is selected
+
+  // Track which lesson is selected.
   const [selectedLesson, setSelectedLesson] = useState(0);
+
+  // false = student version
+  // true = teacher version
   const [teacherMode, setTeacherMode] = useState(false);
 
-  //selects which languge data
+  // Select the lesson data for the current language.
   const data = language === "en" ? englishData : russianData;
 
-  //seperate the lables and lessons 
+  // Separate the labels and lessons.
   const labels = data.labels;
   const lessons = data.lessons;
 
-  //getter for the lesson
+  // Get the currently selected lesson.
   const lesson = lessons[selectedLesson];
 
-  //chooses between the teacher and student
-  const lessonUrl = teacherMode ? lesson.teacher : lesson.student;
+  // Choose either the teacher PDF or student PDF.
+  const lessonUrl = teacherMode
+    ? lesson.teacher
+    : lesson.student;
 
   return (
     <div className="lessonPage">
@@ -37,17 +43,26 @@ export default function BibleLessons() {
         <aside className="lessonSidebar">
           <div className="lessonOptions">
             <div className="lessonButtons">
+              {/* Student and teacher version selector */}
+              <div className="lessonVersionToggle">
+                <button
+                  type="button"
+                  onClick={() => setTeacherMode(false)}
+                  className={!teacherMode ? "active" : ""}
+                >
+                  {labels.student}
+                </button>
 
-              <label>
-                <input
-                  type="checkbox"
-                  checked={teacherMode}
-                  onChange={() => setTeacherMode(!teacherMode)}
-                />
+                <button
+                  type="button"
+                  onClick={() => setTeacherMode(true)}
+                  className={teacherMode ? "active" : ""}
+                >
+                  {labels.teacher}
+                </button>
+              </div>
 
-                {teacherMode ? labels.teacher : labels.student}
-              </label>
-
+              {/* Open the selected PDF in a new tab */}
               <Link
                 href={lessonUrl}
                 target="_blank"
@@ -56,10 +71,10 @@ export default function BibleLessons() {
               >
                 {labels.openLesson}
               </Link>
-
             </div>
           </div>
 
+          {/* Lesson selection buttons */}
           {lessons.map((lessonItem, index) => (
             <button
               key={`${language}-${index}`}
@@ -87,8 +102,6 @@ export default function BibleLessons() {
             height="900"
             title={lesson.title}
           />
-
-
         </section>
       </div>
     </div>

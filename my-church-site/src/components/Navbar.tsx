@@ -19,13 +19,12 @@ export default function Navbar() {
 	const t = language === "en" ? en : ru;
 
 	return (
-		<header>
+		<header className="flex items-center justify-between p-4 bg-[var(--background)]">
 			<Image
 				src={churchLogo}
 				alt="Church Logo"
 				width={60}
 				height={60}
-				className="logo"
 				priority
 			/>
 
@@ -33,7 +32,7 @@ export default function Navbar() {
 			<h1>{t.navbar.title}</h1>
 
 			{/* Navigation Links */}
-			<nav>
+			<nav className="flex gap-4">
 
 				{/* About Page - same situation as the website title and others bellow  */}
 				<Link href="/" className="button">

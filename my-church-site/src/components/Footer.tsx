@@ -15,7 +15,7 @@ export default function Foot() {
             <a
               href="mailto:tacomaRussianASD@gmail.com"
               className="link"
-            >Email us at tacomaRussianASD@gmail.com!</a>
+            >Contact us at tacomaRussianASD@gmail.com!</a>
           </p>
 
           <p>

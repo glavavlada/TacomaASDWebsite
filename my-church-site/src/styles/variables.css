@@ -1,11 +1,15 @@
 :root {
   --background: #161616;
   --body: #242424;
-  --text: #ededed;
+  
+  --textLight: #ededed;
+  --textDark: #242424;
   --highlight: #a66448;
 
-  --darkHover: #363636;
-  --lightHover: #c9c9c9;
+  --buttonDark: #242424;
+  --hoverDark: #363636;
+  --buttonLight: #ededed;
+  --hoverLight: #c9c9c9;
 
   --earth: #5e3929;
 }

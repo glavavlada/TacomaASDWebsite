@@ -37,7 +37,7 @@
 }
 
 .lessonItem:hover {
-  background: var(--darkHover);
+  background: var(--hoverDark);
   transform: translateX(0.3rem);
 }
 
@@ -64,7 +64,7 @@
 
 .lessonVersionToggle button {
   background: transparent;
-  border: 1px solid var(--text);
+  border: 1px solid var(--textLight);
   padding: 3px 10px;
   border-radius: 6px;
   transition: 0.2s;
@@ -72,12 +72,12 @@
 }
 
 .lessonVersionToggle button:hover {
-  background: var(--text);
+  background: var(--textLight);
   color: var(--background);
 }
 
 .lessonVersionToggle .active {
-  background: var(--text);
+  background: var(--textLight);
   color: var(--background);
   font-weight: bold;
 }

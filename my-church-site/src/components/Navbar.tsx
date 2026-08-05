@@ -35,19 +35,19 @@ export default function Navbar() {
 			<nav className="flex gap-4">
 
 				{/* About Page - same situation as the website title and others bellow  */}
-				<Link href="/" className="button">
+				<Link href="/" className="buttonDark">
 					{t.navbar.about}
 				</Link>
 
-				<Link href="/BibleLessons" className="button">
+				<Link href="/BibleLessons" className="buttonDark">
 					{t.navbar.lessons}
 				</Link>
 
-				<Link href="/Team" className="button">
+				<Link href="/Team" className="buttonDark">
 					{t.navbar.team}
 				</Link>
 
-				<Link href="/Events" className="button">
+				<Link href="/Events" className="buttonDark">
 					{t.navbar.events}
 				</Link>
 

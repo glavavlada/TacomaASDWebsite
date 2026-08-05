@@ -67,7 +67,7 @@ export default function BibleLessons() {
                 href={lessonUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button"
+                className="buttonLight"
               >
                 {labels.openLesson}
               </Link>

@@ -1,10 +1,10 @@
-h1{
+h1 {
   font-size: 2rem;
 }
 
 body {
   background: var(--body);
-  color: var(--textLight);  
+  color: var(--textLight);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -41,29 +41,40 @@ body {
   color: #4da3ff;
 }
 
-.languageToggle {
+.toggle {
+  position: relative;
   display: flex;
-  gap: 8px;
-  margin-left: 20px;
-}
-
-.languageToggle button {
-  background: transparent;
-  color: var(--textLight);
-  border: 1px solid var(--textLight);
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 0.3rem;
+  border: 2px solid var(--earth);
+  border-radius: 10rem;
+  background: var(--buttonDark);
   cursor: pointer;
-  transition: 0.2s;
+  overflow: hidden;
 }
 
-.languageToggle button:hover {
-  background: var(--textLight);
-  color: var(--background);
+.toggle:hover {
+  background-color: var(--hoverDark);
+} 
+
+.option {
+  padding: 0rem 0.4rem;
+  position: relative;
+  z-index: 1;
 }
 
-.languageToggle .active {
-  background: var(--textLight);
-  color: var(--background);
-  font-weight: bold;
+.slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  height: calc(100% - 4px);
+  background: var(--earth);
+  border-radius: 10rem;
+  z-index: 0;
+
+  transition: transform 0.25s ease;
+}
+
+.toggle.right .slider {
+  transform: translateX(100%);
 }

@@ -1,6 +1,6 @@
 .lessonLayout {
   display: grid;
-  grid-template-columns: 20rem 1fr;
+  grid-template-columns: 21rem 1fr;
   gap: 1rem;
   align-items: start;
 }
@@ -53,31 +53,4 @@
 .lessonButtons {
   display: flex;
   justify-content: space-between;
-}
-
-/* Toggle Styles */
-
-.lessonVersionToggle {
-  display: flex;
-  gap: 8px;
-}
-
-.lessonVersionToggle button {
-  background: transparent;
-  border: 1px solid var(--textLight);
-  padding: 3px 10px;
-  border-radius: 6px;
-  transition: 0.2s;
-  font-size: 0.8rem;
-}
-
-.lessonVersionToggle button:hover {
-  background: var(--textLight);
-  color: var(--background);
-}
-
-.lessonVersionToggle .active {
-  background: var(--textLight);
-  color: var(--background);
-  font-weight: bold;
 }

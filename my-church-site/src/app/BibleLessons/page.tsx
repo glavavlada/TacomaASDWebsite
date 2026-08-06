@@ -7,6 +7,7 @@ import englishData from "@/locale/en/bibleLessons.json";
 import russianData from "@/locale/ru/bibleLessons.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
+import Toggle from "@/components/Toggle";
 
 export default function BibleLessons() {
   // Read the language selected in the header.
@@ -44,22 +45,13 @@ export default function BibleLessons() {
           <div className="lessonOptions">
             <div className="lessonButtons">
               {/* Student and teacher version selector */}
-              <div className="lessonVersionToggle">
-                <button
-                  type="button"
-                  onClick={() => setTeacherMode(false)}
-                  className={!teacherMode ? "active" : ""}
-                >
-                  {labels.student}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setTeacherMode(true)}
-                  className={teacherMode ? "active" : ""}
-                >
-                  {labels.teacher}
-                </button>
+              <div>
+                <Toggle
+                  left={labels.student}
+                  right={labels.teacher}
+                  value={teacherMode}
+                  onChange={setTeacherMode}
+                />
               </div>
 
               {/* Open the selected PDF in a new tab */}

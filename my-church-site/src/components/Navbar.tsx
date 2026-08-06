@@ -9,6 +9,7 @@ import ru from "@/locale/ru/navbar.json";
 
 //import custom language need to be called LanguageContext to not mess with system
 import { useLanguage } from "@/app/context/LanguageContext";
+import Toggle from "./Toggle";
 
 const churchLogo = "/SeventhDayLogo.png";
 
@@ -28,13 +29,9 @@ export default function Navbar() {
 				priority
 			/>
 
-			{/* Website title which now depends on the selected language */}
 			<h1>{t.navbar.title}</h1>
 
-			{/* Navigation Links */}
 			<nav className="flex gap-4">
-
-				{/* About Page - same situation as the website title and others bellow  */}
 				<Link href="/" className="buttonDark">
 					{t.navbar.about}
 				</Link>
@@ -53,24 +50,13 @@ export default function Navbar() {
 
 			</nav>
 
-			<div className="languageToggle">
+			<Toggle
+				left="EN"
+				right="RU"
+				value={language === "ru"}
+				onChange={(right) => setLanguage(right ? "ru" : "en")}
+			/>
 
-				{/*switch website to English */}
-				<button
-					onClick={() => setLanguage("en")}
-					className={language === "en" ? "active" : ""}
-				>
-					EN
-				</button>
-
-				{/* Switch website to Russian */}
-				<button
-					onClick={() => setLanguage("ru")}
-					className={language === "ru" ? "active" : ""}
-				>
-					RU
-				</button>
-			</div>
 		</header>
 	);
 }

@@ -1,46 +1,52 @@
-[
-  {
-    "role": "пастор",
-    "members": ["Виталий Главатский"]
+{
+  "labels": {
+    "pageTitle": "Служители"
   },
-  {
-    "role": "клерк",
-    "members": ["Дианна Кройтор"]
-  },
-  {
-    "role": "казначей",
-    "members": ["Ала Клеофас"]
-  },
-  {
-    "role": "старший",
-    "members": ["Serhii Kostiuk", "Ivan Bokov", "Maksym Briukhovets"]
-  },
-  {
-    "role": "Дьякон",
-    "members": [
-      "Victor Kasap",
-      "Valerii Croitor",
-      "Illia Kostiuk",
-      "Pavlo Kostiuk",
-      "Valentin Lala",
-      "Timur Lechiev",
-      "Maxim Lukin",
-      "Oleksandr Shevchuk",
-      "Vitalii Vyshnevskyi"
-    ]
-  },
-  {
-    "role": "Дьяконесса",
-    "members": [
-      "Maria Kasap",
-      "Tatiana Croitor",
-      "Irina Gerasimchuk",
-      "Yelena Kuzmina",
-      "Liudmila Lala",
-      "Elena Pindiurina",
-      "Irina Pindiurina",
-      "Elena Railean",
-      "Lesya Voroniuk"
-    ]
-  }
-]
+
+  "groups": [
+    {
+      "role": "Пастор",
+      "members": ["Виталий Главатский"]
+    },
+    {
+      "role": "Клерк",
+      "members": ["Дианна Кройтор"]
+    },
+    {
+      "role": "Казначей",
+      "members": ["Алла Клеофас"]
+    },
+    {
+      "role": "Старшие",
+      "members": ["Сергій Костюк", "Іван Боков", "Максим Брюховець"]
+    },
+    {
+      "role": "Дьяконы",
+      "members": [
+        "Виктор Касп",
+        "Валерий Кройтор",
+        "Илья Костюк",
+        "Павел Костюк",
+        "Валентин Лала",
+        "Тимур Лечиев",
+        "Максим Лукин",
+        "Александр Шевчук",
+        "Виталий Вышневский"
+      ]
+    },
+    {
+      "role": "Дьякониссы",
+      "members": [
+        "Мая Касаб",
+        "Татьяна Кройтор",
+        "Ирина Герасимчук",
+        "Елена Кузьмина",
+        "Людмила Лала",
+        "Елена Пиндиурина",
+        "Ирина Пиндиурина",
+        "Елена Райлян",
+        "Леся Воронюк"
+      ]
+    }
+  ]
+}

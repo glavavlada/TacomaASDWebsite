@@ -23,9 +23,9 @@ export default function About() {
             className="outImage"
             priority
           />
-          <p>
+          <h3 className="text-[var(--textLightAlt)]">
             Our welcoming multiethnic Seventh-day Adventist church in Tacoma.
-          </p>
+          </h3>
         </section>
 
         <div className="textContent">
@@ -72,9 +72,9 @@ export default function About() {
             height={800}
             className="inImage"
           />
-          <p>
+          <h3 className="text-[var(--textLightAlt)]">
             Inside our church, you will find a warm and inviting space where people gather to worship, learn, and build meaningful relationships.
-          </p>
+          </h3>
         </section>
       </section>
     </div>

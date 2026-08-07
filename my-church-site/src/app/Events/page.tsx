@@ -1,37 +1,38 @@
 import events from "@/locale/en/events.json";
+import Link from "next/dist/client/link";
 
 export default function Events() {
   return (
-    <div className="eventsPage">
+    <div>
       <h1>Events & Announcements</h1>
 
-      <div className="scheduleSection">
+      <div>
         {events.map((event) => (
-          <div className="scheduleItem" key={`${event.day}-${event.time}`}>
-            <div className="scheduleDate">
-              <span className="day">{event.day}</span>
-              <span className="time">{event.time}</span>
+          <div className="flex gap-10 border-b border-white/10 py-2" key={`${event.day}-${event.time}`}>
+            <div className="text-center w-30 shrink-0">
+              <h2 className="font-bold text-[var(--highlight)]">{event.day}</h2>
+              <h3 className="block text-[var(--textLightAlt)]">{event.time}</h3>
             </div>
 
-            <div className="scheduleInfo">
-              <h3>{event.title}</h3>
+            <div>
+              <h2>{event.title}</h2>
 
               {event.announcement && (
-                <div className="eventAnnouncement">
-                  <h4>{event.announcement.title}</h4>
+                <div className="rounded-r-lg border-l-4 border-[var(--earth)] bg-white/[0.03] p-6">
+                  <h3 className="text-[var(--highlight)]">{event.announcement.title}</h3>
 
-                  <p className="announcementText">
+                  <p className="mb-6 whitespace-pre-line">
                     {event.announcement.text}
                   </p>
 
-                  <a
+                  <Link
                     href={event.announcement.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="announcementButton"
+                    className="buttonLight"
                   >
                     {event.announcement.button}
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>

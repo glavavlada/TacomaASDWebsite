@@ -3,6 +3,7 @@ type ToggleProps = {
     right: string;
     value: boolean;
     onChange: (value: boolean) => void;
+    className?: string;
 };
 
 export default function Toggle({
@@ -10,10 +11,11 @@ export default function Toggle({
     right,
     value,
     onChange,
+    className = "",
 }: ToggleProps) {
     return (
         <button
-            className={`relative flex cursor-pointer overflow-hidden rounded-full border-2 border-[var(--earth)] bg-[var(--buttonDark)] p-1 hover:bg-[var(--hoverDark)] ${value ? "right" : "left"}`}
+            className={`shrink-0 relative flex cursor-pointer overflow-hidden rounded-full border-2 border-[var(--earth)] bg-[var(--buttonDark)] p-1 hover:bg-[var(--hoverDark)]${className} ${value ? "right" : "left"}`}
             onClick={() => onChange(!value)}
             type="button"
         >

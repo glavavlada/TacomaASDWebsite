@@ -20,7 +20,7 @@ export default function Navbar() {
 	const t = language === "en" ? en : ru;
 
 	return (
-		<header className="flex items-center justify-between p-4 bg-[var(--background)]">
+		<header className="flex flex-wrap items-center gap-4 p-4 bg-[var(--background)]">
 			<Image
 				src={churchLogo}
 				alt="Church Logo"
@@ -29,9 +29,11 @@ export default function Navbar() {
 				priority
 			/>
 
-			<h1>{t.navbar.title}</h1>
+			<h1 className="text-xl md:text-2xl">
+				{t.navbar.title}
+			</h1>
 
-			<nav className="flex gap-4">
+			<nav className="flex flex-wrap justify-center gap-2">
 				<Link href="/" className="buttonDark">
 					{t.navbar.about}
 				</Link>
@@ -55,6 +57,7 @@ export default function Navbar() {
 				right="RU"
 				value={language === "ru"}
 				onChange={(right) => setLanguage(right ? "ru" : "en")}
+				className="mx-auto lg:ml-auto lg:mr-0"
 			/>
 
 		</header>

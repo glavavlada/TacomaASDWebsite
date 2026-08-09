@@ -1,36 +1,35 @@
+.infoSection {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
 .imgWrapper {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  width: 40%;
+  flex-shrink: 0;
   padding: 1rem 2rem;
   background: var(--background);
   border-radius: 1rem;
-}
-
-.outImage {
-  width: 100%;
-  min-width: 20rem;
-  padding: 1rem 0rem;
-}
-
-.inImage {
-  width: 100%;
-  min-width: 24rem;
-  padding: 1rem 0rem;
-}
-
-.infoSection {
-  display:flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 3rem;
+  text-align: center;
 }
 
 .textContent {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 1rem;
   line-height: 1.8;
 }
 
+@media (max-width: 56rem) {
+  .infoSection {
+    flex-direction: column;
+  }
+
+  .imgWrapper {
+    width: 100%;
+  }
+}

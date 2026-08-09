@@ -33,7 +33,7 @@ export default function About() {
             alt="Exterior of our church"
             width={800}
             height={1200}
-            className="outImage"
+            className="w-full py-4"
             priority
           />
 
@@ -65,7 +65,7 @@ export default function About() {
             alt="Church Hall"
             width={1200}
             height={800}
-            className="inImage"
+            className="w-full py-4"
           />
 
           <h3 className="text-[var(--textLightAlt)]">

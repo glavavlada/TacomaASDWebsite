@@ -18,7 +18,7 @@ export default function Events() {
               <h2>{event.title}</h2>
 
               {event.announcement && (
-                <div className="rounded-r-lg border-l-4 border-[var(--earth)] bg-white/[0.03] p-6">
+                <div className="rounded-r-lg border-l-4 border-[var(--main)] bg-white/[0.03] p-6">
                   <h3 className="text-[var(--highlight)]">{event.announcement.title}</h3>
 
                   <p className="mb-6 whitespace-pre-line">

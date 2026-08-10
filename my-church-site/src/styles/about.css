@@ -10,9 +10,9 @@
   flex-direction: column;
   width: 40%;
   flex-shrink: 0;
-  padding: 1rem 2rem;
-  background: var(--background);
-  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--border);
+  /* border-radius: 1rem; */
   text-align: center;
 }
 

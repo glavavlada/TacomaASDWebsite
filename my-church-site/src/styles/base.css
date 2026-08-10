@@ -18,10 +18,11 @@ body {
 
 .buttonDark {
   background-color: var(--buttonDark);
-  border: 2px solid var(--earth);
+  border: 2px solid var(--main);
   border-radius: 8px;
   padding: 0.5rem 1rem;
   font-weight: bold;
+  color: var(--textLight);
 }
 
 .buttonDark:hover {

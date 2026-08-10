@@ -14,7 +14,7 @@
 .lessonOptions {
   display: flex;
   flex-direction: column;
-  background: var(--background);
+  background: var(--border);
   padding: 1rem;
   border-radius: 1rem;
 }
@@ -42,7 +42,7 @@
 }
 
 .lessonItem.active {
-  border-left: 0.3rem solid var(--earth);
+  border-left: 0.3rem solid var(--main);
 }
 
 .pdfViewer iframe {

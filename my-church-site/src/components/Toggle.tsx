@@ -15,7 +15,7 @@ export default function Toggle({
 }: ToggleProps) {
     return (
         <button
-            className={`shrink-0 relative flex cursor-pointer overflow-hidden rounded-full border-2 border-[var(--earth)] bg-[var(--buttonDark)] p-1 hover:bg-[var(--hoverDark)]${className} ${value ? "right" : "left"}`}
+            className={`text-[var(--textLight)] shrink-0 relative flex cursor-pointer overflow-hidden rounded-full border-2 border-[var(--main)] bg-[var(--buttonDark)] p-1 hover:bg-[var(--hoverDark)]${className} ${value ? "right" : "left"}`}
             onClick={() => onChange(!value)}
             type="button"
         >

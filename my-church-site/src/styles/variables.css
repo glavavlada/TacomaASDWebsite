@@ -1,16 +1,17 @@
 :root {
-  --background: #161616;
-  --body: #242424;
-  
-  --textLight: #ededed;
-  --textLightAlt: #b6b6b6;
-  --textDark: #242424;
-  --highlight: #a66448;
+  --background: #782833;
+  --body: #c3b1b1;
+  --border: #b09295;
 
-  --buttonDark: #242424;
-  --hoverDark: #363636;
+  --textLight: #ededed;
+  --textLightAlt: #525252;
+  --textDark: #472121;
+
+  --buttonDark: #522121;
+  --hoverDark: #361616;
   --buttonLight: #ededed;
   --hoverLight: #c9c9c9;
 
-  --earth: #5e3929;
+  --main: #782833;
+  --highlight: #9c3442;
 }

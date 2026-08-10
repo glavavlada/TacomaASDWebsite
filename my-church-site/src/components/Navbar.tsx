@@ -29,7 +29,7 @@ export default function Navbar() {
 				priority
 			/>
 
-			<h1 className="text-xl md:text-2xl">
+			<h1 className="text-[var(--textLight)] text-xl md:text-2xl">
 				{t.navbar.title}
 			</h1>
 

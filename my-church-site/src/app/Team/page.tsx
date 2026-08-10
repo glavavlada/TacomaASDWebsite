@@ -23,7 +23,7 @@ export default function Team() {
             key={group.role}
             className="text-center"
           >
-            <h3 className="mb-3 bg-[var(--earth)] p-2">
+            <h3 className="mb-3 bg-[var(--border)] p-2">
               {group.role}
             </h3>
 

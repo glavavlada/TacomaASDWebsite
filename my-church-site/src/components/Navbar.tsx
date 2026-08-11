@@ -20,7 +20,7 @@ export default function Navbar() {
 	const t = language === "en" ? en : ru;
 
 	return (
-		<header className="flex flex-wrap items-center gap-4 p-4 bg-[var(--background)]">
+		<header className="flex flex-wrap items-center gap-4 p-4 bg-[var(--main)]">
 			<Image
 				src={churchLogo}
 				alt="Church Logo"

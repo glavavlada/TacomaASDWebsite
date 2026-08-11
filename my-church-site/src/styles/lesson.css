@@ -9,6 +9,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  background: var(--border);
+  padding: 0.4rem;
+  border-radius: 1rem;
 }
 
 .lessonOptions {
@@ -27,7 +30,7 @@
 }
 
 .lessonItem {
-  background: var(--background);
+  background: var(--buttonLight);
   border-left: 5px solid transparent;
   border-radius: 1rem;
   padding: 1rem;
@@ -37,12 +40,11 @@
 }
 
 .lessonItem:hover {
-  background: var(--hoverDark);
   transform: translateX(0.3rem);
 }
 
 .lessonItem.active {
-  border-left: 0.3rem solid var(--main);
+  border-left: 0.3rem solid var(--border);
 }
 
 .pdfViewer iframe {

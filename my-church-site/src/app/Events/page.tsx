@@ -29,7 +29,7 @@ export default function Events() {
                     href={event.announcement.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="buttonLight"
+                    className="buttonDark"
                   >
                     {event.announcement.button}
                   </Link>

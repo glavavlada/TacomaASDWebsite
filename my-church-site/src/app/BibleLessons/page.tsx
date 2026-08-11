@@ -73,8 +73,8 @@ export default function BibleLessons() {
               type="button"
               className={
                 selectedLesson === index
-                  ? "lessonItem active buttonDark"
-                  : "lessonItem buttonDark"
+                  ? "lessonItem active buttonLight"
+                  : "lessonItem buttonLight"
               }
               onClick={() => setSelectedLesson(index)}
             >

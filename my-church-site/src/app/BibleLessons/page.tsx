@@ -36,51 +36,53 @@ export default function BibleLessons() {
     : lesson.student;
 
   return (
-    <div className="lessonPage">
+    <div>
       <h1>{labels.pageTitle}</h1>
 
-      <div className="lessonLayout">
-        {/* Left-hand lesson menu */}
-        <aside className="lessonSidebar">
-          <div className="lessonOptions">
-            <div className="lessonButtons">
-              {/* Student and teacher version selector */}
-              <div>
-                <Toggle
-                  left={labels.student}
-                  right={labels.teacher}
-                  value={teacherMode}
-                  onChange={setTeacherMode}
-                />
-              </div>
+      {/* Lesson Layout */}
+      <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-[21rem_1fr]">
 
-              {/* Open the selected PDF in a new tab */}
-              <Link
-                href={lessonUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="buttonLight"
-              >
-                {labels.openLesson}
-              </Link>
-            </div>
+        {/* Left Panel */}
+        <aside className="flex flex-col gap-2 rounded-2xl bg-[var(--border)] p-1.5">
+
+          {/* Option Buttons */}
+          <div className="flex items-center justify-between gap-4 rounded-2xl bg-[var(--border)] p-4">
+
+            {/* Student / Teacher Toggle */}
+            <Toggle
+              left={labels.student}
+              right={labels.teacher}
+              value={teacherMode}
+              onChange={setTeacherMode}
+            />
+
+            {/* Open Lesson */}
+            <Link
+              href={lessonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="buttonLight"
+            >
+              {labels.openLesson}
+            </Link>
+
           </div>
 
-          {/* Lesson selection buttons */}
+          {/* Lesson selection */}
           {lessons.map((lessonItem, index) => (
             <button
               key={`${language}-${index}`}
               type="button"
-              className={
-                selectedLesson === index
-                  ? "lessonItem active buttonLight"
-                  : "lessonItem buttonLight"
-              }
+              className={`rounded-2xl border-l-[5px] bg-[var(--buttonLight)] p-4 text-left cursor-pointer transition-transform duration-200 hover:translate-x-[0.3rem] ${selectedLesson === index
+                  ? "border-l-[var(--main)]"
+                  : "border-transparent"
+                }`}
               onClick={() => setSelectedLesson(index)}
             >
               {lessonItem.title}
             </button>
           ))}
+
         </aside>
 
         {/* Right-hand lesson viewer */}
@@ -90,12 +92,12 @@ export default function BibleLessons() {
           <iframe
             key={lessonUrl}
             src={lessonUrl}
-            width="100%"
-            height="900"
             title={lesson.title}
+            className="h-[35rem] w-full rounded-[0.4rem]"
           />
         </section>
+
       </div>
-    </div>
+    </div >
   );
 }

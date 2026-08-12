@@ -10,18 +10,13 @@ h3 {
   font-size: 1.2rem;
 }
 
-body {
-  background: var(--background);
-  color: var(--textLight);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .buttonDark {
   background-color: var(--buttonDark);
   border-radius: 8px;
   padding: 0.5rem 1rem;
   font-weight: bold;
   color: var(--textLight);
+  text-align: center;
 }
 
 .buttonDark:hover {
@@ -34,6 +29,7 @@ body {
   border-radius: 8px;
   padding: 0.5rem 1rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .buttonLight:hover {

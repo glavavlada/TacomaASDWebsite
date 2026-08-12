@@ -7,18 +7,18 @@ import { LanguageProvider } from "@/app/context/LanguageContext";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--textLight)] font-sans">        
         <LanguageProvider>
-          <Navbar />
+        <Navbar />
 
-          {/* Page Countent  not sure how this functions yet but export above doesnt work without*/}
-          {/* keeps content separted from header and footer */}
-          <main className="[background-color:var(--body)] text-[var(--textDark)] flex-1 self-center w-full max-w-[80rem] px-[clamp(1rem,10vw,10rem)] py-8">
-            {children}
-          </main>
+        {/* Page Countent  not sure how this functions yet but export above doesnt work without*/}
+        {/* keeps content separted from header and footer */}
+        <main className="[background-color:var(--body)] text-[var(--textDark)] flex-1 mx-auto w-full max-w-[80rem] px-[clamp(1rem,10vw,10rem)] py-8">
+          {children}
+        </main>
 
-          <Footer />
-        </LanguageProvider>
+        <Footer />
+      </LanguageProvider>
       </body>
     </html>
   );

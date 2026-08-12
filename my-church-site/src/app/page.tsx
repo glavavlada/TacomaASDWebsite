@@ -31,34 +31,33 @@ export default function About() {
     <div className="aboutPage">
       <LiveStreamEmbed />
 
-      {/*intro/welcome section */}
+      {/* Intro Section */}
       <section
-        className=" relative mb-12 min-h-[500px] overflow-hidden bg-cover bg-center flex items-center"
-        style={{ backgroundImage: "url('/IntroPic.jpg')" }}
+        className=" relative mb-12 min-h-[500px] overflow-hidden bg-cover bg-center flex items-start"
+        style={{
+          backgroundImage: "url('/IntroPic.jpg')",
+        }}
       >
-        {/* transparent text box */}
+        {/* Makes the left side darker so the text stays readable */}
         <div
-          className=" ml-12 max-w-2xl rounded-xl bg-[color:var(--buttonDark)]/85 p-8 text-white backdrop-blur-[2px] "
+          className=" absolute inset-0 bg-gradient-to-r from-black/70 via-black/25 to-transparent"
+        />
+
+        {/* Intro text */}
+        <div
+          className=" relative z-10 ml-4 max-w-xl pt-10 p-6 text-[var(--textLight)]"
         >
-          <h1 className="mb-2 font-semibold">
+          <h1 className="mb-3 font-bold">
             {introData.intro.title}
           </h1>
 
-          <h2 className="mb-5">
-            {introData.intro.subtitle}
-          </h2>
-
-          <div className="flex flex-col gap-3 leading-6">
+          <div className="flex flex-col gap-1 leading-[1.4]">
             {introData.intro.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
           </div>
 
-          <p className="mt-5 font-semibold">
-            {introData.intro.address}
-          </p>
-
-          <p className="mt-4">
+          <p className="mt-3">
             {introData.intro.closing}
           </p>
         </div>

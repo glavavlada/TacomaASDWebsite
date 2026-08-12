@@ -47,7 +47,7 @@ export default function About() {
         <div
           className=" relative z-10 ml-4 max-w-xl pt-10 p-6 text-[var(--textLight)]"
         >
-          <h1 className="mb-3 font-bold">
+          <h1 className="font-bold">
             {introData.intro.title}
           </h1>
 

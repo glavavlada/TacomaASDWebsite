@@ -93,7 +93,7 @@ export default function BibleLessons() {
             key={lessonUrl}
             src={lessonUrl}
             title={lesson.title}
-            className="h-[35rem] w-full rounded-[0.4rem]"
+            className="h-[95vh] w-full rounded-[0.4rem]"
           />
         </section>
 

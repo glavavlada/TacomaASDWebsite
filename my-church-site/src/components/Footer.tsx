@@ -1,47 +1,33 @@
 "use client";
-import { useState } from "react";
-import Donations from "./Donations";
 
-export default function Foot() {
-  const [showDonate, setShowDonate] = useState(false);
+export default function Footer() {
   return (
     <>
       <footer className="p-4 bg-[var(--background)] flex justify-between items-center">
-        <p>9241 S D St <br></br>Tacoma, WA 98444 <br></br>United States</p>
+        <p>9241 S D St Tacoma, WA 98444, United States</p>
 
-        <div className="text-center">
-
+        <div className="text-right">
           <p>
-            <a
-              href="mailto:tacomaRussianASD@gmail.com"
-              className="link"
-            >Contact us at tacomaRussianASD@gmail.com!</a>
-          </p>
-
-          <p>
+            Find us on {" "}
             <a
               href="https://www.facebook.com/tacomarussian/"
               target="_blank"
               rel="noopener noreferrer"
-              className="link"
-            >
-              Find us on Facebook!
+              className="link">
+              Facebook
+            </a>
+          </p>
+
+          <p>
+            Contact us at {" "}
+            <a
+              href="mailto:tacomaRussianASD@gmail.com"
+              className="link">
+              tacomaRussianASD@gmail.com
             </a>
           </p>
         </div>
-
-        <button
-          className="buttonLight"
-          onClick={() => setShowDonate(true)}
-        >
-          Donate
-        </button>
-
       </footer>
-      <Donations
-        open={showDonate}
-        onClose={() => setShowDonate(false)}
-      />
     </>
   );
 }

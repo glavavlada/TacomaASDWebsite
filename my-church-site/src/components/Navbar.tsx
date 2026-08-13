@@ -36,11 +36,11 @@ export default function Navbar() {
 					priority
 				/>
 
-				<h1 className="min-w-0 flex-1 text-[var(--textLight)] text-xl md:text-2xl">
+				<h1 className="min-w-0 flex-1 text-[var(--textLight)] text-xl text-left">
 					{t.navbar.title}
 				</h1>
 
-				<nav className="flex flex-wrap justify-center gap-2 w-full md:w-auto">
+				<nav className="flex flex-wrap justify-center gap-1 w-full lg:w-auto">
 					<Link href="/" className="buttonDark">
 						{t.navbar.about}
 					</Link>
@@ -59,20 +59,21 @@ export default function Navbar() {
 
 				</nav>
 
-				<button
-					className="buttonLight"
-					onClick={() => setShowDonate(true)}
-				>
-					Donate
-				</button>
+				<div className="flex items-center gap-2 md:w-auto mx-auto lg:ml-auto lg:mr-0">
+					<button
+						className="buttonLight"
+						onClick={() => setShowDonate(true)}
+					>
+						Donate
+					</button>
 
-				<Toggle
-					left="EN"
-					right="RU"
-					value={language === "ru"}
-					onChange={(right) => setLanguage(right ? "ru" : "en")}
-					className="md:w-auto mx-auto lg:ml-auto lg:mr-0"
-				/>
+					<Toggle
+						left="EN"
+						right="RU"
+						value={language === "ru"}
+						onChange={(right) => setLanguage(right ? "ru" : "en")}
+					/>
+				</div>
 
 			</header>
 			<Donations

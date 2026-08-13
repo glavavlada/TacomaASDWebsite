@@ -6,7 +6,7 @@ export default function Footer() {
       <footer className="p-4 bg-[var(--background)] flex justify-between items-center">
         <p>9241 S D St Tacoma, WA 98444, United States</p>
 
-        <div className="text-right">
+        <div className="text-right px-4">
           <p>
             Find us on {" "}
             <a

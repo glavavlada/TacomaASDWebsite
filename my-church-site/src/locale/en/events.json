@@ -1,16 +1,18 @@
 [
   {
+    "id": "weekly-worship",
     "day": "Saturday",
     "time": "10:00 AM",
     "title": "Worship Service"
   },
   {
+    "id": "tuesday-prayer",
     "day": "Tuesday",
     "time": "8:30 PM",
     "title": "Prayer Meeting",
     "announcement": {
       "title": "Online via Zoom",
-      "text": "Дорогие братья и сёстры! 🙏\n\nНапоминаем, что во вторник в 8:30 PM (вечером) состоится молитвенное служение онлайн в Zoom.\nПриглашаем вместе вознести молитвы за людей, которым были переданы книги, за наши семьи, церковь и духовное пробуждение.\nПусть Господь благословит посеянные семена истины и коснётся сердец людей через действие Святого Духа.\nБудем рады видеть каждого! 🙏",
+      "text": "Dear brothers and sisters! 🙏\n\nWe would like to remind you that our online prayer meeting will take place Tuesday at 8:30 PM.\n\nWe invite you to join us in prayer for the people who received books, for our families, our church, and spiritual revival.\n\nMay the Lord bless the seeds of truth that have been planted and touch people's hearts through the work of the Holy Spirit.\n\nWe will be happy to see everyone! 🙏",
       "button": "Join Zoom Meeting",
       "link": "https://us06web.zoom.us/j/84556994253?pwd=Bwxhu4zBOamT0arIaqEss9TnF5ve9d.1"
     }

@@ -1,44 +1,36 @@
-import events from "@/locale/en/events.json";
-import Link from "next/dist/client/link";
+"use client";
+
+import englishEvents from "@/locale/en/events.json";
+import russianEvents from "@/locale/ru/events.json";
+
+import EventItem from "@/app/Events/EventItem";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Events() {
+  const { language } = useLanguage();
+
+  const events =
+    language === "en"
+      ? englishEvents
+      : russianEvents;
+
   return (
-    <div>
-      <h1>Events & Announcements</h1>
+    <div className="w-full">
+      <h1 className="mb-6">
+        {language === "en"
+          ? "Events & Announcements"
+          : "События и объявления"}
+      </h1>
 
-      <div>
-        {events.map((event) => (
-          <div className="flex gap-10 border-b border-white/10 py-2" key={`${event.day}-${event.time}`}>
-            <div className="text-center w-30 shrink-0">
-              <h2 className="font-bold text-[var(--highlight)]">{event.day}</h2>
-              <h3 className="block text-[var(--textLightAlt)]">{event.time}</h3>
-            </div>
-
-            <div>
-              <h2>{event.title}</h2>
-
-              {event.announcement && (
-                <div className="rounded-r-lg border-l-4 border-[var(--main)] bg-white/[0.03] p-6">
-                  <h3 className="text-[var(--highlight)]">{event.announcement.title}</h3>
-
-                  <p className="mb-6 whitespace-pre-line">
-                    {event.announcement.text}
-                  </p>
-
-                  <Link
-                    href={event.announcement.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="buttonDark"
-                  >
-                    {event.announcement.button}
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
+      <section>
+        {/* Render each event using the EventItem component */}
+        {events.map((event, index) => (
+          <EventItem
+            key={`${event.day}-${event.time}-${index}`}
+            event={event}
+          />
         ))}
-      </div>
+      </section>
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import englishEvents from "@/locale/en/events.json";
 import russianEvents from "@/locale/ru/events.json";
 
-import EventItem from "@/app/Events/EventItem";
+import EventItem from "@/components/EventItem";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Events() {

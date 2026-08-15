@@ -3,10 +3,10 @@
 export default function Footer() {
   return (
     <>
-      <footer className="p-4 bg-[var(--background)] flex justify-between items-center">
+      <footer className="p-4 bg-[var(--background)] flex justify-between gap-10 items-center">
         <p>9241 S D St Tacoma, WA 98444, United States</p>
 
-        <div className="text-right px-4">
+        <div className="text-right">
           <p>
             Find us on {" "}
             <a

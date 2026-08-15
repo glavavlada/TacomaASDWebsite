@@ -40,15 +40,20 @@ export default function LiveStreamEmbed() {
 
   // component render
   return (
-    <div className="aspect-video max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold text-center pb-2">Live Event Stream</h1>
-      <iframe
-        className="w-full h-full rounded-xl"
-        src={`https://www.youtube.com/embed/${data.videoId}`}
-        title="Live Stream"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
+    <div className="mx-auto pb-10">
+      <h1 className="text-center text-xl font-bold">
+        Live Event Stream
+      </h1>
+
+      <div className="aspect-video w-full">
+        <iframe
+          className="h-full w-full rounded-xl"
+          src={`https://www.youtube.com/embed/${data.videoId}`}
+          title="Live Stream"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
     </div>
   );
 }

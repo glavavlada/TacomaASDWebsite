@@ -8,6 +8,7 @@ import russianData from "@/locale/ru/bibleLessons.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
 import Toggle from "@/components/Toggle";
+import LessonScroll from "@/components/LessonScroll";
 
 export default function BibleLessons() {
   // Read the language selected in the header.
@@ -40,13 +41,13 @@ export default function BibleLessons() {
       <h1>{labels.pageTitle}</h1>
 
       {/* Lesson Layout */}
-      <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-[21rem_1fr]">
+      <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[22rem_1fr]">
 
         {/* Left Panel */}
-        <aside className="flex flex-col gap-2 rounded-2xl bg-[var(--border)] p-1.5">
+        <aside className="flex h-[95vh] min-h-0 flex-col gap-2 rounded-2xl bg-[var(--border)] p-1.5">
 
           {/* Option Buttons */}
-          <div className="flex items-center justify-between gap-4 rounded-2xl bg-[var(--border)] p-4">
+          <div className="flex items-center justify-between gap-4 rounded-2xl bg-[var(--border)] p-2">
 
             {/* Student / Teacher Toggle */}
             <Toggle
@@ -69,31 +70,24 @@ export default function BibleLessons() {
           </div>
 
           {/* Lesson selection */}
-          {lessons.map((lessonItem, index) => (
-            <button
-              key={`${language}-${index}`}
-              type="button"
-              className={`rounded-2xl border-l-[5px] bg-[var(--buttonLight)] p-4 text-left cursor-pointer transition-transform duration-200 hover:translate-x-[0.3rem] ${selectedLesson === index
-                  ? "border-l-[var(--main)]"
-                  : "border-transparent"
-                }`}
-              onClick={() => setSelectedLesson(index)}
-            >
-              {lessonItem.title}
-            </button>
-          ))}
+          <LessonScroll
+            lessons={lessons}
+            selectedLesson={selectedLesson}
+            setSelectedLesson={setSelectedLesson}
+            language={language}
+          />
 
         </aside>
 
         {/* Right-hand lesson viewer */}
-        <section className="pdfViewer">
+        <section className="pdfViewer h-[95vh]">
           <h2>{lesson.title}</h2>
 
           <iframe
             key={lessonUrl}
             src={lessonUrl}
             title={lesson.title}
-            className="h-[95vh] w-full rounded-[0.4rem]"
+            className="h-[calc(95vh-2.5rem)] w-full rounded-[0.4rem]"
           />
         </section>
 

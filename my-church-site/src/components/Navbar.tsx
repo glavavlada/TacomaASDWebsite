@@ -36,9 +36,9 @@ export default function Navbar() {
 					priority
 				/>
 
-				<h1 className="min-w-0 flex-1 text-[var(--textLight)] text-xl text-left">
+				<h2 className="min-w-0 flex-1 text-[var(--textLight)] text-left">
 					{t.navbar.title}
-				</h1>
+				</h2>
 
 				<nav className="flex flex-wrap justify-center gap-1 w-full lg:w-auto">
 					<Link href="/" className="buttonDark">

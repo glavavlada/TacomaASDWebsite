@@ -12,9 +12,7 @@ h3 {
 
 .buttonDark {
   background-color: var(--buttonDark);
-  border-radius: 8px;
   padding: 0.5rem 1rem;
-  font-weight: bold;
   color: var(--textLight);
   text-align: center;
 }
@@ -23,10 +21,13 @@ h3 {
   background-color: var(--hoverDark);
 }
 
+.buttonDark.active {
+  border: 2px solid var(--highlight);
+}
+
 .buttonLight {
   background-color: var(--buttonLight);
   color: var(--textDark);
-  border-radius: 8px;
   padding: 0.5rem 1rem;
   font-weight: bold;
   text-align: center;

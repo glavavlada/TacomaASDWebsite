@@ -20,12 +20,12 @@ export default function LessonScroll({
     language,
 }: LessonScrollProps) {
     return (
-        <div className="min-h-0 flex-1 overflow-y-auto p-1 bg-[var(--main)]/35 rounded-2xl">
+        <div className="min-h-0 flex-1 overflow-y-auto p-1 bg-[var(--main)]/35">
             {lessons.map((lessonItem, index) => (
                 <button
                     key={`${language}-${index}`}
                     type="button"
-                    className={`mb-2 w-full rounded-2xl border-l-[5px] bg-[var(--buttonLight)] p-4 text-left cursor-pointer transition-transform duration-200 hover:translate-x-[0.3rem] ${selectedLesson === index
+                    className={`mb-2 w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left cursor-pointer transition-transform duration-200 hover:translate-x-[0.3rem] ${selectedLesson === index
                             ? "border-l-[var(--main)]"
                             : "border-transparent"
                         }`}

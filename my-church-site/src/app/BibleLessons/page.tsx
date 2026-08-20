@@ -44,10 +44,10 @@ export default function BibleLessons() {
       <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[22rem_1fr]">
 
         {/* Left Panel */}
-        <aside className="flex h-[95vh] min-h-0 flex-col gap-2 rounded-2xl bg-[var(--border)] p-1.5">
+        <aside className="flex h-[95vh] min-h-0 flex-col gap-2 bg-[var(--border)] p-1.5">
 
           {/* Option Buttons */}
-          <div className="flex items-center justify-between gap-4 rounded-2xl bg-[var(--border)] p-2">
+          <div className="flex items-center justify-between gap-4 p-2">
 
             {/* Student / Teacher Toggle */}
             <Toggle

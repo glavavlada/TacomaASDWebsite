@@ -15,10 +15,10 @@ export default function DonationPopup({
     <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/75">
 
       {/* Popup Content */}
-      <div className="popupAppear relative flex w-80 flex-col items-center rounded-2xl bg-[var(--textLight)] p-6 text-center text-[var(--background)]">
+      <div className="popupAppear relative flex w-80 flex-col items-center bg-[var(--textLight)] p-6 text-center text-[var(--background)]">
 
         {/* Close Button */}
-        <button className="absolute right-4 top-4 h-8 w-8 cursor-pointer rounded-full bg-[var(--background)] text-[var(--textLight)] text-[1.2rem] font-bold transition duration-200 hover:scale-105 hover:bg-[var(--hoverDark)]" onClick={onClose}>
+        <button className="absolute right-2 top-2 h-8 w-8 buttonDark flex items-center justify-center" onClick={onClose}>
           X
         </button>
 

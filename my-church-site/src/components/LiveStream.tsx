@@ -47,7 +47,7 @@ export default function LiveStreamEmbed() {
 
       <div className="aspect-video w-full">
         <iframe
-          className="h-full w-full rounded-xl"
+          className="h-full w-full"
           src={`https://www.youtube.com/embed/${data.videoId}`}
           title="Live Stream"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

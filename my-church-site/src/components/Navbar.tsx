@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 //import translation files
 import en from "@/locale/en/navbar.json";
@@ -24,6 +25,9 @@ export default function Navbar() {
 
 	const [showDonate, setShowDonate] = useState(false);
 
+	// current page
+	const pathname = usePathname();
+
 	return (
 		<>
 			<header className="flex flex-wrap items-center gap-4 p-4 bg-[var(--main)]">
@@ -41,19 +45,31 @@ export default function Navbar() {
 				</h2>
 
 				<nav className="flex flex-wrap justify-center gap-1 w-full lg:w-auto">
-					<Link href="/" className="buttonDark">
+					<Link
+						href="/"
+						className={`buttonDark ${pathname === "/" ? "active" : ""}`}
+					>
 						{t.navbar.about}
 					</Link>
 
-					<Link href="/BibleLessons" className="buttonDark">
+					<Link
+						href="/BibleLessons"
+						className={`buttonDark ${pathname === "/BibleLessons" ? "active" : ""}`}
+					>
 						{t.navbar.lessons}
 					</Link>
 
-					<Link href="/Team" className="buttonDark">
+					<Link
+						href="/Team"
+						className={`buttonDark ${pathname === "/Team" ? "active" : ""}`}
+					>
 						{t.navbar.team}
 					</Link>
 
-					<Link href="/Events" className="buttonDark">
+					<Link
+						href="/Events"
+						className={`buttonDark ${pathname === "/Events" ? "active" : ""}`}
+					>
 						{t.navbar.events}
 					</Link>
 

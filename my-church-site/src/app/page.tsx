@@ -6,8 +6,8 @@ import Image from "next/image";
 import englishAbout from "@/locale/en/about.json";
 import russianAbout from "@/locale/ru/about.json";
 
-import englishIntro from "@/locale/en/Intro.json";
-import russianIntro from "@/locale/ru/Intro.json";
+import englishIntro from "@/locale/en/intro.json";
+import russianIntro from "@/locale/ru/intro.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
 
@@ -46,7 +46,7 @@ export default function About() {
 
         {/* Intro text */}
         <div
-          className="z-10 max-w-lg pl-20 text-[var(--textLight)]"
+          className="z-10 max-w-xl pl-20 text-[var(--textLight)]"
         >
           <h1 className="font-bold">
             {introData.intro.title}

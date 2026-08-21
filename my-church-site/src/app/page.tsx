@@ -13,6 +13,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 
 const churchImgOut = "/church_outside.jpg";
 const churchImgHall = "/church_hall.jpg";
+const introImg = "/IntroPic.jpg";
 
 export default function About() {
   const { language } = useLanguage();
@@ -33,19 +34,19 @@ export default function About() {
 
       {/* Intro Section */}
       <section
-        className=" relative mb-12 min-h-[500px] overflow-hidden bg-cover bg-center flex items-start"
+        className="relative mb-12 min-h-[500px] overflow-hidden bg-cover bg-center flex items-center"
         style={{
-          backgroundImage: "url('/IntroPic.jpg')",
+          backgroundImage: `url('${introImg}')`,
         }}
       >
         {/* Makes the left side darker so the text stays readable */}
         <div
-          className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"
+          className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"
         />
 
         {/* Intro text */}
         <div
-          className=" relative z-10 ml-4 max-w-xl pt-10 p-6 text-[var(--textLight)]"
+          className="z-10 max-w-lg pl-20 text-[var(--textLight)]"
         >
           <h1 className="font-bold">
             {introData.intro.title}

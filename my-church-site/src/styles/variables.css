@@ -1,7 +1,8 @@
 :root {
-  --background: #782833;
   --body: #dcd6d6;
   --border: #c9b8ba;
+  --main: #782833;
+  --highlight: #a83847;
 
   --textLight: #ededed;
   --textLightAlt: #525252;
@@ -11,7 +12,22 @@
   --hoverDark: #361616;
   --buttonLight: #ededed;
   --hoverLight: #c9c9c9;
+}
 
-  --main: #782833;
-  --highlight: #a83847;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body: #221a1d;
+    --border: #34282a;
+    --main: #521d26;
+    --highlight: #7b363f;
+
+    --textLight: #ebe3e3;
+    --textLightAlt: #b2acad;
+    --textDark: #d9d2d3;
+
+    --buttonDark: #2b1619;
+    --hoverDark: #1f1113;
+    --buttonLight: #5f4b50;
+    --hoverLight: #544347;
+  }
 }

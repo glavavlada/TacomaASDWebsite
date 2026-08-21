@@ -12,10 +12,10 @@ export default function DonationPopup({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/75">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/75 text-[var(--textLight)]">
 
       {/* Popup Content */}
-      <div className="popupAppear relative flex w-80 flex-col items-center bg-[var(--textLight)] p-6 text-center text-[var(--background)]">
+      <div className="popupAppear relative flex w-80 flex-col items-center bg-[var(--buttonLight)] p-6 text-center">
 
         {/* Close Button */}
         <button className="absolute right-2 top-2 h-8 w-8 buttonDark flex items-center justify-center" onClick={onClose}>
@@ -34,7 +34,7 @@ export default function DonationPopup({
           href="https://adventistgiving.org/donate/ANIMTR"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md bg-[var(--background)] px-[1.125rem] py-2.5 text-[var(--textLight)] hover:bg-[var(--hoverDark)]"
+          className="buttonDark px-[1.125rem] py-2.5]"
         >
           Open Donation Link
         </a>

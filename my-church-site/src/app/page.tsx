@@ -29,7 +29,7 @@ export default function About() {
       : russianIntro;
 
   return (
-    <div className="aboutPage">
+    <div>
       <LiveStreamEmbed />
 
       {/* Intro Section */}
@@ -46,7 +46,7 @@ export default function About() {
 
         {/* Intro text */}
         <div
-          className="z-10 max-w-xl pl-20 text-[var(--textLight)]"
+          className="z-10 max-w-xl px-[clamp(1rem,6vw,6rem)] text-[var(--textLight)]"
         >
           <h1 className="font-bold">
             {introData.intro.title}

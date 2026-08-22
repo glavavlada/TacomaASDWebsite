@@ -2,7 +2,8 @@
   --body: #dcd6d6;
   --border: #c9b8ba;
   --main: #782833;
-  --highlight: #a83847;
+  --highlight: hsl(352, 50%, 44%);
+  --separator: #000000;
 
   --textLight: #ededed;
   --textLightAlt: #525252;
@@ -20,6 +21,7 @@
     --border: #34282a;
     --main: #521d26;
     --highlight: #7b363f;
+    --separator: #ffffff;
 
     --textLight: #ebe3e3;
     --textLightAlt: #b2acad;

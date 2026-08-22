@@ -29,6 +29,9 @@ export async function GET() {
 
     const data = await res.json();
 
+    // temp for api response testing
+    // console.log("YouTube API response:", data);
+
     // no livestream
     if (!data.items || data.items.length === 0) {
       return NextResponse.json({ live: false });

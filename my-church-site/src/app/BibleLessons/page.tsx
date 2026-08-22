@@ -41,10 +41,10 @@ export default function BibleLessons() {
       <h1>{labels.pageTitle}</h1>
 
       {/* Lesson Layout */}
-      <div className="grid h-[95vh] grid-cols-1 items-stretch gap-4 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr]">
+      <div className="grid grid-cols-1 gap-4 lg:h-[95vh] lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr]">
 
         {/* Left Panel */}
-        <aside className="flex min-h-0 flex-col gap-2 bg-[var(--border)] p-1.5">
+        <aside className="flex h-[95vh] min-h-0 flex-col gap-2 bg-[var(--border)] p-1.5 lg:h-full">
 
           {/* Option Buttons */}
           <div className="flex shrink-0 items-center justify-between gap-4 p-2">
@@ -80,15 +80,19 @@ export default function BibleLessons() {
         </aside>
 
         {/* Right-hand lesson viewer */}
-        <section className="flex min-h-0 flex-col">
-          <h2 className="shrink-0">{lesson.title}</h2>
+        <section className="flex h-[95vh] min-h-0 flex-col lg:h-full">
+
+          <h2 className="shrink-0">
+            {lesson.title}
+          </h2>
 
           <iframe
             key={lessonUrl}
             src={lessonUrl}
             title={lesson.title}
-            className="min-h-0 w-full flex-1 rounded-[0.4rem]"
+            className="min-h-0 w-full flex-1"
           />
+
         </section>
 
       </div>

@@ -13,7 +13,7 @@ export default function Footer() {
               href="https://www.facebook.com/tacomarussian/"
               target="_blank"
               rel="noopener noreferrer"
-              className="link">
+              className="link break-words sm:break-normal">
               Facebook
             </a>
           </p>
@@ -22,7 +22,7 @@ export default function Footer() {
             Contact us at {" "}
             <a
               href="mailto:tacomaRussianASD@gmail.com"
-              className="link">
+              className="link break-words sm:break-normal">
               tacomaRussianASD@gmail.com
             </a>
           </p>

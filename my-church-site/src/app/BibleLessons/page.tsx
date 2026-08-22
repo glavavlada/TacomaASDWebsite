@@ -47,8 +47,8 @@ export default function BibleLessons() {
         <aside className="flex h-[95vh] min-h-0 flex-col gap-2 bg-[var(--border)] p-1.5 lg:h-full">
 
           {/* Option Buttons */}
-          <div className="flex shrink-0 items-center justify-between gap-4 p-2">
-
+          <div className="flex shrink-0 flex-col items-center gap-2 p-2 sm:flex-row sm:justify-evenly">
+            
             {/* Student / Teacher Toggle */}
             <Toggle
               left={labels.student}

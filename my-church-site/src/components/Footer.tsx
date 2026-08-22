@@ -8,22 +8,22 @@ export default function Footer() {
 
         <div className="text-right">
           <p>
-            Find us on {" "}
+            Find us on {" "}<br className="sm:hidden" />
             <a
               href="https://www.facebook.com/tacomarussian/"
               target="_blank"
               rel="noopener noreferrer"
-              className="link break-all">
+              className="link">
               Facebook
             </a>
           </p>
 
           <p>
-            Contact us at {" "}
+            Contact us at {" "}<br className="sm:hidden" />
             <a
               href="mailto:tacomaRussianASD@gmail.com"
-              className="link break-all">
-              tacomaRussianASD@gmail.com
+              className="link">
+              tacomaRussian<br className="sm:hidden" />ASD@gmail.com
             </a>
           </p>
         </div>

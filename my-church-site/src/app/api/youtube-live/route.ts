@@ -1,52 +1,51 @@
+import { google } from "googleapis";
 import { NextResponse } from "next/server";
 
+export const revalidate = 20;
+
 export async function GET() {
-  // local environmental variables
-  const apiKey = process.env.YOUTUBE_API_KEY;
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
-
-  if (!apiKey || !channelId) {
-    return NextResponse.json(
-      { error: "Missing environment variables" },
-      { status: 500 }
-    );
-  }
-
-  const url =
-    `https://www.googleapis.com/youtube/v3/search` +
-    `?part=snippet` +
-    `&channelId=${channelId}` +
-    `&eventType=live` +
-    `&type=video` +
-    `&key=${apiKey}`;
-
-    
   try {
-    const res = await fetch(url, {
-      // cache response for 60 seconds
-      next: { revalidate: 60 },
+    const auth = new google.auth.OAuth2(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET,
+    );
+
+    auth.setCredentials({
+      refresh_token: process.env.YOUTUBE_REFRESH_TOKEN,
     });
 
-    const data = await res.json();
+    const youtube = google.youtube({
+      version: "v3",
+      auth,
+    });
 
-    // temp for api response testing
-    // console.log("YouTube API response:", data);
+    const response = await youtube.liveBroadcasts.list({
+      part: ["id", "snippet", "status"],
+      mine: true,
+    });
 
-    // no livestream
-    if (!data.items || data.items.length === 0) {
-      return NextResponse.json({ live: false });
+    const liveBroadcast = response.data.items?.find(
+      (broadcast) => broadcast.status?.lifeCycleStatus === "live",
+    );
+
+    if (!liveBroadcast?.id) {
+      return NextResponse.json({
+        live: false,
+      });
     }
-
-    const videoId = data.items[0].id.videoId;
 
     return NextResponse.json({
       live: true,
-      videoId,
+      videoId: liveBroadcast.id,
     });
-  } catch (err) {
+  } catch (error) {
+    console.error("YouTube livestream check failed:", error);
+
     return NextResponse.json(
-      { error: "Failed to fetch YouTube data" },
-      { status: 500 }
+      {
+        error: "Failed to check YouTube livestream",
+      },
+      { status: 500 },
     );
   }
 }

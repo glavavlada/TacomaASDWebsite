@@ -10,6 +10,8 @@ import ru from "@/locale/ru/navbar.json";
 
 //import custom language need to be called LanguageContext to not mess with system
 import { useLanguage } from "@/app/context/LanguageContext";
+// import font size toggle
+import { useFontSize } from "@/app/context/FontSizeContext";
 
 import Toggle from "./Toggle";
 import Donations from "./Donations";
@@ -20,9 +22,11 @@ const churchLogo = "/SeventhDayLogo.png";
 export default function Navbar() {
 	//get current language and function that changes it
 	const { language, setLanguage } = useLanguage();
+	// large font toggle
+	const { largeFont, setLargeFont } = useFontSize();
 	//pick correct translation file depending on current language
 	const t = language === "en" ? en : ru;
-
+	// shows donation popup when true
 	const [showDonate, setShowDonate] = useState(false);
 
 	// current page
@@ -30,7 +34,7 @@ export default function Navbar() {
 
 	return (
 		<>
-			<header className="flex flex-wrap items-center gap-4 p-4 bg-[var(--main)]">
+			<header className="flex flex-wrap items-center gap-4 p-4 bg-[var(--main)] text-base">
 				<Image
 					src={churchLogo}
 					alt="Church Logo"
@@ -88,6 +92,14 @@ export default function Navbar() {
 						right="RU"
 						value={language === "ru"}
 						onChange={(right) => setLanguage(right ? "ru" : "en")}
+					/>
+
+					<Toggle
+						left={<span className="text-base">Aa</span>}
+						right={<span className="text-2xl">Aa</span>}
+						value={largeFont}
+						onChange={setLargeFont}
+						className="max-h-10 !p-1"// override padding to make it smaller
 					/>
 				</div>
 

@@ -20,7 +20,7 @@ type EventItemProps = {
 
 export default function EventItem({ event }: EventItemProps) {
     return (
-        <article className="flex gap-8 border-b border-black/10 py-6">
+        <article className="flex gap-8 border-b border-[var(--separator)]/10 py-6">
             {/*date/time */}
             <div className="w-32 shrink-0 text-center">
                 <h2 className="font-bold text-[var(--highlight)]">

@@ -37,18 +37,18 @@ export default function BibleLessons() {
     : lesson.student;
 
   return (
-    <div>
+    <div className="pb-4">
       <h1>{labels.pageTitle}</h1>
 
       {/* Lesson Layout */}
-      <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[22rem_1fr]">
+      <div className="grid grid-cols-1 gap-4 lg:h-[95vh] lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr]">
 
         {/* Left Panel */}
-        <aside className="flex h-[95vh] min-h-0 flex-col gap-2 bg-[var(--border)] p-1.5">
+        <aside className="flex h-[95vh] min-h-0 flex-col gap-2 bg-[var(--border)] p-1.5 lg:h-full">
 
           {/* Option Buttons */}
-          <div className="flex items-center justify-between gap-4 p-2">
-
+          <div className="flex shrink-0 flex-col items-center gap-2 p-2 sm:flex-row sm:justify-evenly">
+            
             {/* Student / Teacher Toggle */}
             <Toggle
               left={labels.student}
@@ -80,18 +80,22 @@ export default function BibleLessons() {
         </aside>
 
         {/* Right-hand lesson viewer */}
-        <section className="pdfViewer h-[95vh]">
-          <h2>{lesson.title}</h2>
+        <section className="flex h-[95vh] min-h-0 flex-col lg:h-full">
+
+          <h2 className="shrink-0">
+            {lesson.title}
+          </h2>
 
           <iframe
             key={lessonUrl}
             src={lessonUrl}
             title={lesson.title}
-            className="h-[calc(95vh-2.5rem)] w-full rounded-[0.4rem]"
+            className="min-h-0 w-full flex-1"
           />
+
         </section>
 
       </div>
-    </div >
+    </div>
   );
 }

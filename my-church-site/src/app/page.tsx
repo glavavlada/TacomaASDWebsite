@@ -6,13 +6,14 @@ import Image from "next/image";
 import englishAbout from "@/locale/en/about.json";
 import russianAbout from "@/locale/ru/about.json";
 
-import englishIntro from "@/locale/en/Intro.json";
-import russianIntro from "@/locale/ru/Intro.json";
+import englishIntro from "@/locale/en/intro.json";
+import russianIntro from "@/locale/ru/intro.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
 
 const churchImgOut = "/church_outside.jpg";
 const churchImgHall = "/church_hall.jpg";
+const introImg = "/IntroPic.jpg";
 
 export default function About() {
   const { language } = useLanguage();
@@ -28,24 +29,24 @@ export default function About() {
       : russianIntro;
 
   return (
-    <div className="aboutPage">
+    <div>
       <LiveStreamEmbed />
 
       {/* Intro Section */}
       <section
-        className=" relative mb-12 min-h-[500px] overflow-hidden bg-cover bg-center flex items-start"
+        className="relative mb-12 min-h-[500px] overflow-hidden bg-cover bg-center flex items-center"
         style={{
-          backgroundImage: "url('/IntroPic.jpg')",
+          backgroundImage: `url('${introImg}')`,
         }}
       >
-        {/* Makes the left side darker so the text stays readable */}
+        {/* Makes the left side darker so text stays readable */}
         <div
-          className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"
+          className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"
         />
 
         {/* Intro text */}
         <div
-          className=" relative z-10 ml-4 max-w-xl pt-10 p-6 text-[var(--textLight)]"
+          className="z-10 max-w-xl px-[clamp(1rem,6vw,6rem)] text-[var(--textLight)]"
         >
           <h1 className="font-bold">
             {introData.intro.title}

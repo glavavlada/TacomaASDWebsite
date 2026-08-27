@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-//tells PDF.js where worker is located
+// Tells PDF.js where the worker is located
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     "pdfjs-dist/build/pdf.worker.min.mjs",
     import.meta.url
@@ -17,13 +17,37 @@ type PDFViewerProps = {
 };
 
 export default function PDFViewer({ file }: PDFViewerProps) {
-    //number of pages in the loaded PDF
+    // Number of pages in the loaded PDF
     const [numPages, setNumPages] = useState(0);
 
-    //page currently being viewed
+    // Page currently being viewed
     const [pageNumber, setPageNumber] = useState(1);
 
-    //called after PDF  loads
+    // Width available for the PDF
+    const [pdfWidth, setPdfWidth] = useState(600);
+
+    // Reference to the PDF container
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    // Watch the container width
+    useEffect(() => {
+        const container = containerRef.current;
+
+        if (!container) return;
+
+        const updateWidth = () => {
+            setPdfWidth(container.clientWidth);
+        };
+
+        updateWidth();
+
+        const observer = new ResizeObserver(updateWidth);
+        observer.observe(container);
+
+        return () => observer.disconnect();
+    }, []);
+
+    // Called after PDF loads
     function onDocumentLoadSuccess({
         numPages,
     }: {
@@ -34,20 +58,27 @@ export default function PDFViewer({ file }: PDFViewerProps) {
     }
 
     return (
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex h-full min-h-0 w-full flex-col">
 
-            <Document
-                file={file}
-                onLoadSuccess={onDocumentLoadSuccess}
+            {/* PDF area */}
+            <div
+                ref={containerRef}
+                className="min-h-0 flex-1 overflow-auto"
             >
-                <Page
-                    pageNumber={pageNumber}
-                    width={700}
-                />
-            </Document>
+                <Document
+                    file={file}
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    className="flex justify-center"
+                >
+                    <Page
+                        pageNumber={pageNumber}
+                        width={pdfWidth}
+                    />
+                </Document>
+            </div>
 
             {/* PDF navigation */}
-            <div className="flex items-center gap-4">
+            <div className="flex shrink-0 items-center justify-center gap-4 p-3">
 
                 <button
                     className="buttonDark"
@@ -74,7 +105,6 @@ export default function PDFViewer({ file }: PDFViewerProps) {
                 </button>
 
             </div>
-
         </div>
     );
 }

@@ -1,6 +1,6 @@
 # TacomaASDWebsite
-[Russian Tacoma ASD Church](https://tacoma-asd-website.vercel.app/) webiste. Hosted on Vercel.
+[Russian Tacoma ASD Church](https://tacoma-asd-website.vercel.app/) webiste.
 
-This site provides access to church resources for members who are unable to attend in-person events. It features an embedded livestream of current events, mission statement, sabbath school lesson, the team, current events.
+This site provides access to church resources for members who are unable to attend in-person events. It features an embedded livestream during services, general information about the church, current sabbath school lessons, the leadership team, and an upcoming events calendar.
 
-Made with Next.js and TypeScript
+Made with Next.js and TypeScript and hosted on Vercel.

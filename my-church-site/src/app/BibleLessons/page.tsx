@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 import englishData from "@/locale/en/bibleLessons.json";
 import russianData from "@/locale/ru/bibleLessons.json";
@@ -9,6 +10,13 @@ import russianData from "@/locale/ru/bibleLessons.json";
 import { useLanguage } from "@/app/context/LanguageContext";
 import Toggle from "@/components/Toggle";
 import LessonScroll from "@/components/LessonScroll";
+
+const PDFViewer = dynamic(
+  () => import("@/components/PDFViewer"),
+  {
+    ssr: false,
+  }
+);
 
 export default function BibleLessons() {
   // Read the language selected in the header.
@@ -48,7 +56,7 @@ export default function BibleLessons() {
 
           {/* Option Buttons */}
           <div className="flex shrink-0 flex-col items-center gap-2 p-2 sm:flex-row sm:justify-evenly">
-            
+
             {/* Student / Teacher Toggle */}
             <Toggle
               left={labels.student}
@@ -86,12 +94,7 @@ export default function BibleLessons() {
             {lesson.title}
           </h2>
 
-          <iframe
-            key={lessonUrl}
-            src={lessonUrl}
-            title={lesson.title}
-            className="min-h-0 w-full flex-1"
-          />
+          <PDFViewer file={lessonUrl} />
 
         </section>
 

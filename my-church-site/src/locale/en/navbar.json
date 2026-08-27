@@ -1,9 +1,10 @@
 {
   "navbar": {
-    "title": "Tacoma SDA Church",
+    "title": "Tacoma Slavic SDA Church",
     "about": "ABOUT",
     "lessons": "BIBLE LESSONS",
     "events": "EVENTS",
-    "team": "TEAM"
+    "team": "TEAM",
+    "donate": "DONATE"
   }
 }

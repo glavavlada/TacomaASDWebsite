@@ -65,7 +65,7 @@ export default function LiveStreamEmbed() {
   // component render
   return (
     <div className="mx-auto pb-10">
-      <h1 className="text-center text-xl font-bold">
+      <h1>
         {t.livestream.active}
       </h1>
 

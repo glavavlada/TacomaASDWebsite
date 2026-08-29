@@ -1,6 +1,6 @@
 :root {
   --body: #dcd6d6;
-  --border: #c9b8ba;
+  --border: #d5c4c5;
   --main: #782833;
   --highlight: hsl(352, 50%, 44%);
   --separator: #000000;
@@ -18,9 +18,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --body: #221a1d;
-    --border: #34282a;
+    --border: #362a2c;
     --main: #521d26;
-    --highlight: #7b363f;
+    --highlight: #9d4a56;
     --separator: #ffffff;
 
     --textLight: #ebe3e3;

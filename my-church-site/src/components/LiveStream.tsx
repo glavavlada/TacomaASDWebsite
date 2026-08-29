@@ -2,6 +2,11 @@
 
 import { useEffect, useState } from "react";
 
+import englishLivestream from "@/locale/en/livestream.json";
+import russianLivestream from "@/locale/ru/livestream.json";
+
+import { useLanguage } from "@/app/context/LanguageContext";
+
 // api response definition
 type LiveResponse = {
   live: boolean;
@@ -11,6 +16,11 @@ type LiveResponse = {
 export default function LiveStreamEmbed() {
   // state hook
   const [data, setData] = useState<LiveResponse | null>(null);
+
+  const { language } = useLanguage();
+  const t = language === "en"
+    ? englishLivestream
+    : russianLivestream;
 
   // component initialization
   useEffect(() => {
@@ -35,14 +45,28 @@ export default function LiveStreamEmbed() {
 
   // collapse component if not live
   if (!data || !data.live || !data.videoId) {
-    return null;
+    return (
+      <div className="mx-auto pb-5">
+        <h3>
+          {t.livestream.inactive}{" "}
+          <a
+            href="https://www.youtube.com/@sdatacoma"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link"
+          >
+            {t.livestream.youTube}
+          </a>
+        </h3>
+      </div>
+    );
   }
 
   // component render
   return (
     <div className="mx-auto pb-10">
       <h1 className="text-center text-xl font-bold">
-        Live Event Stream
+        {t.livestream.active}
       </h1>
 
       <div className="aspect-video w-full">

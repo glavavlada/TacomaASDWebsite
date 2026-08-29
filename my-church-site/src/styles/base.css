@@ -41,7 +41,6 @@ h3 {
   background-color: var(--buttonLight);
   color: var(--textDark);
   padding: 0.5rem 1rem;
-  font-weight: bold;
   text-align: center;
 }
 

@@ -39,7 +39,7 @@ export default function EventItem({ event }: EventItemProps) {
                 </h2>
 
                 {event.announcement && (
-                    <div className="border-l-4 border-[var(--highlight)] bg-[var(--border)]/35 p-5">
+                    <div className="border-l-4 border-[var(--highlight)] bg-[var(--border)] p-5">
                         <h3 className="mb-2 font-semibold text-[var(--highlight)]">
                             {event.announcement.title}
                         </h3>

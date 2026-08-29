@@ -84,7 +84,7 @@ export default function Navbar() {
 						className="buttonLight"
 						onClick={() => setShowDonate(true)}
 					>
-						Donate
+						{t.navbar.donate}
 					</button>
 
 					<Toggle

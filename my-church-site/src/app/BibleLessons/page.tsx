@@ -49,13 +49,13 @@ export default function BibleLessons() {
       <h1>{labels.pageTitle}</h1>
 
       {/* Lesson Layout */}
-      <div className="grid grid-cols-1 gap-4 lg:h-[95vh] lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr]">
+      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] p-3">
 
         {/* Left Panel */}
-        <aside className="flex h-[95vh] min-h-0 flex-col gap-2 bg-[var(--border)] p-1.5 lg:h-full">
+        <aside className="flex min-h-0 flex-col gap-2">
 
           {/* Option Buttons */}
-          <div className="flex shrink-0 flex-col items-center gap-2 p-2 sm:flex-row sm:justify-evenly">
+          <div className="flex shrink-0 flex-col items-center gap-2 sm:flex-row sm:justify-evenly">
 
             {/* Student / Teacher Toggle */}
             <Toggle
@@ -88,7 +88,7 @@ export default function BibleLessons() {
         </aside>
 
         {/* Right-hand lesson viewer */}
-        <section className="flex h-[95vh] min-h-0 flex-col lg:h-full">
+        <section className="flex min-h-[70vh] flex-col lg:h-full lg:min-h-0">
 
           <h2 className="shrink-0">
             {lesson.title}

@@ -1,5 +1,10 @@
 "use client";
 
+import englishDonations from "@/locale/en/donations.json";
+import russianDonations from "@/locale/ru/donations.json";
+
+import { useLanguage } from "@/app/context/LanguageContext";
+
 type DonationPopupProps = {
   open: boolean;
   onClose: () => void;
@@ -11,8 +16,13 @@ export default function DonationPopup({
 }: DonationPopupProps) {
   if (!open) return null;
 
+  const { language } = useLanguage();
+  const t = language === "en"
+    ? englishDonations
+    : russianDonations;
+
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/75 text-[var(--textLight)]">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/75 text-[var(--textDark)]">
 
       {/* Popup Content */}
       <div className="popupAppear relative flex w-80 flex-col items-center bg-[var(--buttonLight)] p-6 text-center">
@@ -22,7 +32,7 @@ export default function DonationPopup({
           X
         </button>
 
-        <h2>Support Our Church</h2>
+        <h2>{t.donations.title}</h2>
 
         <img
           src="/DonationLink.png"
@@ -36,7 +46,7 @@ export default function DonationPopup({
           rel="noopener noreferrer"
           className="buttonDark px-[1.125rem] py-2.5]"
         >
-          Open Donation Link
+          {t.donations.button}
         </a>
       </div >
     </div >

@@ -20,7 +20,7 @@ export default function LessonScroll({
     language,
 }: LessonScrollProps) {
     return (
-        <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
+        <div className="overflow-y-auto overflow-x-hidden">
             {lessons.map((lessonItem, index) => (
                 <button
                     key={`${language}-${index}`}

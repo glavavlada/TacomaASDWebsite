@@ -59,12 +59,10 @@ export default function BibleLessons() {
   return (
     <div className="pb-4">
       <h1>{labels.pageTitle}</h1>
-      <h2 className="shrink-0">
-        {lesson.title}
-      </h2>
+      <h2>{lesson.title}</h2>
 
       {/* Lesson Layout */}
-      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 p-3 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] lg:grid-rows-[auto_auto]">
+      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 p-3 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] lg:grid-rows-[auto_minmax(40rem,95vh)]">
 
         {/* Top-left: Lesson controls */}
         <div className="flex items-center justify-center gap-4 lg:col-start-1 lg:row-start-1">
@@ -122,7 +120,7 @@ export default function BibleLessons() {
         )}
 
         {/* Bottom-left: Lesson selection */}
-        <aside className="min-h-0 lg:col-start-1 lg:row-start-2">
+        <aside className="overflow-auto lg:col-start-1 lg:row-start-2">
           <LessonScroll
             lessons={lessons}
             selectedLesson={selectedLesson}
@@ -132,13 +130,13 @@ export default function BibleLessons() {
         </aside>
 
         {/* Bottom-right: Lesson viewer */}
-        <section className="min-h-0 min-w-0 lg:col-start-2 lg:row-start-2">
+        <section className="lg:col-start-2 lg:row-start-2">
           {isRussian ? (
             <iframe
               key={lessonUrl}
               src={lessonUrl}
               title={lesson.title}
-              className="h-[95vh] w-full rounded-[0.4rem]"
+              className="w-full h-full"
             />
           ) : (
             <PDFViewer

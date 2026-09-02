@@ -35,6 +35,7 @@ export default function BibleLessons() {
 
   // Select the lesson data for the current language.
   const data = language === "en" ? englishData : russianData;
+  const isRussian = language === "ru";
 
   // Separate the labels and lessons.
   const labels = data.labels;
@@ -63,10 +64,10 @@ export default function BibleLessons() {
       </h2>
 
       {/* Lesson Layout */}
-      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 p-3 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] lg:grid-rows-[auto_1fr]">
+      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 p-3 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] lg:grid-rows-[auto_auto]">
 
         {/* Top-left: Lesson controls */}
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 lg:col-start-1 lg:row-start-1">
 
           {/* Student / Teacher Toggle */}
           <Toggle
@@ -89,37 +90,39 @@ export default function BibleLessons() {
         </div>
 
         {/* Top-right: PDF controls */}
-        <div className="flex items-center justify-center gap-4">
+        {!isRussian && (
+          <div className="flex items-center justify-center gap-4 lg:col-start-2 lg:row-start-1">
 
-          {/* Previous */}
-          <button
-            type="button"
-            disabled={numPages > 0 && pageNumber <= 1}
-            onClick={() => setPageNumber(pageNumber - 1)}
-            className="buttonLight"
-          >
-            Previous
-          </button>
+            {/* Previous */}
+            <button
+              type="button"
+              disabled={numPages > 0 && pageNumber <= 1}
+              onClick={() => setPageNumber(pageNumber - 1)}
+              className="buttonLight"
+            >
+              Previous
+            </button>
 
-          {/* Page number */}
-          <p>
-            Page {pageNumber} of {numPages}
-          </p>
+            {/* Page number */}
+            <p>
+              Page {pageNumber} of {numPages}
+            </p>
 
-          {/* Next */}
-          <button
-            type="button"
-            disabled={numPages > 0 && pageNumber >= numPages}
-            onClick={() => setPageNumber(pageNumber + 1)}
-            className="buttonLight"
-          >
-            Next
-          </button>
+            {/* Next */}
+            <button
+              type="button"
+              disabled={numPages > 0 && pageNumber >= numPages}
+              onClick={() => setPageNumber(pageNumber + 1)}
+              className="buttonLight"
+            >
+              Next
+            </button>
 
-        </div>
+          </div>
+        )}
 
         {/* Bottom-left: Lesson selection */}
-        <aside className="min-h-0">
+        <aside className="min-h-0 lg:col-start-1 lg:row-start-2">
           <LessonScroll
             lessons={lessons}
             selectedLesson={selectedLesson}
@@ -128,16 +131,23 @@ export default function BibleLessons() {
           />
         </aside>
 
-        {/* Bottom-right: PDF viewer */}
-        <section className="flex min-h-[70vh] flex-col lg:min-h-0">
-          <PDFViewer
-            file={lessonUrl}
-            pageNumber={pageNumber}
-            onNumPagesChange={setNumPages}
-          />
-
+        {/* Bottom-right: Lesson viewer */}
+        <section className="min-h-0 min-w-0 lg:col-start-2 lg:row-start-2">
+          {isRussian ? (
+            <iframe
+              key={lessonUrl}
+              src={lessonUrl}
+              title={lesson.title}
+              className="h-[95vh] w-full rounded-[0.4rem]"
+            />
+          ) : (
+            <PDFViewer
+              file={lessonUrl}
+              pageNumber={pageNumber}
+              onNumPagesChange={setNumPages}
+            />
+          )}
         </section>
-
       </div>
     </div>
   );

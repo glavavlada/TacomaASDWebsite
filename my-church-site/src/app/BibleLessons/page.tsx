@@ -29,6 +29,10 @@ export default function BibleLessons() {
   // true = teacher version
   const [teacherMode, setTeacherMode] = useState(false);
 
+  // PDF state
+  const [pageNumber, setPageNumber] = useState(1);
+  const [numPages, setNumPages] = useState(0);
+
   // Select the lesson data for the current language.
   const data = language === "en" ? englishData : russianData;
 
@@ -44,57 +48,93 @@ export default function BibleLessons() {
     ? lesson.teacher
     : lesson.student;
 
+  // Change lesson and reset PDF to page 1.
+  function handleLessonChange(index: number) {
+    setSelectedLesson(index);
+    setPageNumber(1);
+    setNumPages(0);
+  }
+
   return (
     <div className="pb-4">
       <h1>{labels.pageTitle}</h1>
+      <h2 className="shrink-0">
+        {lesson.title}
+      </h2>
 
       {/* Lesson Layout */}
-      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] p-3">
+      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 p-3 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] lg:grid-rows-[auto_1fr]">
 
-        {/* Left Panel */}
-        <aside className="flex min-h-0 flex-col gap-2">
+        {/* Top-left: Lesson controls */}
+        <div className="flex items-center justify-center gap-4">
 
-          {/* Option Buttons */}
-          <div className="flex shrink-0 flex-col items-center gap-2 sm:flex-row sm:justify-evenly">
+          {/* Student / Teacher Toggle */}
+          <Toggle
+            left={labels.student}
+            right={labels.teacher}
+            value={teacherMode}
+            onChange={setTeacherMode}
+          />
 
-            {/* Student / Teacher Toggle */}
-            <Toggle
-              left={labels.student}
-              right={labels.teacher}
-              value={teacherMode}
-              onChange={setTeacherMode}
-            />
+          {/* Open Lesson */}
+          <Link
+            href={lessonUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="buttonLight"
+          >
+            {labels.openLesson}
+          </Link>
 
-            {/* Open Lesson */}
-            <Link
-              href={lessonUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="buttonLight"
-            >
-              {labels.openLesson}
-            </Link>
+        </div>
 
-          </div>
+        {/* Top-right: PDF controls */}
+        <div className="flex items-center justify-center gap-4">
 
-          {/* Lesson selection */}
+          {/* Previous */}
+          <button
+            type="button"
+            disabled={numPages > 0 && pageNumber <= 1}
+            onClick={() => setPageNumber(pageNumber - 1)}
+            className="buttonLight"
+          >
+            Previous
+          </button>
+
+          {/* Page number */}
+          <p>
+            Page {pageNumber} of {numPages}
+          </p>
+
+          {/* Next */}
+          <button
+            type="button"
+            disabled={numPages > 0 && pageNumber >= numPages}
+            onClick={() => setPageNumber(pageNumber + 1)}
+            className="buttonLight"
+          >
+            Next
+          </button>
+
+        </div>
+
+        {/* Bottom-left: Lesson selection */}
+        <aside className="min-h-0">
           <LessonScroll
             lessons={lessons}
             selectedLesson={selectedLesson}
-            setSelectedLesson={setSelectedLesson}
+            setSelectedLesson={handleLessonChange}
             language={language}
           />
-
         </aside>
 
-        {/* Right-hand lesson viewer */}
-        <section className="flex min-h-[70vh] flex-col lg:h-full lg:min-h-0">
-
-          <h2 className="shrink-0">
-            {lesson.title}
-          </h2>
-
-          <PDFViewer file={lessonUrl} />
+        {/* Bottom-right: PDF viewer */}
+        <section className="flex min-h-[70vh] flex-col lg:min-h-0">
+          <PDFViewer
+            file={lessonUrl}
+            pageNumber={pageNumber}
+            onNumPagesChange={setNumPages}
+          />
 
         </section>
 

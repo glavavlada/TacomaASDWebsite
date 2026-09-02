@@ -14,15 +14,15 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 type PDFViewerProps = {
     file: string;
+    pageNumber: number;
+    onNumPagesChange: (numPages: number) => void;
 };
 
-export default function PDFViewer({ file }: PDFViewerProps) {
-    // Number of pages in the loaded PDF
-    const [numPages, setNumPages] = useState(0);
-
-    // Page currently being viewed
-    const [pageNumber, setPageNumber] = useState(1);
-
+export default function PDFViewer({
+    file,
+    pageNumber,
+    onNumPagesChange,
+}: PDFViewerProps) {
     // Width available for the PDF
     const [pdfWidth, setPdfWidth] = useState(600);
 
@@ -53,19 +53,17 @@ export default function PDFViewer({ file }: PDFViewerProps) {
     }: {
         numPages: number;
     }) {
-        setNumPages(numPages);
-        setPageNumber(1);
+        onNumPagesChange(numPages);
     }
 
     return (
         <div className="flex h-full min-h-0 w-full flex-col">
-
-            {/* PDF area */}
             <div
                 ref={containerRef}
                 className="min-h-0 flex-1 overflow-auto"
             >
                 <Document
+                    key={file}
                     file={file}
                     onLoadSuccess={onDocumentLoadSuccess}
                     className="flex justify-center"
@@ -75,35 +73,6 @@ export default function PDFViewer({ file }: PDFViewerProps) {
                         width={pdfWidth}
                     />
                 </Document>
-            </div>
-
-            {/* PDF navigation */}
-            <div className="flex shrink-0 items-center justify-center gap-4 p-3">
-
-                <button
-                    className="buttonDark"
-                    disabled={pageNumber <= 1}
-                    onClick={() =>
-                        setPageNumber((page) => page - 1)
-                    }
-                >
-                    Previous
-                </button>
-
-                <p>
-                    Page {pageNumber} of {numPages}
-                </p>
-
-                <button
-                    className="buttonDark"
-                    disabled={pageNumber >= numPages}
-                    onClick={() =>
-                        setPageNumber((page) => page + 1)
-                    }
-                >
-                    Next
-                </button>
-
             </div>
         </div>
     );

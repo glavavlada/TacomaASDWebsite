@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* keeps content separted from header and footer */}
             <main className="[background-color:var(--body)] text-[var(--textDark)] flex-1 mx-auto w-full px-[clamp(1rem,10vw,20rem)] py-4">
-              <div className="mx-[clamp(-10rem,-8vw,-0.5rem)] sm:mx-0">
+              <div className="mx-[clamp(-8rem,-4vw,-0.5rem)] sm:mx-0">
                 {children}
               </div>
               

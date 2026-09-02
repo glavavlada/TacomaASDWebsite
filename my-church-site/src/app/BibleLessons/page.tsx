@@ -62,7 +62,7 @@ export default function BibleLessons() {
       <h2>{lesson.title}</h2>
 
       {/* Lesson Layout */}
-      <div className="bg-[var(--main)]/35 grid gap-2 p-3 md:grid-cols-[clamp(24vw,25vw,30vw)_1fr] md:grid-rows-[auto_98vh]">
+      <div className="bg-[var(--main)]/35 grid gap-2 p-3 md:grid-cols-[clamp(24vw,25vw,30vw)_1fr] grid-rows-[auto_auto_98vh] sm:grid-rows-[auto_98vh]">
 
         {/* Top-left: Lesson controls */}
         <div className="flex flex-wrap items-center justify-center gap-1 lg:col-start-1 lg:row-start-1">
@@ -130,7 +130,7 @@ export default function BibleLessons() {
         </aside>
 
         {/* Bottom-right: Lesson viewer */}
-        <section className="lg:col-start-2 lg:row-start-2">
+        <section className="mx-[clamp(-1rem,-0.5rem,-0rem)] sm:mx-0 lg:col-start-2 lg:row-start-2">
           {isRussian ? (
             <iframe
               key={lessonUrl}

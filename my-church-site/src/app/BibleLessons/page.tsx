@@ -62,10 +62,10 @@ export default function BibleLessons() {
       <h2>{lesson.title}</h2>
 
       {/* Lesson Layout */}
-      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 p-3 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] lg:grid-rows-[auto_minmax(40rem,95vh)]">
+      <div className="bg-[var(--main)]/35 grid gap-2 p-3 md:grid-cols-[clamp(24vw,25vw,30vw)_1fr] md:grid-rows-[auto_98vh]">
 
         {/* Top-left: Lesson controls */}
-        <div className="flex items-center justify-center gap-4 lg:col-start-1 lg:row-start-1">
+        <div className="flex flex-wrap items-center justify-center gap-1 lg:col-start-1 lg:row-start-1">
 
           {/* Student / Teacher Toggle */}
           <Toggle
@@ -89,7 +89,7 @@ export default function BibleLessons() {
 
         {/* Top-right: PDF controls */}
         {!isRussian && (
-          <div className="flex items-center justify-center gap-4 lg:col-start-2 lg:row-start-1">
+          <div className="flex flex-wrap items-center justify-center gap-2 lg:col-start-2 lg:row-start-1">
 
             {/* Previous */}
             <button

@@ -16,12 +16,14 @@ type PDFViewerProps = {
     file: string;
     pageNumber: number;
     onNumPagesChange: (numPages: number) => void;
+    onLoaded?: () => void;
 };
 
 export default function PDFViewer({
     file,
     pageNumber,
     onNumPagesChange,
+    onLoaded,
 }: PDFViewerProps) {
     // Width available for the PDF
     const [pdfWidth, setPdfWidth] = useState(600);
@@ -54,6 +56,7 @@ export default function PDFViewer({
         numPages: number;
     }) {
         onNumPagesChange(numPages);
+        onLoaded?.();
     }
 
     return (
@@ -66,7 +69,7 @@ export default function PDFViewer({
                     key={file}
                     file={file}
                     onLoadSuccess={onDocumentLoadSuccess}
-                    className="flex justify-center"
+                    className="flex justify-center bg-transparent"
                 >
                     <Page
                         pageNumber={pageNumber}

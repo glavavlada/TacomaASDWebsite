@@ -99,7 +99,7 @@ export default function BibleLessons() {
       key={lessonUrl}
       src={lessonUrl}
       title={lesson.title}
-      className="h-[95vh] w-full"
+      className="h-[80vh] w-full" // reduced height for easier scrolling on mobile
     />
   ) : (
     <div

@@ -1,43 +1,59 @@
 import { google } from "googleapis";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const calendar = google.calendar({
       version: "v3",
       auth: process.env.GOOGLE_CALENDAR_API_KEY,
     });
 
+    /*
+      FullCalendar sends the beginning and end of the
+      currently visible calendar range.
+
+      Example:
+
+      /api/calendar?
+        start=2026-08-30...
+        end=2026-10-11...
+    */
+    const start = request.nextUrl.searchParams.get("start");
+    const end = request.nextUrl.searchParams.get("end");
+
     const response = await calendar.events.list({
       calendarId: process.env.GOOGLE_CALENDAR_EN_ID,
-      //only get events from current time forward
-      timeMin: new Date().toISOString(),
 
-      //expands recurring events into individual events
+      // Use FullCalendar's visible date range
+      timeMin: start ?? undefined,
+      timeMax: end ?? undefined,
+
+      // Expand repeating events into actual occurrences
       singleEvents: true,
 
-      //sort events by starting time
+      // Sort events chronologically
       orderBy: "startTime",
 
-      maxResults: 20,
+      maxResults: 100,
     });
 
-    //convert Google event format into FullCalendar format
+    /*
+      Convert Google's format into the format
+      FullCalendar understands.
+    */
     const events =
       response.data.items?.map((event) => ({
         id: event.id,
 
-        //Google calls event title summary
         title: event.summary ?? "Untitled Event",
 
-        //timed event or all day event
         start: event.start?.dateTime ?? event.start?.date,
+
         end: event.end?.dateTime ?? event.end?.date,
 
-        // Extra information that FullCalendar can keep with event for us
         extendedProps: {
           description: event.description ?? "",
           location: event.location ?? "",

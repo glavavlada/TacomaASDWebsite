@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { youtubeOAuth } from "@/app/lib/youtube";
+import { youtubeOAuth } from "@/app/lib/youtubeOAuth";
 
+// redirected to this route after the one-time authorization of the app with Google to retrieve the refresh token
 export async function GET(request: NextRequest) {
+  // gets the authorization code from the query parameters
   const code = request.nextUrl.searchParams.get("code");
 
   if (!code) {
@@ -12,9 +14,10 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    // exchanges the authorization code for access and refresh tokens
     const { tokens } = await youtubeOAuth.getToken(code);
-
-    console.log("Google OAuth tokens:", tokens);
+    // KEEP COMMENTED OUT UNLESS OBTAINING A NEW REFRESH TOKEN
+    // console.log("Google OAuth tokens:", tokens);
 
     return NextResponse.json({
       success: true,

@@ -13,7 +13,7 @@ import LessonScroll from "@/components/LessonScroll";
 
 const PDFViewer = dynamic(
   () => import("@/components/PDFViewer"),
-  {
+  { // server-side rendering off
     ssr: false,
   }
 );
@@ -66,7 +66,8 @@ export default function BibleLessons() {
     setPdfLoaded(false);
   }
 
-  // PDF controls used on mobile.
+  // small screen lesson viewers
+  // PDF controls, rendered if english
   const mobileControls = !isRussian && (
     <div className="flex flex-wrap items-center justify-center gap-2 py-2">
       <button
@@ -93,8 +94,9 @@ export default function BibleLessons() {
     </div>
   );
 
-  // Lesson viewer used on mobile.
+  // lesson viewer
   const mobileViewer = isRussian ? (
+    // renders iframe if russian
     <iframe
       key={lessonUrl}
       src={lessonUrl}
@@ -108,6 +110,7 @@ export default function BibleLessons() {
           ? "max-h-[1000vh] translate-y-0 opacity-100"
           : "max-h-0 -translate-y-4 opacity-0"
       }`}
+      // renders iframe if russian
     >
       <PDFViewer
         file={lessonUrl}

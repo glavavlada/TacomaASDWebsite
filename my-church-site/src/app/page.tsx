@@ -64,8 +64,6 @@ export default function About() {
         </div>
       </section>
 
-
-
       {/* Beliefs Section */}
       <h1>{data.labels.beliefsTitle}</h1>
 

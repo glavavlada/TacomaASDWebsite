@@ -16,7 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-[var(--main)] text-[var(--textLight)] font-sans">
+        {/* font size toggle support */}
         <FontSizeProvider>
+          {/* language toggle support */}
           <LanguageProvider>
             <Navbar />
 

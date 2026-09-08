@@ -10,7 +10,6 @@ import ru from "@/locale/ru/navbar.json";
 
 //import custom language need to be called LanguageContext to not mess with system
 import { useLanguage } from "@/app/context/LanguageContext";
-// import font size toggle
 import { useFontSize } from "@/app/context/FontSizeContext";
 
 import Toggle from "./Toggle";
@@ -22,14 +21,12 @@ const churchLogo = "/SeventhDayLogo.png";
 export default function Navbar() {
 	//get current language and function that changes it
 	const { language, setLanguage } = useLanguage();
+	const t = language === "en" ? en : ru;
 	// large font toggle
 	const { largeFont, setLargeFont } = useFontSize();
-	//pick correct translation file depending on current language
-	const t = language === "en" ? en : ru;
 	// shows donation popup when true
 	const [showDonate, setShowDonate] = useState(false);
-
-	// current page
+	// current page url to track selected page
 	const pathname = usePathname();
 
 	return (
@@ -48,6 +45,7 @@ export default function Navbar() {
 					{t.navbar.title}
 				</h2>
 
+				{/* navigation buttons */}
 				<nav className="flex flex-wrap justify-center gap-1 w-full lg:w-auto">
 					<Link
 						href="/"
@@ -79,7 +77,9 @@ export default function Navbar() {
 
 				</nav>
 
+				{/* page control buttons */}
 				<div className="flex items-center gap-2 md:w-auto mx-auto lg:ml-auto lg:mr-0">
+					{/* donations button */}
 					<button
 						className="buttonLight"
 						onClick={() => setShowDonate(true)}
@@ -87,6 +87,7 @@ export default function Navbar() {
 						{t.navbar.donate}
 					</button>
 
+					{/* language toggle */}
 					<Toggle
 						left="EN"
 						right="RU"
@@ -94,6 +95,7 @@ export default function Navbar() {
 						onChange={(right) => setLanguage(right ? "ru" : "en")}
 					/>
 
+					{/* font size toggle */}
 					<Toggle
 						left={<span className="text-base">Aa</span>}
 						right={<span className="text-2xl">Aa</span>}
@@ -102,8 +104,9 @@ export default function Navbar() {
 						className="max-h-10 !p-1"// override padding to make it smaller
 					/>
 				</div>
-
 			</header>
+
+			{/* donations popup */}
 			<Donations
 				open={showDonate}
 				onClose={() => setShowDonate(false)}

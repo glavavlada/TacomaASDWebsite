@@ -2,7 +2,7 @@
 
 import englishFooter from "@/locale/en/footer.json";
 import russianFooter from "@/locale/ru/footer.json";
-
+import Link from "next/link";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 // creates the Footer component
@@ -17,6 +17,13 @@ export default function Footer() {
     <footer className="p-4 bg-[var(--main)] flex justify-between gap-10 items-center">
       {/* left side */}
       <p>9241 S D St Tacoma, WA 98444, United States</p>
+
+      <Link
+          href="/Privacy"
+          className={"buttonDark"}
+        >
+          Privacy Policy
+        </Link>
 
       {/* right side */}
       <div className="text-right">

@@ -1,4 +1,4 @@
-"use client"; // runs on client side
+"use client";
 
 import { useEffect, useState } from "react";
 
@@ -13,8 +13,9 @@ type LiveResponse = {
   videoId?: string;
 };
 
+// creates the LiveStreamEmbed component
 export default function LiveStreamEmbed() {
-  // state hook
+  // state to hold the livestream data, initially null
   const [data, setData] = useState<LiveResponse | null>(null);
 
   const { language } = useLanguage();
@@ -26,18 +27,21 @@ export default function LiveStreamEmbed() {
   useEffect(() => {
     async function checkLive() {
       try {
+        // check cache
         const res = await fetch("/api/youtube-live");
         const json = await res.json();
+        // save response
         setData(json);
       } catch (err) {
         console.error(err);
       }
     }
 
+    // initial check when rendered
     checkLive();
 
-    // ping every 60 seconds
-    const interval = setInterval(checkLive, 60000);
+    // check cache every 10 seconds
+    const interval = setInterval(checkLive, 10000);
 
     // clean up
     return () => clearInterval(interval);

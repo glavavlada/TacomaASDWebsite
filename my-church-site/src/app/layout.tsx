@@ -7,9 +7,14 @@ import type { Metadata } from "next";
 
 // favicon
 export const metadata: Metadata = {
+  title: "TacomaASDChurch",
+  description: "Website for the Tacoma SDA Church.",
   icons: {
     icon: "/SeventhDayLogo.png",
   },
+  verification: {
+    google: "4bfiYbCZPatEbFjFvube_WrbKr3uBA-dLqZR3pZO748"
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

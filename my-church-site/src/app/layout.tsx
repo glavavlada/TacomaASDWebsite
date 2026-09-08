@@ -7,22 +7,32 @@ import type { Metadata } from "next";
 
 // favicon
 export const metadata: Metadata = {
+  title: "TacomaASDChurch",
+  description: "Website for the Tacoma SDA Church.",
   icons: {
     icon: "/SeventhDayLogo.png",
   },
+  verification: {
+    google: "4bfiYbCZPatEbFjFvube_WrbKr3uBA-dLqZR3pZO748"
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-[var(--main)] text-[var(--textLight)] font-sans">
+        {/* font size toggle support */}
         <FontSizeProvider>
+          {/* language toggle support */}
           <LanguageProvider>
             <Navbar />
 
             {/* keeps content separted from header and footer */}
             <main className="[background-color:var(--body)] text-[var(--textDark)] flex-1 mx-auto w-full px-[clamp(1rem,10vw,20rem)] py-4">
-              {children}
+              <div className="mx-[clamp(-8rem,-4vw,-0.5rem)] sm:mx-0">
+                {children}
+              </div>
+              
             </main>
 
             <Footer />

@@ -1,7 +1,7 @@
 {
   "livestream": {
     "active": "Service Livestream",
-    "inactive": "No livestream currently available. Please check back during service times or check out our channel on ",
-    "youTube": "YouTube"
+    "inactive": "We are not currently streaming. Service livestreams start at 11:00 AM on Saturdays, and can be watched here. Past streams can also be found on our channel on",
+    "youTube": "YouTube."
   }
 }

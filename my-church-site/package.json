@@ -9,13 +9,18 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.21",
+    "@fullcalendar/list": "^6.1.21",
+    "@fullcalendar/react": "^7.0.2",
+    "@fullcalendar/timegrid": "^6.1.21",
     "framer-motion": "^12.40.0",
     "googleapis": "^176.0.0",
     "next": "^16.2.9",
     "next-intl": "^4.13.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-pdf": "^10.5.0"
+    "react-pdf": "^10.5.0",
+    "temporal-polyfill": "^1.0.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

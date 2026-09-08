@@ -13,7 +13,7 @@ import LessonScroll from "@/components/LessonScroll";
 
 const PDFViewer = dynamic(
   () => import("@/components/PDFViewer"),
-  {
+  { // server-side rendering off
     ssr: false,
   }
 );
@@ -29,8 +29,14 @@ export default function BibleLessons() {
   // true = teacher version
   const [teacherMode, setTeacherMode] = useState(false);
 
+  // PDF state
+  const [pageNumber, setPageNumber] = useState(1);
+  const [numPages, setNumPages] = useState(0);
+  const [pdfLoaded, setPdfLoaded] = useState(false);
+
   // Select the lesson data for the current language.
   const data = language === "en" ? englishData : russianData;
+  const isRussian = language === "ru";
 
   // Separate the labels and lessons.
   const labels = data.labels;
@@ -44,58 +50,169 @@ export default function BibleLessons() {
     ? lesson.teacher
     : lesson.student;
 
+  // Change lesson and reset PDF to page 1.
+  function handleLessonChange(index: number) {
+    setSelectedLesson(index);
+    setPageNumber(1);
+    setNumPages(0);
+    setPdfLoaded(false);
+  }
+
+  // Change between student and teacher versions.
+  function handleTeacherModeChange(value: boolean) {
+    setTeacherMode(value);
+    setPageNumber(1);
+    setNumPages(0);
+    setPdfLoaded(false);
+  }
+
+  // small screen lesson viewers
+  // PDF controls, rendered if english
+  const mobileControls = !isRussian && (
+    <div className="flex flex-wrap items-center justify-center gap-2 py-2">
+      <button
+        type="button"
+        disabled={numPages > 0 && pageNumber <= 1}
+        onClick={() => setPageNumber(pageNumber - 1)}
+        className="buttonLight"
+      >
+        Previous
+      </button>
+
+      <p>
+        Page {pageNumber} of {numPages}
+      </p>
+
+      <button
+        type="button"
+        disabled={numPages > 0 && pageNumber >= numPages}
+        onClick={() => setPageNumber(pageNumber + 1)}
+        className="buttonLight"
+      >
+        Next
+      </button>
+    </div>
+  );
+
+  // lesson viewer
+  const mobileViewer = isRussian ? (
+    // renders iframe if russian
+    <iframe
+      key={lessonUrl}
+      src={lessonUrl}
+      title={lesson.title}
+      className="h-[80vh] w-full" // reduced height for easier scrolling on mobile
+    />
+  ) : (
+    <div
+      className={`overflow-hidden transition-all duration-500 ease-out ${
+        pdfLoaded
+          ? "max-h-[1000vh] translate-y-0 opacity-100"
+          : "max-h-0 -translate-y-4 opacity-0"
+      }`}
+      // renders iframe if russian
+    >
+      <PDFViewer
+        file={lessonUrl}
+        pageNumber={pageNumber}
+        onNumPagesChange={setNumPages}
+        onLoaded={() => setPdfLoaded(true)}
+      />
+    </div>
+  );
+
   return (
     <div className="pb-4">
       <h1>{labels.pageTitle}</h1>
+      <h2>{lesson.title}</h2>
 
       {/* Lesson Layout */}
-      <div className="bg-[var(--main)]/35 grid grid-cols-1 gap-4 lg:grid-cols-[clamp(22rem,25vw,32rem)_1fr] p-3">
+      <div className="bg-[var(--main)]/35 grid gap-2 p-3 lg:grid-cols-[clamp(24vw,25vw,30vw)_1fr] lg:grid-rows-[auto_95vh]">
 
-        {/* Left Panel */}
-        <aside className="flex min-h-0 flex-col gap-2">
+        {/* Top-left: Lesson controls */}
+        <div className="flex flex-wrap items-center justify-center gap-1 lg:col-start-1 lg:row-start-1">
 
-          {/* Option Buttons */}
-          <div className="flex shrink-0 flex-col items-center gap-2 sm:flex-row sm:justify-evenly">
+          {/* Student / Teacher Toggle */}
+          <Toggle
+            left={labels.student}
+            right={labels.teacher}
+            value={teacherMode}
+            onChange={handleTeacherModeChange}
+          />
 
-            {/* Student / Teacher Toggle */}
-            <Toggle
-              left={labels.student}
-              right={labels.teacher}
-              value={teacherMode}
-              onChange={setTeacherMode}
-            />
+          {/* Open Lesson */}
+          <Link
+            href={lessonUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="buttonLight"
+          >
+            {labels.openLesson}
+          </Link>
 
-            {/* Open Lesson */}
-            <Link
-              href={lessonUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+        </div>
+
+        {/* Top-right: PDF controls - desktop only */}
+        {!isRussian && (
+          <div className="hidden flex-wrap items-center justify-center gap-2 lg:flex lg:col-start-2 lg:row-start-1">
+
+            {/* Previous */}
+            <button
+              type="button"
+              disabled={numPages > 0 && pageNumber <= 1}
+              onClick={() => setPageNumber(pageNumber - 1)}
               className="buttonLight"
             >
-              {labels.openLesson}
-            </Link>
+              Previous
+            </button>
+
+            {/* Page number */}
+            <p>
+              Page {pageNumber} of {numPages}
+            </p>
+
+            {/* Next */}
+            <button
+              type="button"
+              disabled={numPages > 0 && pageNumber >= numPages}
+              onClick={() => setPageNumber(pageNumber + 1)}
+              className="buttonLight"
+            >
+              Next
+            </button>
 
           </div>
+        )}
 
-          {/* Lesson selection */}
+        {/* Bottom-left: Lesson selection */}
+        <aside className="mx-[clamp(-1rem,-0.5rem,-0rem)] sm:mx-0 overflow-auto lg:col-start-1 lg:row-start-2 lg:h-[98vh]">
           <LessonScroll
             lessons={lessons}
             selectedLesson={selectedLesson}
-            setSelectedLesson={setSelectedLesson}
+            setSelectedLesson={handleLessonChange}
             language={language}
+            mobileControls={mobileControls}
+            mobileViewer={mobileViewer}
           />
-
         </aside>
 
-        {/* Right-hand lesson viewer */}
-        <section className="flex min-h-[70vh] flex-col lg:h-full lg:min-h-0">
-
-          <h2 className="shrink-0">
-            {lesson.title}
-          </h2>
-
-          <PDFViewer file={lessonUrl} />
-
+        {/* Bottom-right: Lesson viewer - desktop only */}
+        <section className="hidden lg:col-start-2 lg:row-start-2 lg:block lg:h-[98vh]">
+          {isRussian ? (
+            <iframe
+              key={lessonUrl}
+              src={lessonUrl}
+              title={lesson.title}
+              className="h-full w-full"
+            />
+          ) : (
+            <PDFViewer
+              file={lessonUrl}
+              pageNumber={pageNumber}
+              onNumPagesChange={setNumPages}
+              onLoaded={() => setPdfLoaded(true)}
+            />
+          )}
         </section>
 
       </div>

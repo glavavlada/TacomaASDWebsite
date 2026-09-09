@@ -16,14 +16,16 @@ export default function Footer() {
   return (
     <footer className="p-4 bg-[var(--main)] flex justify-between gap-10 items-center">
       {/* left side */}
-      <p>9241 S D St Tacoma, WA 98444, United States</p>
-
-      <Link
+      <div className="text-left">
+        <Link
           href="/Privacy"
-          className={"buttonDark"}
+          className={"link"}
         >
-          Privacy Policy
+          View our Privacy Policy
         </Link>
+        <p>9241 S D St Tacoma, <br className="sm:hidden" />WA 98444, United States</p>
+      </div>
+
 
       {/* right side */}
       <div className="text-right">

@@ -32,13 +32,17 @@ export default function About() {
     <div>
       <LiveStreamEmbed />
 
-      {/* Intro Section */}
-      <section
-        className="relative mb-12 min-h-[500px] overflow-hidden bg-cover bg-center flex items-center"
-        style={{
-          backgroundImage: `url('${introImg}')`,
-        }}
-      >
+      {/* Intro Section 
+      image gets loading priority*/}
+      <section className="relative mb-12 min-h-[500px] overflow-hidden flex items-center">
+        <Image
+          src={introImg}
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+        />
+
         {/* Makes the left side darker so text stays readable */}
         <div
           className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"
@@ -75,7 +79,6 @@ export default function About() {
             width={800}
             height={1200}
             className="w-full py-4"
-            priority
           />
 
           <h3 className="text-[var(--textLightAlt)]">

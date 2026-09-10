@@ -18,6 +18,10 @@ h3 {
   font-size: 1.4rem;
 }
 
+hr {
+  margin: 1rem 0;
+}
+
 .buttonDark {
   background-color: var(--buttonDark);
   padding: 0.5rem 1rem;

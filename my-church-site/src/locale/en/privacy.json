@@ -1,6 +1,6 @@
 {
   "title": "Privacy Policy",
-  "lastUpdated": "Last updated: September 8, 2026",
+  "lastUpdated": "Last updated: September 10, 2026",
   "intro": "This Privacy Policy explains how the Tacoma ASD Church website uses information and Google API services.",
   "sections": [
     {
@@ -11,49 +11,52 @@
       ]
     },
     {
-      "title": "Google API Services",
+      "title": "Third-Party Services",
       "paragraphs": [
-        "Our website uses Google API Services to determine whether the church's YouTube channel is currently broadcasting a livestream.",
-        "The website uses the YouTube API with read-only authorization for the church's YouTube account. The authorization is used only to check the status of the church's livestream and identify the livestream video that should be displayed on the website.",
-        "We do not use this access to read, modify, upload, delete, or manage YouTube content."
+        "Our website uses or links to third-party services to provide certain features. These services may have their own privacy policies and practices."
+      ]
+    },
+    {
+      "title": "Google Calendar",
+      "paragraphs": [
+        "Our website displays church events using Google Calendar. We do not collect or store visitors' personal calendar information. Google may process information when visitors interact with embedded Google services according to Google's privacy practices."
+      ]
+    },
+    {
+      "title": "YouTube",
+      "paragraphs": [
+        "Our website uses YouTube services to display the church's livestream and provide links to the church's YouTube channel.",
+        "The YouTube API access used by the website is limited to the church's own YouTube account and is used only to determine whether the church is currently broadcasting a livestream and to identify the livestream video to display."
       ]
     },
     {
       "title": "Google User Data",
       "paragraphs": [
         "The Google account authorization used by this application belongs to the church and is used solely to provide the livestream functionality described above.",
-        "We do not sell Google user data.",
-        "We do not use Google user data for advertising.",
-        "We do not transfer Google user data to third parties except as necessary to use the Google API Services required to provide the livestream functionality.",
-        "We do not use Google user data for personalized advertising, targeted advertising, or other unrelated purposes.",
-        "We do not use Google user data for training generalized artificial intelligence or machine-learning models."
+        "The application uses the YouTube API with read-only authorization. We do not use this access to modify, upload, delete, or manage YouTube content.",
+        "We do not sell Google user data, use it for advertising, personalized advertising, or unrelated purposes, or use it to train generalized artificial intelligence or machine-learning models.",
+        "We do not transfer Google user data to third parties except as necessary to use the Google API Services required to provide the livestream functionality."
       ]
     },
     {
-      "title": "Data Storage and Retention",
+      "title": "Data Storage and Security",
       "paragraphs": [
-        "The website does not intentionally store Google user data in a database.",
         "Authentication credentials required to access the church's YouTube account are stored securely on the server and are not exposed to website visitors or client-side code.",
-        "Livestream status information is used only to provide the livestream functionality of the website."
+        "The website does not intentionally store Google user data in a public database. Livestream status information is used only to provide the livestream functionality of the website.",
+        "We take reasonable measures to protect authentication credentials and other information used by the website."
       ]
     },
     {
-      "title": "Data Security",
+      "title": "Donations and External Links",
       "paragraphs": [
-        "We take reasonable measures to protect authentication credentials and other information used by the website. OAuth credentials and API credentials are stored as server-side environment variables and are not exposed publicly through the website."
-      ]
-    },
-    {
-      "title": "Data Sharing",
-      "paragraphs": [
-        "We do not sell, rent, or otherwise provide Google user data to advertisers, data brokers, or unrelated third parties.",
-        "Google API Services are used solely for the functionality described in this policy."
+        "Our website provides links to external websites where visitors may make donations. Donations are processed by the external donation provider, not by this website. We do not collect or store payment information submitted through external donation services.",
+        "Our website may contain links to other third-party websites. We are not responsible for the privacy practices, content, or security of external websites. We encourage visitors to review the privacy policies of those websites."
       ]
     },
     {
       "title": "Data Deletion",
       "paragraphs": [
-        "If the church's Google authorization is no longer needed, the authorization can be revoked from the Google account. Server-side authentication credentials can also be removed from the application."
+        "If the church's Google authorization is no longer needed, it can be revoked from the church's Google account. Server-side authentication credentials can also be removed from the application."
       ]
     },
     {

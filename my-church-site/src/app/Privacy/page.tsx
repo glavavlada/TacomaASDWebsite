@@ -21,6 +21,9 @@ export default function Privacy() {
 
       <p>{t.intro}</p>
 
+      <hr/>
+
+      {/* policy content */}
       {t.sections.map((section) => (
         <section key={section.title} className="my-4">
           <h2>{section.title}</h2>
@@ -31,6 +34,8 @@ export default function Privacy() {
         </section>
       ))}
 
+      <hr/>
+
       {/* closing google policy and link */}
       <p>
         {t.googlePolicy.beforeLink}{" "}
@@ -38,6 +43,7 @@ export default function Privacy() {
           href={t.googlePolicy.linkUrl}
           target="_blank"
           rel="noopener noreferrer"
+          className="link"
         >
           {t.googlePolicy.linkText}
         </a>

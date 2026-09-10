@@ -127,7 +127,7 @@ export default function BibleLessons() {
       <h2>{lesson.title}</h2>
 
       {/* Lesson Layout */}
-      <div className="bg-[var(--main)]/35 grid gap-2 p-3 lg:grid-cols-[clamp(24vw,25vw,30vw)_1fr] lg:grid-rows-[auto_95vh]">
+      <div className="bg-[var(--main)]/35 grid gap-2 p-3 lg:grid-cols-[clamp(24vw,25vw,30vw)_1fr] lg:grid-rows-[auto_98vh]">
 
         {/* Top-left: Lesson controls */}
         <div className="flex flex-wrap items-center justify-center gap-1 lg:col-start-1 lg:row-start-1">

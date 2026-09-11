@@ -44,10 +44,6 @@ export default function ChurchCalendar() {
         "--fc-neutral-bg-color": "var(--border)",
         "--fc-border-color": "var(--border)",
 
-        "--fc-event-bg-color": "var(--main)",
-        "--fc-event-border-color": "var(--highlight)",
-        "--fc-event-text-color": "var(--textLight)",
-
         "--fc-today-bg-color": "var(--border)",
     } as CSSProperties;
 
@@ -103,6 +99,7 @@ export default function ChurchCalendar() {
                     plugins={[themePlugin, dayGridPlugin,]}
 
                     initialView="dayGridMonth"
+                    eventDisplay="list-item"
 
                     //hide FullCalendar built in toolbar
                     headerToolbar={false}
@@ -167,16 +164,20 @@ export default function ChurchCalendar() {
                     }}
 
                     eventMouseEnter={(info) => {
-                        info.el.style.cursor =
-                            "pointer";
+                        info.el.style.cursor = "pointer";
+
+                        info.el.style.transition =
+                            "background-color 0.15s ease";
 
                         info.el.style.backgroundColor =
-                            "var(--highlight)";
+                            "#eeeeee";
+
+                        info.el.style.borderRadius = "4px";
                     }}
 
                     eventMouseLeave={(info) => {
                         info.el.style.backgroundColor =
-                            "var(--main)";
+                            "transparent";
                     }}
 
                     eventClick={(info) => {
@@ -233,8 +234,13 @@ export default function ChurchCalendar() {
                             onClick={() =>
                                 setSelectedEvent(null)
                             }
-                            className=" buttonDark absolute right-4 top-4 " >
-                            ×
+                            aria-label="Close event details"
+                            title="Close"
+                            className=" absolute right-4 top-4 flex h-10 w-10 items-center justify-center
+                            rounded-full border border-[var(--highlight)] bg-[var(--buttonDark)] text-2xl 
+                            font-bold text-[var(--textLight)] transition hover:bg-[var(--highlight)] "
+                        >
+                            ✕
                         </button>
 
                         {/* Event title */}

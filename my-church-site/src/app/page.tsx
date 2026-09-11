@@ -69,13 +69,13 @@ export default function About() {
       </section>
 
       {/* Beliefs Section */}
-      <h1>{data.labels.beliefsTitle}</h1>
+      <h2>{data.labels.beliefsTitle}</h2>
 
       <section className="infoSection">
         <section className="imgWrapper">
           <Image
             src={churchImgOut}
-            alt="Exterior of our church"
+            alt="Exterior of Tacoma Russian Seventh-day Adventist Church"
             width={800}
             height={1200}
             className="w-full py-4"
@@ -94,7 +94,7 @@ export default function About() {
       </section>
 
       {/* History Section */}
-      <h1>{data.labels.historyTitle}</h1>
+      <h2>{data.labels.historyTitle}</h2>
 
       <section className="infoSection">
         <div className="textContent">
@@ -106,7 +106,7 @@ export default function About() {
         <section className="imgWrapper">
           <Image
             src={churchImgHall}
-            alt="Church Hall"
+            alt="Tacoma Russian Seventh-day Adventist Church Main Hall"
             width={1200}
             height={800}
             className="w-full py-4"

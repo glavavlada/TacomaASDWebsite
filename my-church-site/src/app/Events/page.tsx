@@ -1,20 +1,12 @@
-"use client";
+import type { Metadata } from "next";
+import Events from "./Events";
 
-import ChurchCalendar from "@/components/ChurchCalendar";
-import { useLanguage } from "@/app/context/LanguageContext";
+export const metadata: Metadata = {
+  title: "Church Events | Tacoma Russian SDA Church",
+  description:
+    "View upcoming events and activities at the Tacoma Russian Seventh-day Adventist Church in Tacoma, Washington.",
+};
 
-export default function Events() {
-  const { language } = useLanguage();
-
-  return (
-    <div className="w-full">
-      <h1 className="mb-6">
-        {language === "en"
-          ? "Events & Announcements"
-          : "События и объявления"}
-      </h1>
-
-      <ChurchCalendar />
-    </div>
-  );
+export default function EventsPage() {
+  return <Events />;
 }

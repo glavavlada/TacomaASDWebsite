@@ -7,8 +7,8 @@ import type { Metadata } from "next";
 
 // favicon
 export const metadata: Metadata = {
-  title: "Tacoma Russian Seventh-day Adventist Church | Tacoma, WA",
-  description: "Russian-speaking Tacoma SDA Church offering worship services, livestreams, Sabbath School Bible lessons, church leadership, and events in English and Russian.",
+  title: "Tacoma SDA Church | Tacoma, WA",
+  description: "Russian-speaking Tacoma Seventh-day Adventist Church offering worship services, livestreams, Sabbath School Bible lessons, church leadership, and events in English and Russian.",
   icons: {
     icon: "/SeventhDayLogo.png",
   },
@@ -21,6 +21,34 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-[var(--main)] text-[var(--textLight)] font-sans">
+        {/* structured data for search engines, marks as organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Tacoma Russian Seventh-day Adventist Church",
+              alternateName: "Tacoma Russian SDA Church",
+              url: "https://www.sdatacoma.com",
+              logo: "https://www.sdatacoma.com/SeventhDayLogo.png",
+              email: "tacomaRussianASD@gmail.com",
+              sameAs:
+                ["https://www.facebook.com/tacomarussian/",
+                  "https://www.youtube.com/@sdatacoma"
+                ],
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "9241 S D St",
+                addressLocality: "Tacoma",
+                addressRegion: "WA",
+                postalCode: "98444",
+                addressCountry: "US",
+              },
+            }),
+          }}
+        />
+
         {/* font size toggle support */}
         <FontSizeProvider>
           {/* language toggle support */}
@@ -32,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div className="mx-[clamp(-8rem,-4vw,-0.5rem)] sm:mx-0">
                 {children}
               </div>
-              
+
             </main>
 
             <Footer />

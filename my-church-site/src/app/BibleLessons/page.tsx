@@ -3,11 +3,15 @@ import BibleLessons from "./BibleLessons";
 
 // wrapper from the BibleLessons component to provide metadata for the page
 export const metadata: Metadata = {
-  title: "Sabbath School Bible Lessons | Tacoma Russian SDA Church",
-  description:
-    "Current Sabbath School Bible lessons for the Tacoma Russian Seventh-day Adventist Church, available in English and Russian.",
+    title: "Sabbath School Bible Lessons | Tacoma Russian SDA Church",
+    description:
+        "Current Sabbath School Bible lessons for the Tacoma Russian Seventh-day Adventist Church, available in English and Russian.",
+
+    alternates: {
+        canonical: "/BibleLessons",
+    },
 };
 
 export default function BibleLessonsPage() {
-  return <BibleLessons />;
+    return <BibleLessons />;
 }

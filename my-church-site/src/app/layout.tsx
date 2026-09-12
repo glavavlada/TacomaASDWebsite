@@ -7,6 +7,8 @@ import type { Metadata } from "next";
 
 // favicon
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.sdatacoma.com"), // establishing main url
+
   title: "Tacoma SDA Church | Tacoma, WA",
   description: "Russian-speaking Tacoma Seventh-day Adventist Church offering worship services, livestreams, Sabbath School Bible lessons, church leadership, and events in English and Russian.",
   icons: {

@@ -124,6 +124,7 @@ export default function BibleLessons() {
   return (
     <div className="pb-4">
       <h1>{labels.pageTitle}</h1>
+      <p className="pb-4">{labels.description}</p>
       <h2>{lesson.title}</h2>
 
       {/* Lesson Layout */}

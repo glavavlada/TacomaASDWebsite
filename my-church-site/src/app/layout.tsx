@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   description: "Russian-speaking Tacoma Seventh-day Adventist Church offering worship services, livestreams, Sabbath School Bible lessons, church leadership, and events in English and Russian.",
   icons: {
     icon: "/SeventhDayLogo.png",
-  },
-  verification: { // is this useless
-    google: "4bfiYbCZPatEbFjFvube_WrbKr3uBA-dLqZR3pZO748"
   }
 };
 
@@ -30,11 +27,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Tacoma Russian Seventh-day Adventist Church",
-              alternateName: "Tacoma Russian SDA Church",
+              name: "Tacoma Seventh-day Adventist Church",
+              alternateName: "Tacoma SDA Church",
               url: "https://www.sdatacoma.com",
               logo: "https://www.sdatacoma.com/SeventhDayLogo.png",
-              email: "tacomaRussianASD@gmail.com",
+              email: "tacomarussianasd@gmail.com",
               sameAs:
                 ["https://www.facebook.com/tacomarussian/",
                   "https://www.youtube.com/@sdatacoma"

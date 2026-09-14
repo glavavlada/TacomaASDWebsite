@@ -18,10 +18,10 @@ export default function Toggle({
     className = "",
 }: ToggleProps) { // checks that the props match the definition
     return (
-        <button
+        <button // applies optional classes and right or left css class
             className={`text-[var(--textLight)] shrink-0 relative flex items-center cursor-pointer overflow-hidden rounded-full border-2 border-[var(--buttonDark)] bg-[var(--buttonDark)] p-2 hover:bg-[var(--hoverDark)]
-                ${className} {/* applies optional classes */}
-                ${value ? "right" : "left"} {/* applies the right or left css class based on the value */}
+                ${className} 
+                ${value ? "right" : "left"}
                 `}
             // flips the value on click and updates the parent
             onClick={() => onChange(!value)}

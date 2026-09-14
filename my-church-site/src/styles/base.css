@@ -3,7 +3,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 h3 {
@@ -16,6 +16,10 @@ h3 {
 
 .large-font h3 {
   font-size: 1.4rem;
+}
+
+hr {
+  margin: 1rem 0;
 }
 
 .buttonDark {

@@ -1,0 +1,81 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated: September 10, 2026",
+  "intro": "This Privacy Policy explains how the Tacoma ASD Church website uses information and Google API services.",
+  "sections": [
+    {
+      "title": "Information We Collect",
+      "paragraphs": [
+        "Our website does not require visitors to create an account or provide personal information in order to browse the website.",
+        "We do not intentionally collect or store personal information from website visitors through the website."
+      ]
+    },
+    {
+      "title": "Third-Party Services",
+      "paragraphs": [
+        "Our website uses or links to third-party services to provide certain features. These services may have their own privacy policies and practices."
+      ]
+    },
+    {
+      "title": "Google Calendar",
+      "paragraphs": [
+        "Our website displays church events using Google Calendar. We do not collect or store visitors' personal calendar information. Google may process information when visitors interact with embedded Google services according to Google's privacy practices."
+      ]
+    },
+    {
+      "title": "YouTube",
+      "paragraphs": [
+        "Our website uses YouTube services to display the church's livestream and provide links to the church's YouTube channel.",
+        "The YouTube API access used by the website is limited to the church's own YouTube account and is used only to determine whether the church is currently broadcasting a livestream and to identify the livestream video to display."
+      ]
+    },
+    {
+      "title": "Google User Data",
+      "paragraphs": [
+        "The Google account authorization used by this application belongs to the church and is used solely to provide the livestream functionality described above.",
+        "The application uses the YouTube API with read-only authorization. We do not use this access to modify, upload, delete, or manage YouTube content.",
+        "We do not sell Google user data, use it for advertising, personalized advertising, or unrelated purposes, or use it to train generalized artificial intelligence or machine-learning models.",
+        "We do not transfer Google user data to third parties except as necessary to use the Google API Services required to provide the livestream functionality."
+      ]
+    },
+    {
+      "title": "Data Storage and Security",
+      "paragraphs": [
+        "Authentication credentials required to access the church's YouTube account are stored securely on the server and are not exposed to website visitors or client-side code.",
+        "The website does not intentionally store Google user data in a public database. Livestream status information is used only to provide the livestream functionality of the website.",
+        "We take reasonable measures to protect authentication credentials and other information used by the website."
+      ]
+    },
+    {
+      "title": "Donations and External Links",
+      "paragraphs": [
+        "Our website provides links to external websites where visitors may make donations. Donations are processed by the external donation provider, not by this website. We do not collect or store payment information submitted through external donation services.",
+        "Our website may contain links to other third-party websites. We are not responsible for the privacy practices, content, or security of external websites. We encourage visitors to review the privacy policies of those websites."
+      ]
+    },
+    {
+      "title": "Data Deletion",
+      "paragraphs": [
+        "If the church's Google authorization is no longer needed, it can be revoked from the church's Google account. Server-side authentication credentials can also be removed from the application."
+      ]
+    },
+    {
+      "title": "Changes to This Policy",
+      "paragraphs": [
+        "We may update this Privacy Policy when the website's functionality or data practices change. The updated policy will be published on this page with a new effective date."
+      ]
+    },
+    {
+      "title": "Contact",
+      "paragraphs": [
+        "If you have questions about this Privacy Policy or the website's use of Google API Services, please contact the church through the contact information provided on this website."
+      ]
+    }
+  ],
+  "googlePolicy": {
+    "beforeLink": "This application uses Google API Services. Its use and transfer of information received from Google APIs will adhere to the",
+    "linkText": "Google API Services User Data Policy",
+    "afterLink": ", including the Limited Use requirements.",
+    "linkUrl": "https://developers.google.com/terms/api-services-user-data-policy"
+  }
+}

@@ -65,10 +65,10 @@ export default function LessonScroll({
 
 
                     {/* Mobile accordion
-                    hidden on large screens and above by collapsing the grid row */}
+                    hidden on large screens and above by collapsing the grid row 
+                    1fr gives full space to the selected lesson */}
                     <div
                         className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out lg:hidden 
-                            {/* gives full space to the selected lesson */}
                             ${selectedLesson === index
                                 ? "grid-rows-[1fr] mb-2"
                                 : "grid-rows-[0fr]"

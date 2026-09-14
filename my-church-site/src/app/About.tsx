@@ -1,0 +1,122 @@
+"use client";
+
+import LiveStreamEmbed from "@/components/LiveStream";
+import Image from "next/image";
+
+import englishAbout from "@/locale/en/about.json";
+import russianAbout from "@/locale/ru/about.json";
+
+import englishIntro from "@/locale/en/intro.json";
+import russianIntro from "@/locale/ru/intro.json";
+
+import { useLanguage } from "@/app/context/LanguageContext";
+
+const churchImgOut = "/church_outside.jpg";
+const churchImgHall = "/church_hall.jpg";
+const introImg = "/IntroPic.jpg";
+
+export default function About() {
+  const { language } = useLanguage();
+
+  const data =
+    language === "en"
+      ? englishAbout
+      : russianAbout;
+
+  const introData =
+    language === "en"
+      ? englishIntro
+      : russianIntro;
+
+  return (
+    <div>
+      <LiveStreamEmbed />
+
+      {/* Intro Section 
+      image gets loading priority*/}
+      <section className="relative mb-12 min-h-[500px] overflow-hidden flex items-center">
+        <Image
+          src={introImg}
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+        />
+
+        {/* Makes the left side darker so text stays readable */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"
+        />
+
+        {/* Intro text */}
+        <div
+          className="z-10 max-w-xl px-[clamp(1rem,6vw,6rem)] text-[var(--textLight)]"
+        >
+          <h1 className="font-bold">
+            {introData.intro.title}
+          </h1>
+
+          <div className="flex flex-col gap-1 leading-[1.4]">
+            {introData.intro.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+
+          <p className="mt-3">
+            {introData.intro.closing}
+          </p>
+        </div>
+      </section>
+
+      {/* Beliefs Section */}
+      <h2>{data.labels.beliefsTitle}</h2>
+
+      <section className="infoSection">
+        <section className="imgWrapper">
+          <Image
+            src={churchImgOut}
+            alt="Exterior of Tacoma Russian Seventh-day Adventist Church"
+            width={800}
+            height={1200}
+            className="w-full py-4"
+          />
+
+          <h3 className="text-[var(--textLightAlt)]">
+            {data.beliefs.imageCaption}
+          </h3>
+        </section>
+
+        <div className="textContent">
+          {data.beliefs.paragraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
+      {/* History Section */}
+      <h2>{data.labels.historyTitle}</h2>
+
+      <section className="infoSection">
+        <div className="textContent">
+          {data.history.paragraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+
+        <section className="imgWrapper">
+          <Image
+            src={churchImgHall}
+            alt="Tacoma Russian Seventh-day Adventist Church Main Hall"
+            width={1200}
+            height={800}
+            className="w-full py-4"
+          />
+
+          <h3 className="text-[var(--textLightAlt)]">
+            {data.history.imageCaption}
+          </h3>
+        </section>
+      </section>
+    </div>
+  );
+}

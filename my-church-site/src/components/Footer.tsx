@@ -43,9 +43,9 @@ export default function Footer() {
         <p> {/* opens user's default email client */}
           {t.footer.email} {" "}<br className="sm:hidden" />
           <a
-            href="mailto:tacomaRussianASD@gmail.com"
+            href="mailto:tacomarussianasd@gmail.com"
             className="link">
-            tacomaRussian<br className="sm:hidden" />ASD@gmail.com
+            tacomarussian<br className="sm:hidden" />asd@gmail.com
           </a>
         </p>
       </div>

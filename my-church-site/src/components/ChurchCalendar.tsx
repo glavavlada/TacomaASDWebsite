@@ -102,186 +102,137 @@ export default function ChurchCalendar() {
                     </div>
                 </div>
 
-                <FullCalendar
-                    ref={calendarRef}
+                <div className="w-full overflow-x-auto">
+                    <div className="min-w-[700px] sm:min-w-0">
+                        <FullCalendar
+                            ref={calendarRef}
 
-                    plugins={[
-                        themePlugin,
-                        dayGridPlugin,
-                    ]}
+                            plugins={[
+                                themePlugin,
+                                dayGridPlugin,
+                            ]}
 
-                    initialView="dayGridMonth"
+                            initialView="dayGridMonth"
 
-                    eventDisplay="list-item"
+                            eventDisplay="list-item"
 
-                    // Hide FullCalendar built in toolbar
-                    headerToolbar={false}
+                            // Hide FullCalendar built in toolbar
+                            headerToolbar={false}
 
-                    // Control how events look on desktop vs mobile
-                    eventContent={(eventInfo) => {
-                        return (
-                            <>
-                                {/* Desktop event */}
-                                <div
-                                    className="
-                        hidden
-                        items-center
-                        gap-1
-                        overflow-hidden
-                        sm:flex
-                    "
-                                >
-                                    <span
-                                        className="
-                            shrink-0
-                            text-blue-500
-                        "
-                                    >
-                                        ●
-                                    </span>
+                            // Control how events look on desktop vs mobile
+                            events={async (fetchInfo, successCallback, failureCallback) => {
+                                try {
+                                    const params =
+                                        new URLSearchParams({
+                                            start:
+                                                fetchInfo.startStr,
+                                            end:
+                                                fetchInfo.endStr,
+                                        });
 
-                                    <span
-                                        className="
-                            truncate
-                            font-semibold
-                        "
-                                    >
-                                        {eventInfo.timeText}{" "}
-                                        {eventInfo.event.title}
-                                    </span>
-                                </div>
+                                    const response =
+                                        await fetch(
+                                            `/api/calendar?${params.toString()}`,
+                                            {
+                                                cache: "no-store",
+                                            }
+                                        );
 
-                                {/* Mobile event */}
-                                <div
-                                    className="
-                        flex
-                        h-8
-                        w-8
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#eeeeee]
-                        text-sm
-                        text-[var(--textDark)]
-                        sm:hidden
-                    "
-                                    title={eventInfo.event.title}
-                                >
-                                    ●
-                                </div>
-                            </>
-                        );
-                    }}
-                    events={async (fetchInfo, successCallback, failureCallback) => {
-                        try {
-                            const params =
-                                new URLSearchParams({
-                                    start:
-                                        fetchInfo.startStr,
-                                    end:
-                                        fetchInfo.endStr,
-                                });
-
-                            const response =
-                                await fetch(
-                                    `/api/calendar?${params.toString()}`,
-                                    {
-                                        cache: "no-store",
+                                    if (!response.ok) {
+                                        throw new Error(
+                                            `Failed to load events: ${response.status}`
+                                        );
                                     }
+
+                                    const events =
+                                        await response.json();
+
+                                    successCallback(events);
+                                } catch (error) {
+                                    console.error(
+                                        "Failed to load calendar events:",
+                                        error
+                                    );
+
+                                    if (
+                                        error instanceof Error
+                                    ) {
+                                        failureCallback(error);
+                                    } else {
+                                        failureCallback(
+                                            new Error(
+                                                "Unknown calendar loading error"
+                                            )
+                                        );
+                                    }
+                                }
+                            }}
+
+                            height="auto"
+
+                            fixedWeekCount={false}
+
+                            //update React title whenever displayed month changes
+                            datesSet={(dateInfo) => {
+                                setCalendarTitle(
+                                    dateInfo.view.title
                                 );
+                            }}
 
-                            if (!response.ok) {
-                                throw new Error(
-                                    `Failed to load events: ${response.status}`
-                                );
-                            }
+                            eventMouseEnter={(info) => {
+                                info.el.style.cursor = "pointer";
 
-                            const events =
-                                await response.json();
+                                info.el.style.transition =
+                                    "background-color 0.15s ease";
 
-                            successCallback(events);
-                        } catch (error) {
-                            console.error(
-                                "Failed to load calendar events:",
-                                error
-                            );
+                                info.el.style.backgroundColor =
+                                    "#eeeeee";
 
-                            if (
-                                error instanceof Error
-                            ) {
-                                failureCallback(error);
-                            } else {
-                                failureCallback(
-                                    new Error(
-                                        "Unknown calendar loading error"
-                                    )
-                                );
-                            }
-                        }
-                    }}
+                                info.el.style.borderRadius = "4px";
+                            }}
 
-                    height="auto"
+                            eventMouseLeave={(info) => {
+                                info.el.style.backgroundColor =
+                                    "transparent";
+                            }}
 
-                    fixedWeekCount={false}
+                            eventClick={(info) => {
+                                setSelectedEvent({
+                                    title:
+                                        info.event.title,
 
-                    //update React title whenever displayed month changes
-                    datesSet={(dateInfo) => {
-                        setCalendarTitle(
-                            dateInfo.view.title
-                        );
-                    }}
+                                    start:
+                                        info.event.start,
 
-                    eventMouseEnter={(info) => {
-                        info.el.style.cursor = "pointer";
+                                    end:
+                                        info.event.end,
 
-                        info.el.style.transition =
-                            "background-color 0.15s ease";
+                                    description:
+                                        info.event
+                                            .extendedProps
+                                            .description,
 
-                        info.el.style.backgroundColor =
-                            "#eeeeee";
+                                    location:
+                                        info.event
+                                            .extendedProps
+                                            .location,
 
-                        info.el.style.borderRadius = "4px";
-                    }}
+                                    googleLink:
+                                        info.event
+                                            .extendedProps
+                                            .googleLink,
 
-                    eventMouseLeave={(info) => {
-                        info.el.style.backgroundColor =
-                            "transparent";
-                    }}
-
-                    eventClick={(info) => {
-                        setSelectedEvent({
-                            title:
-                                info.event.title,
-
-                            start:
-                                info.event.start,
-
-                            end:
-                                info.event.end,
-
-                            description:
-                                info.event
-                                    .extendedProps
-                                    .description,
-
-                            location:
-                                info.event
-                                    .extendedProps
-                                    .location,
-
-                            googleLink:
-                                info.event
-                                    .extendedProps
-                                    .googleLink,
-
-                            meetLink:
-                                info.event
-                                    .extendedProps
-                                    .meetLink,
-                        });
-                    }}
-                />
+                                    meetLink:
+                                        info.event
+                                            .extendedProps
+                                            .meetLink,
+                                });
+                            }}
+                        />
+                    </div>
+                </div>
             </div>
+
 
             {/* Event details popup */}
             {selectedEvent && (

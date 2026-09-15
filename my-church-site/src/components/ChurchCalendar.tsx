@@ -68,26 +68,35 @@ export default function ChurchCalendar() {
     return (
         <>
             <div
-                className=" mt-8 border border-[var(--border)] bg-[var(--body)] p-4 " style={calendarStyle} >
+                className=" mt-8 border border-[var(--border)] bg-[var(--body)] p-2 sm:p-4" style={calendarStyle} >
                 {/* Custom calendar toolbar */}
                 <div
-                    className=" mb-5 flex flex-wrap items-center justify-between gap-4 ">
-                    <h2 className="font-bold text-[var(--textDark)]">
+                    className=" mb-5 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between " >
+                    <h2 className=" font-bold text-[var(--textDark)]" >
                         {calendarTitle}
                     </h2>
 
                     <div className="flex items-center gap-2">
-                        <button onClick={goToToday} className="buttonLight">
+                        <button
+                            onClick={goToToday}
+                            className="buttonLight"
+                        >
                             Today
                         </button>
 
                         <button
-                            onClick={goToPreviousMonth} className="buttonDark" aria-label="Previous month">
+                            onClick={goToPreviousMonth}
+                            className="buttonDark"
+                            aria-label="Previous month"
+                        >
                             ←
                         </button>
 
                         <button
-                            onClick={goToNextMonth} className="buttonDark" aria-label="Next month" >
+                            onClick={goToNextMonth}
+                            className="buttonDark"
+                            aria-label="Next month"
+                        >
                             →
                         </button>
                     </div>
@@ -96,14 +105,73 @@ export default function ChurchCalendar() {
                 <FullCalendar
                     ref={calendarRef}
 
-                    plugins={[themePlugin, dayGridPlugin,]}
+                    plugins={[
+                        themePlugin,
+                        dayGridPlugin,
+                    ]}
 
                     initialView="dayGridMonth"
+
                     eventDisplay="list-item"
 
-                    //hide FullCalendar built in toolbar
+                    // Hide FullCalendar built in toolbar
                     headerToolbar={false}
 
+                    // Control how events look on desktop vs mobile
+                    eventContent={(eventInfo) => {
+                        return (
+                            <>
+                                {/* Desktop event */}
+                                <div
+                                    className="
+                        hidden
+                        items-center
+                        gap-1
+                        overflow-hidden
+                        sm:flex
+                    "
+                                >
+                                    <span
+                                        className="
+                            shrink-0
+                            text-blue-500
+                        "
+                                    >
+                                        ●
+                                    </span>
+
+                                    <span
+                                        className="
+                            truncate
+                            font-semibold
+                        "
+                                    >
+                                        {eventInfo.timeText}{" "}
+                                        {eventInfo.event.title}
+                                    </span>
+                                </div>
+
+                                {/* Mobile event */}
+                                <div
+                                    className="
+                        flex
+                        h-8
+                        w-8
+                        items-center
+                        justify-center
+                        rounded-full
+                        bg-[#eeeeee]
+                        text-sm
+                        text-[var(--textDark)]
+                        sm:hidden
+                    "
+                                    title={eventInfo.event.title}
+                                >
+                                    ●
+                                </div>
+                            </>
+                        );
+                    }}
                     events={async (fetchInfo, successCallback, failureCallback) => {
                         try {
                             const params =

@@ -37,6 +37,9 @@ export default function ChurchCalendar() {
     const [calendarTitle, setCalendarTitle] =
         useState("");
 
+    const [calendarExpanded, setCalendarExpanded] =
+        useState(false);
+
     const calendarStyle = {
         color: "var(--textDark)",
 
@@ -76,7 +79,7 @@ export default function ChurchCalendar() {
                         {calendarTitle}
                     </h2>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                         <button
                             onClick={goToToday}
                             className="buttonLight"
@@ -99,135 +102,161 @@ export default function ChurchCalendar() {
                         >
                             →
                         </button>
+
+                        <button
+                            onClick={() =>
+                                setCalendarExpanded(
+                                    (expanded) => !expanded
+                                )
+                            }
+                            className="buttonLight sm:hidden"
+                            aria-label={
+                                calendarExpanded
+                                    ? "Fit calendar to screen"
+                                    : "Expand calendar"
+                            }
+                        >
+                            {calendarExpanded ? "Fit" : "Expand"}
+                        </button>
                     </div>
                 </div>
 
-                <div className="w-full overflow-x-auto">
-                    <FullCalendar
-                        ref={calendarRef}
+                <div
+                    className={
+                        calendarExpanded
+                            ? "w-full overflow-x-auto"
+                            : "w-full overflow-hidden"} >
+                    <div
+                        className={
+                            calendarExpanded
+                                ? "w-[900px]"
+                                : "w-full"}>
+                        <FullCalendar
+                            ref={calendarRef}
 
-                        plugins={[
-                            themePlugin,
-                            dayGridPlugin,
-                        ]}
+                            plugins={[
+                                themePlugin,
+                                dayGridPlugin,
+                            ]}
 
-                        initialView="dayGridMonth"
+                            initialView="dayGridMonth"
 
-                        eventDisplay="list-item"
+                            eventDisplay="list-item"
 
-                        // Hide FullCalendar built in toolbar
-                        headerToolbar={false}
+                            // Hide FullCalendar built in toolbar
+                            headerToolbar={false}
 
-                        // Control how events look on desktop vs mobile
-                        events={async (fetchInfo, successCallback, failureCallback) => {
-                            try {
-                                const params =
-                                    new URLSearchParams({
-                                        start:
-                                            fetchInfo.startStr,
-                                        end:
-                                            fetchInfo.endStr,
-                                    });
+                            // Control how events look on desktop vs mobile
+                            events={async (fetchInfo, successCallback, failureCallback) => {
+                                try {
+                                    const params =
+                                        new URLSearchParams({
+                                            start:
+                                                fetchInfo.startStr,
+                                            end:
+                                                fetchInfo.endStr,
+                                        });
 
-                                const response =
-                                    await fetch(
-                                        `/api/calendar?${params.toString()}`,
-                                        {
-                                            cache: "no-store",
-                                        }
+                                    const response =
+                                        await fetch(
+                                            `/api/calendar?${params.toString()}`,
+                                            {
+                                                cache: "no-store",
+                                            }
+                                        );
+
+                                    if (!response.ok) {
+                                        throw new Error(
+                                            `Failed to load events: ${response.status}`
+                                        );
+                                    }
+
+                                    const events =
+                                        await response.json();
+
+                                    successCallback(events);
+                                } catch (error) {
+                                    console.error(
+                                        "Failed to load calendar events:",
+                                        error
                                     );
 
-                                if (!response.ok) {
-                                    throw new Error(
-                                        `Failed to load events: ${response.status}`
-                                    );
+                                    if (
+                                        error instanceof Error
+                                    ) {
+                                        failureCallback(error);
+                                    } else {
+                                        failureCallback(
+                                            new Error(
+                                                "Unknown calendar loading error"
+                                            )
+                                        );
+                                    }
                                 }
+                            }}
 
-                                const events =
-                                    await response.json();
+                            height="auto"
 
-                                successCallback(events);
-                            } catch (error) {
-                                console.error(
-                                    "Failed to load calendar events:",
-                                    error
+                            fixedWeekCount={false}
+
+                            //update React title whenever displayed month changes
+                            datesSet={(dateInfo) => {
+                                setCalendarTitle(
+                                    dateInfo.view.title
                                 );
+                            }}
 
-                                if (
-                                    error instanceof Error
-                                ) {
-                                    failureCallback(error);
-                                } else {
-                                    failureCallback(
-                                        new Error(
-                                            "Unknown calendar loading error"
-                                        )
-                                    );
-                                }
-                            }
-                        }}
+                            eventMouseEnter={(info) => {
+                                info.el.style.cursor = "pointer";
 
-                        height="auto"
+                                info.el.style.transition =
+                                    "background-color 0.15s ease";
 
-                        fixedWeekCount={false}
+                                info.el.style.backgroundColor =
+                                    "#eeeeee";
 
-                        //update React title whenever displayed month changes
-                        datesSet={(dateInfo) => {
-                            setCalendarTitle(
-                                dateInfo.view.title
-                            );
-                        }}
+                                info.el.style.borderRadius = "4px";
+                            }}
 
-                        eventMouseEnter={(info) => {
-                            info.el.style.cursor = "pointer";
+                            eventMouseLeave={(info) => {
+                                info.el.style.backgroundColor =
+                                    "transparent";
+                            }}
 
-                            info.el.style.transition =
-                                "background-color 0.15s ease";
+                            eventClick={(info) => {
+                                setSelectedEvent({
+                                    title:
+                                        info.event.title,
 
-                            info.el.style.backgroundColor =
-                                "#eeeeee";
+                                    start:
+                                        info.event.start,
 
-                            info.el.style.borderRadius = "4px";
-                        }}
+                                    end:
+                                        info.event.end,
 
-                        eventMouseLeave={(info) => {
-                            info.el.style.backgroundColor =
-                                "transparent";
-                        }}
+                                    description:
+                                        info.event
+                                            .extendedProps
+                                            .description,
 
-                        eventClick={(info) => {
-                            setSelectedEvent({
-                                title:
-                                    info.event.title,
+                                    location:
+                                        info.event
+                                            .extendedProps
+                                            .location,
 
-                                start:
-                                    info.event.start,
+                                    googleLink:
+                                        info.event
+                                            .extendedProps
+                                            .googleLink,
 
-                                end:
-                                    info.event.end,
-
-                                description:
-                                    info.event
-                                        .extendedProps
-                                        .description,
-
-                                location:
-                                    info.event
-                                        .extendedProps
-                                        .location,
-
-                                googleLink:
-                                    info.event
-                                        .extendedProps
-                                        .googleLink,
-
-                                meetLink:
-                                    info.event
-                                        .extendedProps
-                                        .meetLink,
-                            });
-                        }}
-                    />
+                                    meetLink:
+                                        info.event
+                                            .extendedProps
+                                            .meetLink,
+                                });
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
 

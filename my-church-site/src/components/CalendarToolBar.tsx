@@ -40,6 +40,7 @@ export default function CalendarToolbar({
                 <button
                     onClick={goToNextMonth}
                     className="buttonDark"
+
                     aria-label="Next month"
                 >
                     →

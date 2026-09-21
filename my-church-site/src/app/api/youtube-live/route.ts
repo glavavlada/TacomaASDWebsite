@@ -63,11 +63,6 @@ export async function GET() {
   } catch (error) {
     console.error("YouTube livestream check failed:", error);
 
-    if (error instanceof Error) {
-      console.error("Message:", error.message);
-      console.error("Stack:", error.stack);
-    }
-
     return NextResponse.json(
       {
         error: "Failed to check YouTube livestream",

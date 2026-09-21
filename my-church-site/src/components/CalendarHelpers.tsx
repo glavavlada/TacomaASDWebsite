@@ -5,11 +5,6 @@ import type { SelectedEvent } from "./EventPopup";
 
 type FullCalendarProps = ComponentProps<typeof FullCalendar>;
 
-type EventsFunction = Exclude<
-    FullCalendarProps["events"],
-    undefined | string | unknown[]
->;
-
 type EventMouseEnter = NonNullable<
     FullCalendarProps["eventMouseEnter"]
 >;
@@ -22,46 +17,7 @@ type EventClick = NonNullable<
     FullCalendarProps["eventClick"]
 >;
 
-
-export const loadCalendarEvents: EventsFunction = async (
-    fetchInfo,
-    successCallback,
-    failureCallback
-) => {
-    try {
-        const params = new URLSearchParams({
-            start: fetchInfo.startStr,
-            end: fetchInfo.endStr,
-        });
-
-        const response = await fetch(
-            `/api/calendar?${params}`,
-            { cache: "no-store" }
-        );
-
-        if (!response.ok) {
-            throw new Error(
-                `Failed to load events: ${response.status}`
-            );
-        }
-
-        successCallback(await response.json());
-    } catch (error) {
-        const calendarError =
-            error instanceof Error
-                ? error
-                : new Error(
-                    "Unknown calendar loading error"
-                );
-
-        console.error(
-            "Failed to load calendar events:",
-            calendarError
-        );
-
-        failureCallback(calendarError);
-    }
-};
+type EventClickInfo = Parameters<EventClick>[0];
 
 
 export const highlightEvent: EventMouseEnter = (info) => {
@@ -78,7 +34,6 @@ export const removeEventHighlight: EventMouseLeave = (info) => {
     info.el.style.backgroundColor = "transparent";
 };
 
-type EventClickInfo = Parameters<EventClick>[0];
 
 export function getSelectedEvent(
     info: EventClickInfo

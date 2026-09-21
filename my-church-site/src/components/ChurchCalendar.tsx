@@ -8,6 +8,7 @@ import {
 
 import FullCalendar, {
     type CalendarRef,
+    type EventSourceFunc,
 } from "@fullcalendar/react";
 
 import dayGridPlugin from "@fullcalendar/react/daygrid";
@@ -21,7 +22,6 @@ import EventPopup, {
 import {
     getSelectedEvent,
     highlightEvent,
-    loadCalendarEvents,
     removeEventHighlight,
 } from "./CalendarHelpers";
 
@@ -58,6 +58,48 @@ export default function ChurchCalendar() {
     function goToToday() {
         calendarRef.current?.getApi().today();
     }
+
+    const loadCalendarEvents: EventSourceFunc = async (
+        fetchInfo,
+        successCallback,
+        failureCallback
+    ) => {
+        try {
+            const params = new URLSearchParams({
+                start: fetchInfo.startStr,
+                end: fetchInfo.endStr,
+            });
+
+            const response = await fetch(
+                `/api/calendar?${params.toString()}`,
+                { cache: "no-store" }
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    `Failed to load events: ${response.status}`
+                );
+            }
+
+            const events = await response.json();
+
+            successCallback(events);
+        } catch (error) {
+            const calendarError =
+                error instanceof Error
+                    ? error
+                    : new Error(
+                        "Unknown calendar loading error"
+                    );
+
+            console.error(
+                "Failed to load calendar events:",
+                calendarError
+            );
+
+            failureCallback(calendarError);
+        }
+    };
 
     return (
         <>

@@ -69,6 +69,13 @@ export default function Navbar() {
 					</Link>
 
 					<Link
+						href="/Ministry"
+						className={`buttonDark ${pathname === "/Ministry" ? "active" : ""}`}
+					>
+						{t.navbar.ministry}
+					</Link>
+
+					<Link
 						href="/Events"
 						className={`buttonDark ${pathname === "/Events" ? "active" : ""}`}
 					>

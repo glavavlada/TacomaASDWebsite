@@ -45,6 +45,10 @@ export default function ChurchCalendar() {
         "--fc-neutral-bg-color": "var(--border)",
         "--fc-border-color": "var(--border)",
         "--fc-today-bg-color": "var(--border)",
+
+        "--fc-event-bg-color": "transparent",
+        "--fc-event-border-color": "transparent",
+        "--fc-event-text-color": "#222222",
     } as CSSProperties;
 
     function goToPreviousMonth() {
@@ -137,9 +141,21 @@ export default function ChurchCalendar() {
                             plugins={[themePlugin, dayGridPlugin]}
                             initialView="dayGridMonth"
                             eventDisplay="list-item"
+
                             eventContent={(info) => (
                                 <div
-                                    className="w-full min-w-0 whitespace-normal wrap-break-word text-xs sm:text-sm leading-snug line-clamp-2 "
+                                    className="
+            w-full min-w-0
+            rounded-sm
+            bg-[#f0f0f2]
+            px-1 py-1
+            text-xs sm:text-sm
+            leading-snug
+            text-[#222222]
+            whitespace-normal
+            wrap-break-word
+            line-clamp-2
+        "
                                     title={info.event.title}
                                 >
                                     {info.timeText && (
@@ -150,6 +166,7 @@ export default function ChurchCalendar() {
                                     {info.event.title}
                                 </div>
                             )}
+
                             eventDidMount={(info) => {
                                 const eventElement = info.el;
 

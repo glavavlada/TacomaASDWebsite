@@ -21,7 +21,7 @@ export default function CalendarToolbar({
                 {calendarTitle}
             </h2>
 
-            <div className="flex w-full flex-wrap items-center justify-center gap-3">
+            <div className="flex w-full max-w-md items-center justify-center gap-3">
                 <button
                     onClick={goToToday}
                     className="buttonLight flex 1"

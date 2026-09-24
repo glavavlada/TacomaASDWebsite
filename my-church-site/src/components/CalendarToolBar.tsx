@@ -16,12 +16,12 @@ export default function CalendarToolbar({
     toggleCalendarExpanded,
 }: CalendarToolbarProps) {
     return (
-        <div className="mb-5 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-5 flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
             <h2 className="font-bold text-[var(--textDark)]">
                 {calendarTitle}
             </h2>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex w-full flex-wrap items-center justify-evenly gap-2 lg:w-auto lg:justify-end">
                 <button
                     onClick={goToToday}
                     className="buttonLight"

@@ -104,7 +104,7 @@ export default function ChurchCalendar() {
     return (
         <>
             <div
-                className="mt-8 border border-[var(--border)] bg-[var(--body)] p-2 sm:p-4"
+                className=" mt-8 border border-[var(--border)] bg-[var(--body)] p-2 sm:p-4"
                 style={calendarStyle}
             >
                 <CalendarToolbar
@@ -137,6 +137,18 @@ export default function ChurchCalendar() {
                             plugins={[themePlugin, dayGridPlugin]}
                             initialView="dayGridMonth"
                             eventDisplay="list-item"
+                            eventDidMount={(info) => {
+                                const eventElement = info.el;
+
+                                const dot = eventElement.firstElementChild;
+
+                                if (
+                                    dot instanceof HTMLElement &&
+                                    dot.nextElementSibling
+                                ) {
+                                    dot.style.display = "none";
+                                }
+                            }}
                             headerToolbar={false}
                             events={loadCalendarEvents}
                             height="auto"
@@ -162,6 +174,7 @@ export default function ChurchCalendar() {
                     onClose={() => setSelectedEvent(null)}
                 />
             )}
+
         </>
     );
 }

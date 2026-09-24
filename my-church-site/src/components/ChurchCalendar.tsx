@@ -137,6 +137,19 @@ export default function ChurchCalendar() {
                             plugins={[themePlugin, dayGridPlugin]}
                             initialView="dayGridMonth"
                             eventDisplay="list-item"
+                            eventContent={(info) => (
+                                <div
+                                    className="w-full min-w-0 whitespace-normal wrap-break-word text-xs sm:text-sm leading-snug line-clamp-2 "
+                                    title={info.event.title}
+                                >
+                                    {info.timeText && (
+                                        <span className="mr-1">
+                                            {info.timeText}
+                                        </span>
+                                    )}
+                                    {info.event.title}
+                                </div>
+                            )}
                             eventDidMount={(info) => {
                                 const eventElement = info.el;
 

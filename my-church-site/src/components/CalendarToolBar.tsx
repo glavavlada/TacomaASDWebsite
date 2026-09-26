@@ -16,22 +16,22 @@ export default function CalendarToolbar({
     toggleCalendarExpanded,
 }: CalendarToolbarProps) {
     return (
-        <div className="mb-5 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="font-bold text-[var(--textDark)]">
+        <div className="mb-5 flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
+            <h2 className="text-center font-bold text-[var(--textDark)] lg:text-left">
                 {calendarTitle}
             </h2>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex w-full flex-wrap items-center justify-center gap-2 lg:w-auto">
                 <button
                     onClick={goToToday}
-                    className="buttonLight"
+                    className="buttonLight flex 1"
                 >
                     Today
                 </button>
 
                 <button
                     onClick={goToPreviousMonth}
-                    className="buttonDark"
+                    className="buttonDark flex-1"
                     aria-label="Previous month"
                 >
                     ←
@@ -39,7 +39,7 @@ export default function CalendarToolbar({
 
                 <button
                     onClick={goToNextMonth}
-                    className="buttonDark"
+                    className="buttonDark flex-1"
 
                     aria-label="Next month"
                 >
@@ -48,7 +48,7 @@ export default function CalendarToolbar({
 
                 <button
                     onClick={toggleCalendarExpanded}
-                    className="buttonLight sm:hidden"
+                    className="buttonLight sm:hidden flex-1"
                     aria-label={
                         calendarExpanded
                             ? "Fit calendar to screen"

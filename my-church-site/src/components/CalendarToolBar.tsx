@@ -30,9 +30,10 @@ export default function CalendarToolbar({
                     Today
                 </button>
 
+
                 <button
                     onClick={goToPreviousMonth}
-                    className="buttonDark flex h-10 w-12 shrink-0 items-center justify-center"
+                    className="flex h-10 w-12 shrink-0 items-center justify-center bg-[#82525d] text-white transition-colors hover:bg-[#9d6571]"
                     aria-label="Previous month"
                 >
                     ←
@@ -40,7 +41,7 @@ export default function CalendarToolbar({
 
                 <button
                     onClick={goToNextMonth}
-                    className="buttonDark flex h-10 w-12 shrink-0 items-center justify-center"
+                    className="flex h-10 w-12 shrink-0 items-center justify-center bg-[#82525d] text-white transition-colors hover:bg-[#9d6571]"
                     aria-label="Next month"
                 >
                     →

@@ -40,6 +40,10 @@ export default function ChurchCalendar() {
     const [calendarExpanded, setCalendarExpanded] = useState(false);
 
     const calendarStyle = {
+
+        backgroundColor: "var(--body)",
+        borderColor: "var(--border)",
+
         color: "var(--textDark)",
         "--fc-page-bg-color": "var(--body)",
         "--fc-neutral-bg-color": "var(--border)",
@@ -108,7 +112,7 @@ export default function ChurchCalendar() {
     return (
         <>
             <div
-                className=" mt-8 border border-[var(--border)] bg-[var(--body)] p-2 sm:p-4"
+                className="border py-2 lg:p-4"
                 style={calendarStyle}
             >
                 <CalendarToolbar

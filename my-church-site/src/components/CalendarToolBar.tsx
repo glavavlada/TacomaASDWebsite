@@ -1,3 +1,4 @@
+
 type CalendarToolbarProps = {
     calendarTitle: string;
     calendarExpanded: boolean;
@@ -24,14 +25,14 @@ export default function CalendarToolbar({
             <div className="flex w-full flex-wrap items-center justify-center gap-2 lg:w-auto">
                 <button
                     onClick={goToToday}
-                    className="buttonLight flex 1"
+                    className="buttonLight shrink-0"
                 >
                     Today
                 </button>
 
                 <button
                     onClick={goToPreviousMonth}
-                    className="buttonDark flex-1"
+                    className="buttonDark flex h-10 w-12 shrink-0 items-center justify-center"
                     aria-label="Previous month"
                 >
                     ←
@@ -39,8 +40,7 @@ export default function CalendarToolbar({
 
                 <button
                     onClick={goToNextMonth}
-                    className="buttonDark flex-1"
-
+                    className="buttonDark flex h-10 w-12 shrink-0 items-center justify-center"
                     aria-label="Next month"
                 >
                     →
@@ -48,7 +48,7 @@ export default function CalendarToolbar({
 
                 <button
                     onClick={toggleCalendarExpanded}
-                    className="buttonLight sm:hidden flex-1"
+                    className="buttonLight shrink-0 lg:hidden"
                     aria-label={
                         calendarExpanded
                             ? "Fit calendar to screen"

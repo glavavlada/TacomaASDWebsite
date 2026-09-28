@@ -1,61 +1,16 @@
-"use client";
+import type { Metadata } from "next";
+import Ministry from "./Ministry";
 
-import englishMinistries from "@/locale/en/ministry.json";
-import russianMinistries from "@/locale/ru/ministry.json";
+export const metadata: Metadata = {
+    title: "Church Ministries | Tacoma Russian SDA Church",
+    description:
+        "View the active ministries at the Tacoma Russian Seventh-day Adventist Church in Tacoma, Washington.",
 
-import { useLanguage } from "@/app/context/LanguageContext";
+    alternates: {
+        canonical: "/Ministry",
+    },
+};
 
-export default function Ministry() {
-    const { language } = useLanguage();
-
-    const data =
-        language === "en"
-            ? englishMinistries
-            : russianMinistries;
-
-    return (
-        <section className="mx-auto w-full max-w-6xl">
-            <h1 className="mb-4 text-center">
-                {data.labels.pageTitle}
-            </h1>
-
-            <p className="mb-12 text-center">
-                {data.labels.introduction}
-            </p>
-
-            <div className="flex flex-col gap-12">
-                {data.ministries.map((ministry, index) => (
-                    <section
-                        key={ministry.id}
-                        className="border-b border-[var(--border)] pb-12"
-                    >
-                        <div
-                            className={`flex flex-col items-center gap-8 md:gap-12 ${index % 2 === 0
-                                ? "md:flex-row"
-                                : "md:flex-row-reverse"
-                                }`}
-                        >
-                            {/* Temporary photo placeholder */}
-                            <div className="flex aspect-[4/3] w-full items-center justify-center bg-[var(--border)] md:w-1/2">
-                                <p className="text-[var(--textDark)]">
-                                    {data.labels.photoPlaceholder}
-                                </p>
-                            </div>
-
-                            {/* Ministry description */}
-                            <div className="w-full md:w-1/2">
-                                <h2 className="mb-4 font-bold">
-                                    {ministry.title}
-                                </h2>
-
-                                <p className="leading-8">
-                                    {ministry.description}
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-                ))}
-            </div>
-        </section>
-    );
+export default function EventsPage() {
+    return <Ministry />;
 }

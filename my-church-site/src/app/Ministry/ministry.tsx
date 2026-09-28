@@ -6,7 +6,7 @@ import russianMinistries from "@/locale/ru/ministry.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
 
-export default function Ministries() {
+export default function Ministry() {
     const { language } = useLanguage();
 
     const data =

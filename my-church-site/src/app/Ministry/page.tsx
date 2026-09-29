@@ -11,6 +11,6 @@ export const metadata: Metadata = {
     },
 };
 
-export default function EventsPage() {
+export default function MinistryPage() {
     return <Ministry />;
 }

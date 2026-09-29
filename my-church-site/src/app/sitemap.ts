@@ -12,6 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: "https://www.sdatacoma.com/Team",
         },
         {
+            url: "https://www.sdatacoma.com/Ministry",
+        },
+        {
             url: "https://www.sdatacoma.com/Events",
         },
         {

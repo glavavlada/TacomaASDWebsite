@@ -105,12 +105,10 @@ export default function BibleLessons() {
     />
   ) : (
     <div
-      className={`overflow-hidden transition-all duration-500 ease-out ${
-        pdfLoaded
+      className={`overflow-hidden transition-all duration-500 ease-out ${pdfLoaded
           ? "max-h-[1000vh] translate-y-0 opacity-100"
           : "max-h-0 -translate-y-4 opacity-0"
-      }`}
-      // renders iframe if russian
+        }`}
     >
       <PDFViewer
         file={lessonUrl}

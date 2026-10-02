@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import type { ReactNode } from "react";
 
 // defining Lesson object type with student and teacher URLs
@@ -21,6 +22,9 @@ type LessonScrollProps = {
     mobileViewer: ReactNode;
 };
 
+// reference to selected lesson <div>
+const scrollContainerRef = useRef<HTMLDivElement>(null);
+
 // LessonScroll component definition and props destructuring
 export default function LessonScroll({
     lessons,
@@ -31,7 +35,10 @@ export default function LessonScroll({
     mobileViewer,
 }: LessonScrollProps) { // checks that the props match the definition
     return (
-        <div className="overflow-y-auto overflow-x-hidden">
+        <div
+            ref={scrollContainerRef} // connects the container to scroll reference
+            className="overflow-y-auto overflow-x-hidden"
+        >
             {/* applies the JSX for each item in lessons */}
             {lessons.map((lessonItem, index) => (
                 // creates a required unique key for each lesson from the string literal
@@ -49,14 +56,31 @@ export default function LessonScroll({
                         onClick={() => {
                             setSelectedLesson(index);
 
-                            // scrolls after the DOM has updated
                             requestAnimationFrame(() => {
-                                document //finds the selected lesson
-                                    .getElementById(`lesson-${language}-${index}`)
-                                    ?.scrollIntoView({ // optional chaining in case the element is not found
-                                        behavior: "smooth",
-                                        block: "nearest", // brings the element into view if not visible
-                                    });
+                                // updates the scroll reference
+                                const container = scrollContainerRef.current;
+                                // retrieves the clicked lesson button
+                                const button = document.getElementById(
+                                    `lesson-${language}-${index}`
+                                );
+
+                                // check for nulls
+                                if (!container || !button) return;
+
+                                // gets the container's and the button's positions on screen
+                                const containerRect = container.getBoundingClientRect();
+                                const buttonRect = button.getBoundingClientRect();
+
+                                // calculate the position to scroll to within the container
+                                const targetScrollTop =
+                                    container.scrollTop +
+                                    (buttonRect.top - containerRect.top);
+
+                                // scrolls the container
+                                container.scrollTo({
+                                    top: targetScrollTop,
+                                    behavior: "smooth",
+                                });
                             });
                         }}
                     >

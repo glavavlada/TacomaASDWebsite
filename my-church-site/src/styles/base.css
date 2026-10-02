@@ -27,6 +27,7 @@ hr {
   padding: 0.5rem 1rem;
   color: var(--textLight);
   text-align: center;
+  cursor: pointer;
 }
 
 .buttonDark:hover {
@@ -42,6 +43,7 @@ hr {
   color: var(--textDark);
   padding: 0.5rem 1rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .buttonLight:hover {

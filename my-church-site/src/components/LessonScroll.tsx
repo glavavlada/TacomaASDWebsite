@@ -22,9 +22,6 @@ type LessonScrollProps = {
     mobileViewer: ReactNode;
 };
 
-// reference to selected lesson <div>
-const scrollContainerRef = useRef<HTMLDivElement>(null);
-
 // LessonScroll component definition and props destructuring
 export default function LessonScroll({
     lessons,
@@ -34,7 +31,11 @@ export default function LessonScroll({
     mobileControls,
     mobileViewer,
 }: LessonScrollProps) { // checks that the props match the definition
+    // reference to selected lesson <div>
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    
     return (
+
         <div
             ref={scrollContainerRef} // connects the container to scroll reference
             className="overflow-y-auto overflow-x-hidden"
@@ -47,7 +48,7 @@ export default function LessonScroll({
                         // creates a unique id for each lesson button from the string literal to allow for scrolling to the selected lesson
                         id={`lesson-${language}-${index}`}
                         type="button" // HTML element type
-                        className={`mb-2 w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left cursor-pointer transition-transform duration-200 hover:translate-x-[0.3rem] 
+                        className={`mb-2 w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem] 
                             ${selectedLesson === index // applies the selected lesson styling
                                 ? "border-l-[var(--main)] font-bold"
                                 : "border-transparent"

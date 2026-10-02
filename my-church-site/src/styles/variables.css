@@ -13,6 +13,8 @@
   --hoverDark: #361616;
   --buttonLight: #ededed;
   --hoverLight: #c9c9c9;
+
+  --buttonMagenta: bg-[#82525d];
 }
 
 @media (prefers-color-scheme: dark) {

@@ -33,7 +33,7 @@ export default function LessonScroll({
 }: LessonScrollProps) { // checks that the props match the definition
     // reference to selected lesson <div>
     const scrollContainerRef = useRef<HTMLDivElement>(null);
-    
+
     return (
 
         <div

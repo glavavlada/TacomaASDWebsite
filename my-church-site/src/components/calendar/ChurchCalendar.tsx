@@ -41,18 +41,18 @@ export default function ChurchCalendar() {
 
     const calendarStyle = {
 
-        backgroundColor: "var(--body)",
-        borderColor: "var(--border)",
+        backgroundColor: "var(--tint)",
+        // borderColor: "var(--border)",
 
         color: "var(--textDark)",
-        "--fc-page-bg-color": "var(--body)",
-        "--fc-neutral-bg-color": "var(--border)",
-        "--fc-border-color": "var(--border)",
-        "--fc-today-bg-color": "var(--border)",
+        // "--fc-page-bg-color": "var(--body)",
+        // "--fc-neutral-bg-color": "var(--border)",
+        // "--fc-border-color": "var(--border)",
+        // "--fc-today-bg-color": "var(--border)",
 
-        "--fc-event-bg-color": "transparent",
-        "--fc-event-border-color": "transparent",
-        "--fc-event-text-color": "#222222",
+        // "--fc-event-bg-color": "transparent",
+        // "--fc-event-border-color": "transparent",
+        // "--fc-event-text-color": "#222222",
     } as CSSProperties;
 
     function goToPreviousMonth() {
@@ -112,7 +112,7 @@ export default function ChurchCalendar() {
     return (
         <>
             <div
-                className="border py-2 lg:p-4"
+                className="py-2 lg:p-4"
                 style={calendarStyle}
             >
                 <CalendarToolbar

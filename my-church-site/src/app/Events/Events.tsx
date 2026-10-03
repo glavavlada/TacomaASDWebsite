@@ -1,6 +1,6 @@
 "use client";
 
-import ChurchCalendar from "@/components/ChurchCalendar";
+import ChurchCalendar from "@/components/calendar/ChurchCalendar";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Events() {

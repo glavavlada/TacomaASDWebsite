@@ -50,6 +50,18 @@ hr {
   background-color: var(--hoverLight);
 }
 
+.buttonMedium {
+  background-color: var(--buttonMedium);
+  color: var(--textLight);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.buttonMedium:hover {
+  background-color: var(--hoverMedium);
+}
+
 .link {
   text-decoration: underline;
   transition: color 0.2s ease;

@@ -29,7 +29,7 @@ export default function Ministry() {
                     <section
                         key={ministry.id}
                         id={ministry.id}
-                        className="border-b border-[var(--border)] pb-12"
+                        className="border-b border-[var(--tint)] pb-12"
                     >
                         <div
                             className={`flex flex-col items-center gap-8 md:gap-12 ${index % 2 === 0
@@ -38,7 +38,7 @@ export default function Ministry() {
                                 }`}
                         >
                             {/* Image placeholder */}
-                            <div className="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-[var(--border)] md:w-1/2">
+                            <div className="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-[var(--tint)] md:w-1/2">
                                 <div className="text-center text-[var(--textDark)]">
                                     <span className="mb-2 block text-4xl">
                                         ◇

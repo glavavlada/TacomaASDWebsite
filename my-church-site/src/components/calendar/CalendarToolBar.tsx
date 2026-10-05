@@ -1,6 +1,14 @@
+type CalendarData = {
+    today: string;
+    expand: string;
+    fit: string;
+    previousMonthAriaLabel: string;
+    nextMonthAriaLabel: string;
+};
 
 type CalendarToolbarProps = {
     calendarTitle: string;
+    data: CalendarData;
     calendarExpanded: boolean;
     goToToday: () => void;
     goToPreviousMonth: () => void;
@@ -10,6 +18,7 @@ type CalendarToolbarProps = {
 
 export default function CalendarToolbar({
     calendarTitle,
+    data,
     calendarExpanded,
     goToToday,
     goToPreviousMonth,
@@ -27,14 +36,14 @@ export default function CalendarToolbar({
                     onClick={goToToday}
                     className="buttonLight shrink-0"
                 >
-                    Today
+                    {data.today}
                 </button>
 
 
                 <button
                     onClick={goToPreviousMonth}
                     className="buttonMedium"
-                    aria-label="Previous month"
+                    aria-label={data.previousMonthAriaLabel}
                 >
                     ←
                 </button>
@@ -42,7 +51,7 @@ export default function CalendarToolbar({
                 <button
                     onClick={goToNextMonth}
                     className="buttonMedium"
-                    aria-label="Next month"
+                    aria-label={data.nextMonthAriaLabel}
                 >
                     →
                 </button>
@@ -50,13 +59,8 @@ export default function CalendarToolbar({
                 <button
                     onClick={toggleCalendarExpanded}
                     className="buttonLight shrink-0 lg:hidden"
-                    aria-label={
-                        calendarExpanded
-                            ? "Fit calendar to screen"
-                            : "Expand calendar"
-                    }
                 >
-                    {calendarExpanded ? "Fit" : "Expand"}
+                    {calendarExpanded ? data.fit : data.expand}
                 </button>
             </div>
         </div>

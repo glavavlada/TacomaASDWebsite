@@ -1,3 +1,8 @@
+import { useLanguage } from "@/app/context/LanguageContext";
+
+import englishData from "@/locale/en/events.json";
+import russianData from "@/locale/ru/events.json";
+
 export type SelectedEvent = {
     title: string;
     start: Date | null;
@@ -33,6 +38,13 @@ export default function EventPopup({
     event,
     onClose,
 }: EventPopupProps) {
+    const { language } = useLanguage();
+
+    const data =
+        language === "en"
+            ? englishData
+            : russianData;
+
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
@@ -44,9 +56,8 @@ export default function EventPopup({
             >
                 <button
                     onClick={onClose}
-                    aria-label="Close event details"
-                    title="Close"
-                    className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--highlight)] bg-[var(--buttonDark)] text-2xl font-bold text-[var(--textLight)] transition hover:bg-[var(--highlight)]"
+                    aria-label={data.closeButtonAriaLabel}
+                    className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center border border-[var(--highlight)] bg-[var(--buttonDark)] text-2xl font-bold text-[var(--textLight)] transition hover:bg-[var(--highlight)]"
                 >
                     ✕
                 </button>
@@ -58,12 +69,12 @@ export default function EventPopup({
                 {event.start && (
                     <>
                         <p className="mb-2">
-                            <strong>Date:</strong>{" "}
+                            <strong>{data.date}:</strong>{" "}
                             {formatDate(event.start)}
                         </p>
 
                         <p className="mb-4">
-                            <strong>Time:</strong>{" "}
+                            <strong>{data.time}:</strong>{" "}
                             {formatTime(event.start)}
                             {event.end &&
                                 ` - ${formatTime(event.end)}`}
@@ -73,7 +84,7 @@ export default function EventPopup({
 
                 {event.location && (
                     <p className="mb-4">
-                        <strong>Location:</strong>{" "}
+                        <strong>{data.location}:</strong>{" "}
                         {event.location}
                     </p>
                 )}
@@ -81,7 +92,7 @@ export default function EventPopup({
                 {event.description && (
                     <div className="mb-5">
                         <h3 className="mb-2 font-bold">
-                            Details
+                            {data.details}
                         </h3>
 
                         <p className="whitespace-pre-line leading-7">
@@ -98,7 +109,7 @@ export default function EventPopup({
                             rel="noopener noreferrer"
                             className="buttonDark"
                         >
-                            Join Meeting
+                            {data.joinMeeting}
                         </a>
                     )}
 
@@ -107,9 +118,9 @@ export default function EventPopup({
                             href={event.googleLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="buttonLight"
+                            className="buttonMedium"
                         >
-                            View in Calendar
+                            {data.viewInCalendar}
                         </a>
                     )}
                 </div>

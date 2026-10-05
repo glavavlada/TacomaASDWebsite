@@ -6,6 +6,11 @@ import {
     type CSSProperties,
 } from "react";
 
+import { useLanguage } from "@/app/context/LanguageContext";
+
+import englishData from "@/locale/en/events.json";
+import russianData from "@/locale/ru/events.json";
+
 import FullCalendar, {
     type CalendarRef,
     type EventSourceFunc,
@@ -31,6 +36,12 @@ import "@fullcalendar/react/themes/classic/palette.css";
 
 
 export default function ChurchCalendar() {
+    const { language } = useLanguage();
+
+    const data = language === "en"
+        ? englishData
+        : russianData;
+
     const calendarRef = useRef<CalendarRef | null>(null);
 
     const [selectedEvent, setSelectedEvent] =
@@ -117,6 +128,7 @@ export default function ChurchCalendar() {
             >
                 <CalendarToolbar
                     calendarTitle={calendarTitle}
+                    data={data}
                     calendarExpanded={calendarExpanded}
                     goToToday={goToToday}
                     goToPreviousMonth={goToPreviousMonth}

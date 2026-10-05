@@ -79,12 +79,16 @@ export default function BibleLessons() {
 
         {/* Controls */}
         <div className="flex flex-wrap items-center justify-center gap-1 lg:col-start-1 lg:row-start-1">
-          <Toggle
-            left={labels.student}
-            right={labels.teacher}
-            value={teacherMode}
-            onChange={handleTeacherModeChange}
-          />
+
+          {/* hide student/teacher toggle when on russian */}
+          {!isRussian && (
+            <Toggle
+              left={labels.student}
+              right={labels.teacher}
+              value={teacherMode}
+              onChange={handleTeacherModeChange}
+            />
+          )}
 
           <Link
             href={lessonUrl}

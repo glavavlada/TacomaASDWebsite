@@ -58,30 +58,13 @@ export default function LessonScroll({
                             setSelectedLesson(index);
 
                             requestAnimationFrame(() => {
-                                // updates the scroll reference
-                                const container = scrollContainerRef.current;
-                                // retrieves the clicked lesson button
-                                const button = document.getElementById(
-                                    `lesson-${language}-${index}`
-                                );
-
-                                // check for nulls
-                                if (!container || !button) return;
-
-                                // gets the container's and the button's positions on screen
-                                const containerRect = container.getBoundingClientRect();
-                                const buttonRect = button.getBoundingClientRect();
-
-                                // calculate the position to scroll to within the container
-                                const targetScrollTop =
-                                    container.scrollTop +
-                                    (buttonRect.top - containerRect.top);
-
-                                // scrolls the container
-                                container.scrollTo({
-                                    top: targetScrollTop,
-                                    behavior: "smooth",
-                                });
+                                document
+                                    .getElementById(`lesson-${language}-${index}`)
+                                    ?.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "nearest",
+                                        inline: "nearest",
+                                    });
                             });
                         }}
                     >

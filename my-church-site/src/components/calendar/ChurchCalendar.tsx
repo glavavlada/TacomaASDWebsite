@@ -41,6 +41,7 @@ export default function ChurchCalendar() {
     const data = language === "en"
         ? englishData
         : russianData;
+    const calendarLocale = language === "ru" ? "ru" : "en";
 
     const calendarRef = useRef<CalendarRef | null>(null);
 
@@ -154,6 +155,7 @@ export default function ChurchCalendar() {
                     >
                         <FullCalendar
                             ref={calendarRef}
+                            locale={calendarLocale}
                             plugins={[themePlugin, dayGridPlugin]}
                             initialView="dayGridMonth"
                             eventDisplay="list-item"
@@ -203,9 +205,25 @@ export default function ChurchCalendar() {
                             events={loadCalendarEvents}
                             height="auto"
                             fixedWeekCount={false}
-                            datesSet={(info) =>
-                                setCalendarTitle(info.view.title)
-                            }
+
+                            // month abd year formatting
+                            datesSet={(info) => {
+                                // locale selector
+                                const locale = language === "ru" ? "ru-RU" : "en-US";
+                                const title = info.start.toLocaleDateString(locale, {
+                                    month: "long", // full month name
+                                    year: "numeric", // 4 digit year
+                                });
+                                // if russian, capitalize the month and remove "г."
+                                const formattedTitle =
+                                    language === "ru"
+                                        ? title.charAt(0).toUpperCase() +
+                                        title.slice(1).replace(" г.", "")
+                                        : title;
+
+                                setCalendarTitle(formattedTitle);
+                            }}
+                            
                             eventMouseEnter={highlightEvent}
                             eventMouseLeave={removeEventHighlight}
                             eventClick={(info) =>

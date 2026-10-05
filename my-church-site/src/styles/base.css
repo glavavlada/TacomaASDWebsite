@@ -27,6 +27,7 @@ hr {
   padding: 0.5rem 1rem;
   color: var(--textLight);
   text-align: center;
+  cursor: pointer;
 }
 
 .buttonDark:hover {
@@ -42,10 +43,23 @@ hr {
   color: var(--textDark);
   padding: 0.5rem 1rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .buttonLight:hover {
   background-color: var(--hoverLight);
+}
+
+.buttonMedium {
+  background-color: var(--buttonMedium);
+  color: var(--textLight);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.buttonMedium:hover {
+  background-color: var(--hoverMedium);
 }
 
 .link {

@@ -19,7 +19,7 @@ export default function Toggle({
 }: ToggleProps) { // checks that the props match the definition
     return (
         <button // applies optional classes and right or left css class
-            className={`text-[var(--textLight)] shrink-0 relative flex items-center cursor-pointer overflow-hidden rounded-full border-2 border-[var(--buttonDark)] bg-[var(--buttonDark)] p-2 hover:bg-[var(--hoverDark)]
+            className={`text-[var(--textLight)] shrink-0 relative flex items-center overflow-hidden rounded-full border-2 border-[var(--buttonDark)] bg-[var(--buttonDark)] p-2 hover:bg-[var(--hoverDark)]
                 ${className} 
                 ${value ? "right" : "left"}
                 `}

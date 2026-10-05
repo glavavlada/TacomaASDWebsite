@@ -6,6 +6,11 @@ import {
     type CSSProperties,
 } from "react";
 
+import { useLanguage } from "@/app/context/LanguageContext";
+
+import englishData from "@/locale/en/events.json";
+import russianData from "@/locale/ru/events.json";
+
 import FullCalendar, {
     type CalendarRef,
     type EventSourceFunc,
@@ -31,6 +36,13 @@ import "@fullcalendar/react/themes/classic/palette.css";
 
 
 export default function ChurchCalendar() {
+    const { language } = useLanguage();
+
+    const data = language === "en"
+        ? englishData
+        : russianData;
+    const calendarLocale = language === "ru" ? "ru" : "en";
+
     const calendarRef = useRef<CalendarRef | null>(null);
 
     const [selectedEvent, setSelectedEvent] =
@@ -40,11 +52,19 @@ export default function ChurchCalendar() {
     const [calendarExpanded, setCalendarExpanded] = useState(false);
 
     const calendarStyle = {
+
+        backgroundColor: "var(--tint)",
+        // borderColor: "var(--border)",
+
         color: "var(--textDark)",
-        "--fc-page-bg-color": "var(--body)",
-        "--fc-neutral-bg-color": "var(--border)",
-        "--fc-border-color": "var(--border)",
-        "--fc-today-bg-color": "var(--border)",
+        // "--fc-page-bg-color": "var(--body)",
+        // "--fc-neutral-bg-color": "var(--border)",
+        // "--fc-border-color": "var(--border)",
+        // "--fc-today-bg-color": "var(--border)",
+
+        // "--fc-event-bg-color": "transparent",
+        // "--fc-event-border-color": "transparent",
+        // "--fc-event-text-color": "#222222",
     } as CSSProperties;
 
     function goToPreviousMonth() {
@@ -104,11 +124,12 @@ export default function ChurchCalendar() {
     return (
         <>
             <div
-                className="mt-8 border border-[var(--border)] bg-[var(--body)] p-2 sm:p-4"
+                className="py-2 lg:p-4"
                 style={calendarStyle}
             >
                 <CalendarToolbar
                     calendarTitle={calendarTitle}
+                    data={data}
                     calendarExpanded={calendarExpanded}
                     goToToday={goToToday}
                     goToPreviousMonth={goToPreviousMonth}
@@ -134,16 +155,75 @@ export default function ChurchCalendar() {
                     >
                         <FullCalendar
                             ref={calendarRef}
+                            locale={calendarLocale}
                             plugins={[themePlugin, dayGridPlugin]}
                             initialView="dayGridMonth"
                             eventDisplay="list-item"
+
+
+                            eventContent={(info) => (
+                                <div
+                                    className="w-full min-w-0 rounded-sm bg-[#f0f0f2] p-1"
+                                    title={info.event.title}
+                                >
+                                    <div
+                                        className="
+                min-w-0
+                overflow-hidden
+                text-xs sm:text-sm
+                leading-snug
+                text-[#222222]
+                whitespace-normal
+                wrap-break-word
+                line-clamp-2
+            "
+                                    >
+                                        {info.timeText && (
+                                            <span className="mr-1">
+                                                {info.timeText}
+                                            </span>
+                                        )}
+                                        {info.event.title}
+                                    </div>
+                                </div>
+                            )}
+
+
+                            eventDidMount={(info) => {
+                                const eventElement = info.el;
+
+                                const dot = eventElement.firstElementChild;
+
+                                if (
+                                    dot instanceof HTMLElement &&
+                                    dot.nextElementSibling
+                                ) {
+                                    dot.style.display = "none";
+                                }
+                            }}
                             headerToolbar={false}
                             events={loadCalendarEvents}
                             height="auto"
                             fixedWeekCount={false}
-                            datesSet={(info) =>
-                                setCalendarTitle(info.view.title)
-                            }
+
+                            // month abd year formatting
+                            datesSet={(info) => {
+                                // locale selector
+                                const locale = language === "ru" ? "ru-RU" : "en-US";
+                                const title = info.start.toLocaleDateString(locale, {
+                                    month: "long", // full month name
+                                    year: "numeric", // 4 digit year
+                                });
+                                // if russian, capitalize the month and remove "г."
+                                const formattedTitle =
+                                    language === "ru"
+                                        ? title.charAt(0).toUpperCase() +
+                                        title.slice(1).replace(" г.", "")
+                                        : title;
+
+                                setCalendarTitle(formattedTitle);
+                            }}
+                            
                             eventMouseEnter={highlightEvent}
                             eventMouseLeave={removeEventHighlight}
                             eventClick={(info) =>
@@ -162,6 +242,7 @@ export default function ChurchCalendar() {
                     onClose={() => setSelectedEvent(null)}
                 />
             )}
+
         </>
     );
 }

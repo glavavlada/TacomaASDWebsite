@@ -1,5 +1,14 @@
+type CalendarData = {
+    today: string;
+    expand: string;
+    fit: string;
+    previousMonthAriaLabel: string;
+    nextMonthAriaLabel: string;
+};
+
 type CalendarToolbarProps = {
     calendarTitle: string;
+    data: CalendarData;
     calendarExpanded: boolean;
     goToToday: () => void;
     goToPreviousMonth: () => void;
@@ -9,6 +18,7 @@ type CalendarToolbarProps = {
 
 export default function CalendarToolbar({
     calendarTitle,
+    data,
     calendarExpanded,
     goToToday,
     goToPreviousMonth,
@@ -16,46 +26,41 @@ export default function CalendarToolbar({
     toggleCalendarExpanded,
 }: CalendarToolbarProps) {
     return (
-        <div className="mb-5 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="font-bold text-[var(--textDark)]">
+        <div className="mb-5 flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
+            <h2 className="text-center font-bold text-[var(--textDark)] lg:text-left">
                 {calendarTitle}
             </h2>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex w-full flex-wrap items-center justify-center gap-2 lg:w-auto">
                 <button
                     onClick={goToToday}
-                    className="buttonLight"
+                    className="buttonLight shrink-0"
                 >
-                    Today
+                    {data.today}
                 </button>
+
 
                 <button
                     onClick={goToPreviousMonth}
-                    className="buttonDark"
-                    aria-label="Previous month"
+                    className="buttonMedium"
+                    aria-label={data.previousMonthAriaLabel}
                 >
                     ←
                 </button>
 
                 <button
                     onClick={goToNextMonth}
-                    className="buttonDark"
-
-                    aria-label="Next month"
+                    className="buttonMedium"
+                    aria-label={data.nextMonthAriaLabel}
                 >
                     →
                 </button>
 
                 <button
                     onClick={toggleCalendarExpanded}
-                    className="buttonLight sm:hidden"
-                    aria-label={
-                        calendarExpanded
-                            ? "Fit calendar to screen"
-                            : "Expand calendar"
-                    }
+                    className="buttonLight shrink-0 lg:hidden"
                 >
-                    {calendarExpanded ? "Fit" : "Expand"}
+                    {calendarExpanded ? data.fit : data.expand}
                 </button>
             </div>
         </div>

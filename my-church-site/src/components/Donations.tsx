@@ -59,19 +59,19 @@ export default function DonationPopup({
 
       {/* Popup Content */}
       <div
-        className="popupAppear relative flex w-80 flex-col items-center bg-[var(--buttonLight)] p-6 text-center"
+        className="popupAppear relative flex w-80 flex-col items-center bg-[var(--body)] p-6 text-center"
         onClick={(event) => event.stopPropagation()} // prevents the click within the popup from bubbling up to the overlay
       >
 
         {/* Close Button */}
         <button
-          className="absolute right-2 top-2 h-8 w-8 buttonDark flex items-center justify-center"
+          className="absolute right-1 top-1 h-8 w-8 border border-[var(--highlight)] buttonDark flex items-center justify-center"
           onClick={onClose} // calls onClose
         >
           X
         </button>
 
-        <h2>{t.donations.title}</h2>
+        <h2 className="p-2">{t.donations.title}</h2>
 
         <Image
           src="/DonationLink.png"
@@ -85,7 +85,7 @@ export default function DonationPopup({
           href="https://adventistgiving.org/donate/ANIMTR"
           target="_blank"
           rel="noopener noreferrer"
-          className="buttonDark px-[1.125rem] py-2.5]"
+          className="buttonMedium px-[1.125rem] py-2.5]"
         >
           {t.donations.button}
         </a>

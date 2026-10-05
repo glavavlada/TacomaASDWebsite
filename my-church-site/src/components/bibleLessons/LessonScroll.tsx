@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import type { ReactNode } from "react";
 
 // defining Lesson object type with student and teacher URLs
@@ -30,8 +31,15 @@ export default function LessonScroll({
     mobileControls,
     mobileViewer,
 }: LessonScrollProps) { // checks that the props match the definition
+    // reference to selected lesson <div>
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
     return (
-        <div className="overflow-y-auto overflow-x-hidden">
+
+        <div
+            ref={scrollContainerRef} // connects the container to scroll reference
+            className="overflow-y-auto overflow-x-hidden"
+        >
             {/* applies the JSX for each item in lessons */}
             {lessons.map((lessonItem, index) => (
                 // creates a required unique key for each lesson from the string literal
@@ -40,7 +48,7 @@ export default function LessonScroll({
                         // creates a unique id for each lesson button from the string literal to allow for scrolling to the selected lesson
                         id={`lesson-${language}-${index}`}
                         type="button" // HTML element type
-                        className={`mb-2 w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left cursor-pointer transition-transform duration-200 hover:translate-x-[0.3rem] 
+                        className={`mb-2 w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem] 
                             ${selectedLesson === index // applies the selected lesson styling
                                 ? "border-l-[var(--main)] font-bold"
                                 : "border-transparent"
@@ -49,13 +57,13 @@ export default function LessonScroll({
                         onClick={() => {
                             setSelectedLesson(index);
 
-                            // scrolls after the DOM has updated
                             requestAnimationFrame(() => {
-                                document //finds the selected lesson
+                                document
                                     .getElementById(`lesson-${language}-${index}`)
-                                    ?.scrollIntoView({ // optional chaining in case the element is not found
+                                    ?.scrollIntoView({
                                         behavior: "smooth",
-                                        block: "nearest", // brings the element into view if not visible
+                                        block: "nearest",
+                                        inline: "nearest",
                                     });
                             });
                         }}

@@ -1,0 +1,44 @@
+{
+  "labels": {
+    "pageTitle": "Our Ministries",
+    "introduction": "Discover opportunities to connect, grow in faith, and serve our community.",
+    "photoPlaceholder": "Photo coming soon"
+  },
+  "ministries": [
+    {
+      "id": "children",
+      "title": "Children's Ministry",
+      "description": "Our Children's Ministry helps children discover God's love, learn about the Bible, and develop their faith through spiritual education and fellowship."
+    },
+    {
+      "id": "youth",
+      "title": "Youth Ministry",
+      "description": "Our Youth Ministry provides opportunities for young people to grow in their relationship with Christ, build meaningful friendships, and support one another through life's challenges."
+    },
+    {
+      "id": "outreach",
+      "title": "Outreach Ministry",
+      "description": "Our Outreach Ministry serves the community through charitable activities, evangelism, and practical assistance to people in need."
+    },
+    {
+      "id": "music",
+      "title": "Music Ministry",
+      "description": "Our Music Ministry brings people together to worship God through singing, choir, orchestra, and opportunities for musical education."
+    },
+    {
+      "id": "women",
+      "title": "Women's Ministry",
+      "description": "Our Women's Ministry encourages spiritual growth, friendship, and mutual support through Bible study, fellowship, and service."
+    },
+    {
+      "id": "missionary",
+      "title": "Missionary Work",
+      "description": "Our missionary activities focus on sharing the gospel, providing humanitarian assistance, supporting education, and encouraging others to serve."
+    },
+    {
+      "id": "bible-school",
+      "title": "Bible School",
+      "description": "Our Bible School offers opportunities to study Scripture through group discussions and individual Bible lessons in multiple languages."
+    }
+  ]
+}

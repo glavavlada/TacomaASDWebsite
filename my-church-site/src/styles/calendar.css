@@ -1,0 +1,28 @@
+.event {
+  background-color: color-mix(in srgb, var(--buttonMedium) 40%, transparent);
+  color: var(--textDark);
+  text-align: left;
+  cursor: pointer;
+  padding: 0.4rem 0.1rem
+}
+
+.event:hover {
+  background-color: color-mix(in srgb, var(--hoverMedium) 40%, transparent);
+}
+
+/* overall grid */
+.calendar-wrapper [role="grid"] {
+    background-color: var(--body);
+    color: var(--textDark);
+}
+
+/* column header */
+.calendar-wrapper [role="columnheader"] {
+    background-color: var(--buttonDark);
+    color: var(--textLight);
+}
+
+/* current day */
+.calendar-wrapper [role="gridcell"][aria-current="date"] {
+    background-color: color-mix(in srgb, var(--highlight) 25%, transparent);
+}

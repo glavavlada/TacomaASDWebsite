@@ -131,6 +131,7 @@ export default function ChurchCalendar() {
                             <FullCalendar
                                 ref={calendarRef}
                                 locale={calendarLocale}
+                                timeZone="local"
                                 plugins={[themePlugin, dayGridPlugin]}
                                 initialView="dayGridMonth"
                                 eventDisplay="list-item"

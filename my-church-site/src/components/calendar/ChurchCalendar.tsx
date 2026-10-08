@@ -175,6 +175,9 @@ export default function ChurchCalendar() {
 
                                 // month abd year formatting
                                 datesSet={(info) => {
+                                    console.log("Browser now:", new Date());
+                                    console.log("FullCalendar start:", info.start);
+                                    console.log("FullCalendar end:", info.end);
                                     // locale selector
                                     const locale = language === "ru" ? "ru-RU" : "en-US";
                                     const title = info.start.toLocaleDateString(locale, {

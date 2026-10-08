@@ -44,19 +44,20 @@ export default function LessonScroll({
             {lessons.map((lessonItem, index) => (
                 // creates a required unique key for each lesson from the string literal
                 <div key={`${language}-${index}`}>
+                    {/* stable reference for the auto scroll */}
                     <button
-                        // creates a unique id for each lesson button from the string literal to allow for scrolling to the selected lesson
                         id={`lesson-${language}-${index}`}
-                        type="button" // HTML element type
-                        className={`mb-2 w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem] 
-                            ${selectedLesson === index // applies the selected lesson styling
-                                ? "border-l-[var(--main)] font-bold"
+                        type="button"
+                        // adds a left border to the selected lesson
+                        className={`mb-2 w-full border-l-[5px]
+                            ${selectedLesson === index
+                                ? "border-l-[var(--main)]"
                                 : "border-transparent"
                             }`}
-                        // selects the clicked lesson and scrolls to it
                         onClick={() => {
                             setSelectedLesson(index);
 
+                            // scrolls to the selected lesson <button>
                             requestAnimationFrame(() => {
                                 document
                                     .getElementById(`lesson-${language}-${index}`)
@@ -68,7 +69,15 @@ export default function LessonScroll({
                             });
                         }}
                     >
-                        {lessonItem.title}
+                        {/* visual appearance of the button that moves on hover
+                        
+                            separated from <button> to avoid visual bugs when moving the scroll reference*/}
+                        <span
+                            className={`block w-full bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem]
+                            ${selectedLesson === index ? "font-bold" : ""}`}
+                        >
+                            {lessonItem.title}
+                        </span>
                     </button>
 
 

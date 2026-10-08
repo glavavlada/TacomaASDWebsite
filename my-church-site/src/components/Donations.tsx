@@ -59,7 +59,7 @@ export default function DonationPopup({
 
       {/* Popup Content */}
       <div
-        className="popupAppear relative flex w-80 flex-col items-center bg-[var(--body)] p-6 text-center"
+        className="popupAppear relative flex w-80 flex-col items-center border border-[var(--separator)] bg-[var(--body)] p-6 text-center"
         onClick={(event) => event.stopPropagation()} // prevents the click within the popup from bubbling up to the overlay
       >
 

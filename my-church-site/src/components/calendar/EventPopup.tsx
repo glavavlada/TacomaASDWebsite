@@ -51,7 +51,7 @@ export default function EventPopup({
             onClick={onClose}
         >
             <div
-                className="relative w-full max-w-xl border border-[var(--border)] bg-[var(--body)] p-6 text-[var(--textDark)] shadow-2xl"
+                className="relative w-full max-w-xl border border-[var(--separator)] bg-[var(--body)] p-6 text-[var(--textDark)] shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
             >
                 <button

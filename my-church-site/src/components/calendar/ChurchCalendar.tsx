@@ -11,13 +11,9 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import englishData from "@/locale/en/events.json";
 import russianData from "@/locale/ru/events.json";
 
-import FullCalendar, {
-    type CalendarRef,
-    type EventSourceFunc,
-} from "@fullcalendar/react";
-
-import dayGridPlugin from "@fullcalendar/react/daygrid";
-import themePlugin from "@fullcalendar/react/themes/classic";
+import FullCalendar from "@fullcalendar/react";
+import type { EventSourceFunc } from "@fullcalendar/core";
+import dayGridPlugin from "@fullcalendar/daygrid";
 
 import CalendarToolbar from "./CalendarToolBar";
 import EventPopup, {
@@ -28,9 +24,9 @@ import {
     getSelectedEvent
 } from "./CalendarHelpers";
 
-import "@fullcalendar/react/skeleton.css";
-import "@fullcalendar/react/themes/classic/theme.css";
-import "@fullcalendar/react/themes/classic/palette.css";
+// import "@fullcalendar/react/skeleton.css";
+// import "@fullcalendar/react/themes/classic/theme.css";
+// import "@fullcalendar/react/themes/classic/palette.css";
 
 
 export default function ChurchCalendar() {
@@ -41,7 +37,7 @@ export default function ChurchCalendar() {
         : russianData;
     const calendarLocale = language === "ru" ? "ru" : "en";
 
-    const calendarRef = useRef<CalendarRef | null>(null);
+    const calendarRef = useRef<FullCalendar | null>(null);
 
     const [selectedEvent, setSelectedEvent] =
         useState<SelectedEvent | null>(null);
@@ -132,8 +128,7 @@ export default function ChurchCalendar() {
                                 ref={calendarRef}
                                 locale={calendarLocale}
                                 timeZone="local"
-                                now={() => new Date()}
-                                plugins={[themePlugin, dayGridPlugin]}
+                                plugins={[dayGridPlugin]}
                                 initialView="dayGridMonth"
                                 eventDisplay="list-item"
 

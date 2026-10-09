@@ -1,9 +1,9 @@
 "use client";
 
 import {
+    useCallback,
     useRef,
-    useState,
-    type CSSProperties,
+    useState
 } from "react";
 
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -23,11 +23,6 @@ import EventPopup, {
 import {
     getSelectedEvent
 } from "./CalendarHelpers";
-
-// import "@fullcalendar/react/skeleton.css";
-// import "@fullcalendar/react/themes/classic/theme.css";
-// import "@fullcalendar/react/themes/classic/palette.css";
-
 
 export default function ChurchCalendar() {
     const { language } = useLanguage();
@@ -57,47 +52,45 @@ export default function ChurchCalendar() {
         calendarRef.current?.getApi().today();
     }
 
-    const loadCalendarEvents: EventSourceFunc = async (
-        fetchInfo,
-        successCallback,
-        failureCallback
-    ) => {
-        try {
-            const params = new URLSearchParams({
-                start: fetchInfo.startStr,
-                end: fetchInfo.endStr,
-            });
+    // useCallback allows the function to only be defined once isntead of 
+    // recreating on each re-render
+    const loadCalendarEvents = useCallback<EventSourceFunc>(
+        async (fetchInfo, successCallback, failureCallback) => {
+            try {
+                const params = new URLSearchParams({
+                    start: fetchInfo.startStr,
+                    end: fetchInfo.endStr,
+                });
 
-            const response = await fetch(
-                `/api/calendar?${params.toString()}`,
-                { cache: "no-store" }
-            );
-
-            if (!response.ok) {
-                throw new Error(
-                    `Failed to load events: ${response.status}`
+                const response = await fetch(
+                    `/api/calendar?${params.toString()}`
                 );
-            }
 
-            const events = await response.json();
-
-            successCallback(events);
-        } catch (error) {
-            const calendarError =
-                error instanceof Error
-                    ? error
-                    : new Error(
-                        "Unknown calendar loading error"
+                if (!response.ok) {
+                    throw new Error(
+                        `Failed to load events: ${response.status}`
                     );
+                }
 
-            console.error(
-                "Failed to load calendar events:",
-                calendarError
-            );
+                const events = await response.json();
 
-            failureCallback(calendarError);
-        }
-    };
+                successCallback(events);
+            } catch (error) {
+                const calendarError =
+                    error instanceof Error
+                        ? error
+                        : new Error("Unknown calendar loading error");
+
+                console.error(
+                    "Failed to load calendar events:",
+                    calendarError
+                );
+
+                failureCallback(calendarError);
+            }
+        },
+        []
+    );
 
     return (
         <>
@@ -171,20 +164,6 @@ export default function ChurchCalendar() {
 
                                 // month abd year formatting
                                 datesSet={(info) => {
-                                    console.log("Browser now:", new Date());
-                                    console.log("FullCalendar start:", info.start);
-                                    console.log("FullCalendar end:", info.end);
-                                    setTimeout(() => {
-                                        const todayCell = document.querySelector(
-                                            '.calendar-wrapper [role="gridcell"][aria-current="date"]'
-                                        );
-
-                                        console.log(
-                                            "FullCalendar highlighted today:",
-                                            todayCell?.getAttribute("data-date")
-                                        );
-                                    }, 0);
-
                                     // locale selector
                                     const locale = language === "ru" ? "ru-RU" : "en-US";
                                     const title = info.start.toLocaleDateString(locale, {

@@ -48,12 +48,7 @@ export default function LessonScroll({
                     <button
                         id={`lesson-${language}-${index}`}
                         type="button"
-                        // adds a left border to the selected lesson
-                        className={`mb-2 w-full border-l-[5px]
-                            ${selectedLesson === index
-                                ? "border-l-[var(--main)]"
-                                : "border-transparent"
-                            }`}
+                        className="mb-2 block w-full"
                         onClick={() => {
                             setSelectedLesson(index);
 
@@ -69,12 +64,13 @@ export default function LessonScroll({
                             });
                         }}
                     >
-                        {/* visual appearance of the button that moves on hover
-                        
+                        {/* translated a hovered button and adds border to selected lesson
                             separated from <button> to avoid visual bugs when moving the scroll reference*/}
                         <span
-                            className={`block w-full bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem]
-                            ${selectedLesson === index ? "font-bold" : ""}`}
+                            className={`block w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem]
+                            ${selectedLesson === index 
+                                ? "font-bold border-l-[var(--main)]" 
+                                : "border-transparent"}`}
                         >
                             {lessonItem.title}
                         </span>

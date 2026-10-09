@@ -7,7 +7,7 @@
 }
 
 .event:hover {
-  background-color: color-mix(in srgb, var(--hoverMedium) 40%, transparent);
+  background-color: color-mix(in srgb, var(--hoverMedium) 50%, transparent);
 }
 
 /* overall grid */

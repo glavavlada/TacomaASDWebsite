@@ -132,6 +132,7 @@ export default function ChurchCalendar() {
                                 ref={calendarRef}
                                 locale={calendarLocale}
                                 timeZone="local"
+                                now={() => new Date()}
                                 plugins={[themePlugin, dayGridPlugin]}
                                 initialView="dayGridMonth"
                                 eventDisplay="list-item"
@@ -178,6 +179,17 @@ export default function ChurchCalendar() {
                                     console.log("Browser now:", new Date());
                                     console.log("FullCalendar start:", info.start);
                                     console.log("FullCalendar end:", info.end);
+                                    setTimeout(() => {
+                                        const todayCell = document.querySelector(
+                                            '.calendar-wrapper [role="gridcell"][aria-current="date"]'
+                                        );
+
+                                        console.log(
+                                            "FullCalendar highlighted today:",
+                                            todayCell?.getAttribute("data-date")
+                                        );
+                                    }, 0);
+
                                     // locale selector
                                     const locale = language === "ru" ? "ru-RU" : "en-US";
                                     const title = info.start.toLocaleDateString(locale, {

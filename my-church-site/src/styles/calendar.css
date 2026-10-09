@@ -23,6 +23,6 @@
 }
 
 /* current day */
-.calendar-wrapper [role="gridcell"][aria-current="date"] {
+.calendar-wrapper .fc .fc-daygrid-day.fc-day-today{
     background-color: color-mix(in srgb, var(--highlight) 25%, transparent);
 }

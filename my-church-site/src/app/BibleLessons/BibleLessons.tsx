@@ -13,7 +13,7 @@ import PDFControls from "@/components/bibleLessons/PDFControls";
 import LessonViewer from "@/components/bibleLessons/LessonViewer";
 
 export default function BibleLessons() {
-  const { language } = useLanguage();
+  const { language, languageLoaded } = useLanguage();
 
   const [selectedLesson, setSelectedLesson] = useState(0);
   const [teacherMode, setTeacherMode] = useState(false);
@@ -68,6 +68,10 @@ export default function BibleLessons() {
       mobile
     />
   );
+
+  if (!languageLoaded) {
+    return null;
+  }
 
   return (
     <div className="pb-4">

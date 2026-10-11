@@ -51,13 +51,13 @@ export default function EventPopup({
             onClick={onClose}
         >
             <div
-                className="relative w-full max-w-xl border border-[var(--border)] bg-[var(--body)] p-6 text-[var(--textDark)] shadow-2xl"
+                className="relative w-full max-w-xl border border-[var(--separator)] bg-[var(--body)] p-6 text-[var(--textDark)] shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
             >
                 <button
                     onClick={onClose}
                     aria-label={data.closeButtonAriaLabel}
-                    className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center border border-[var(--highlight)] bg-[var(--buttonDark)] text-2xl font-bold text-[var(--textLight)] transition hover:bg-[var(--highlight)]"
+                    className="buttonDark buttonClose"
                 >
                     ✕
                 </button>

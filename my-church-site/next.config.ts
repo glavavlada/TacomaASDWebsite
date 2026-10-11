@@ -22,7 +22,8 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' \
                 'sha256-OBTN3RiyCV4Bq7dFqZ5a2pAXjnCcCYeTJMO2I/LYKeo=' \
-                'sha256-FKmLIlivyRyLIlOEsRWVgnplsyQvNOXYObQg/lDxVQk='",
+                'sha256-FKmLIlivyRyLIlOEsRWVgnplsyQvNOXYObQg/lDxVQk=' \
+                'sha256-+hO/Bl4Yds6faAoaI/3c/TOe7Yzy6ReoejSW/xTE6yI='",
               "style-src 'self' 'unsafe-hashes' \
                 'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=' \
                 'sha256-ZDrxqUOB4m/L0JWL/+gS52g1CRH0l/qwMhjTw5Z/Fsc=' \

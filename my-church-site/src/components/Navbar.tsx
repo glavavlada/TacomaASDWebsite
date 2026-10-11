@@ -32,14 +32,16 @@ export default function Navbar() {
 	return (
 		<>
 			<header className="flex flex-wrap items-center gap-4 p-4 bg-[var(--main)] text-base">
-				<Image
-					src={churchLogo}
-					alt="Church Logo"
-					width={60}
-					height={60}
-					className="shrink-0"
-					priority
-				/>
+				<Link href="/" className='${pathname === "/" ? "active" : ""}'>
+					<Image
+						src={churchLogo}
+						alt="Church Logo"
+						width={60}
+						height={60}
+						className="shrink-0"
+						priority
+					/>
+				</Link>
 
 				<h2 className="min-w-0 flex-1 text-[var(--textLight)] text-left">
 					{t.navbar.title}

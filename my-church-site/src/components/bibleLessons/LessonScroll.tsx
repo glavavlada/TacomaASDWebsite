@@ -44,19 +44,15 @@ export default function LessonScroll({
             {lessons.map((lessonItem, index) => (
                 // creates a required unique key for each lesson from the string literal
                 <div key={`${language}-${index}`}>
+                    {/* stable reference for the auto scroll */}
                     <button
-                        // creates a unique id for each lesson button from the string literal to allow for scrolling to the selected lesson
                         id={`lesson-${language}-${index}`}
-                        type="button" // HTML element type
-                        className={`mb-2 w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem] 
-                            ${selectedLesson === index // applies the selected lesson styling
-                                ? "border-l-[var(--main)] font-bold"
-                                : "border-transparent"
-                            }`}
-                        // selects the clicked lesson and scrolls to it
+                        type="button"
+                        className="mb-2 block w-full"
                         onClick={() => {
                             setSelectedLesson(index);
 
+                            // scrolls to the selected lesson <button>
                             requestAnimationFrame(() => {
                                 document
                                     .getElementById(`lesson-${language}-${index}`)
@@ -68,7 +64,16 @@ export default function LessonScroll({
                             });
                         }}
                     >
-                        {lessonItem.title}
+                        {/* translated a hovered button and adds border to selected lesson
+                            separated from <button> to avoid visual bugs when moving the scroll reference*/}
+                        <span
+                            className={`block w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem]
+                            ${selectedLesson === index 
+                                ? "font-bold border-l-[var(--main)]" 
+                                : "border-transparent"}`}
+                        >
+                            {lessonItem.title}
+                        </span>
                     </button>
 
 

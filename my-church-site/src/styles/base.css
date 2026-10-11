@@ -62,6 +62,20 @@ hr {
   background-color: var(--hoverMedium);
 }
 
+.buttonClose {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--highlight);
+  font-size: 1.5rem;
+  transition: all 0.2s;
+}
+
 .link {
   text-decoration: underline;
   transition: color 0.2s ease;

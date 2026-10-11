@@ -1,9 +1,9 @@
 "use client";
 
 import {
+    useCallback,
     useRef,
-    useState,
-    type CSSProperties,
+    useState
 } from "react";
 
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -11,13 +11,9 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import englishData from "@/locale/en/events.json";
 import russianData from "@/locale/ru/events.json";
 
-import FullCalendar, {
-    type CalendarRef,
-    type EventSourceFunc,
-} from "@fullcalendar/react";
-
-import dayGridPlugin from "@fullcalendar/react/daygrid";
-import themePlugin from "@fullcalendar/react/themes/classic";
+import FullCalendar from "@fullcalendar/react";
+import type { EventSourceFunc } from "@fullcalendar/core";
+import dayGridPlugin from "@fullcalendar/daygrid";
 
 import CalendarToolbar from "./CalendarToolBar";
 import EventPopup, {
@@ -25,15 +21,8 @@ import EventPopup, {
 } from "./EventPopup";
 
 import {
-    getSelectedEvent,
-    highlightEvent,
-    removeEventHighlight,
+    getSelectedEvent
 } from "./CalendarHelpers";
-
-import "@fullcalendar/react/skeleton.css";
-import "@fullcalendar/react/themes/classic/theme.css";
-import "@fullcalendar/react/themes/classic/palette.css";
-
 
 export default function ChurchCalendar() {
     const { language } = useLanguage();
@@ -43,29 +32,13 @@ export default function ChurchCalendar() {
         : russianData;
     const calendarLocale = language === "ru" ? "ru" : "en";
 
-    const calendarRef = useRef<CalendarRef | null>(null);
+    const calendarRef = useRef<FullCalendar | null>(null);
 
     const [selectedEvent, setSelectedEvent] =
         useState<SelectedEvent | null>(null);
 
     const [calendarTitle, setCalendarTitle] = useState("");
     const [calendarExpanded, setCalendarExpanded] = useState(false);
-
-    const calendarStyle = {
-
-        backgroundColor: "var(--tint)",
-        // borderColor: "var(--border)",
-
-        color: "var(--textDark)",
-        // "--fc-page-bg-color": "var(--body)",
-        // "--fc-neutral-bg-color": "var(--border)",
-        // "--fc-border-color": "var(--border)",
-        // "--fc-today-bg-color": "var(--border)",
-
-        // "--fc-event-bg-color": "transparent",
-        // "--fc-event-border-color": "transparent",
-        // "--fc-event-text-color": "#222222",
-    } as CSSProperties;
 
     function goToPreviousMonth() {
         calendarRef.current?.getApi().prev();
@@ -79,54 +52,50 @@ export default function ChurchCalendar() {
         calendarRef.current?.getApi().today();
     }
 
-    const loadCalendarEvents: EventSourceFunc = async (
-        fetchInfo,
-        successCallback,
-        failureCallback
-    ) => {
-        try {
-            const params = new URLSearchParams({
-                start: fetchInfo.startStr,
-                end: fetchInfo.endStr,
-            });
+    // useCallback allows the function to only be defined once isntead of 
+    // recreating on each re-render
+    const loadCalendarEvents = useCallback<EventSourceFunc>(
+        async (fetchInfo, successCallback, failureCallback) => {
+            try {
+                const params = new URLSearchParams({
+                    start: fetchInfo.startStr,
+                    end: fetchInfo.endStr,
+                });
 
-            const response = await fetch(
-                `/api/calendar?${params.toString()}`,
-                { cache: "no-store" }
-            );
-
-            if (!response.ok) {
-                throw new Error(
-                    `Failed to load events: ${response.status}`
+                const response = await fetch(
+                    `/api/calendar?${params.toString()}`
                 );
-            }
 
-            const events = await response.json();
-
-            successCallback(events);
-        } catch (error) {
-            const calendarError =
-                error instanceof Error
-                    ? error
-                    : new Error(
-                        "Unknown calendar loading error"
+                if (!response.ok) {
+                    throw new Error(
+                        `Failed to load events: ${response.status}`
                     );
+                }
 
-            console.error(
-                "Failed to load calendar events:",
-                calendarError
-            );
+                const events = await response.json();
 
-            failureCallback(calendarError);
-        }
-    };
+                successCallback(events);
+            } catch (error) {
+                const calendarError =
+                    error instanceof Error
+                        ? error
+                        : new Error("Unknown calendar loading error");
+
+                console.error(
+                    "Failed to load calendar events:",
+                    calendarError
+                );
+
+                failureCallback(calendarError);
+            }
+        },
+        []
+    );
 
     return (
         <>
             <div
-                className="py-2 lg:p-4"
-                style={calendarStyle}
-            >
+                className="py-2 lg:p-4 bg-[var(--tint)]">
                 <CalendarToolbar
                     calendarTitle={calendarTitle}
                     data={data}
@@ -146,92 +115,78 @@ export default function ChurchCalendar() {
                             : "w-full overflow-hidden"
                     }
                 >
-                    <div
-                        className={
-                            calendarExpanded
-                                ? "w-[900px]"
-                                : "w-full"
-                        }
-                    >
-                        <FullCalendar
-                            ref={calendarRef}
-                            locale={calendarLocale}
-                            plugins={[themePlugin, dayGridPlugin]}
-                            initialView="dayGridMonth"
-                            eventDisplay="list-item"
+                    <div className={calendarExpanded ? "w-[900px]" : "w-full"}>
+                        <div className="calendar-wrapper">
+                            <FullCalendar
+                                ref={calendarRef}
+                                locale={calendarLocale}
+                                timeZone="local"
+                                plugins={[dayGridPlugin]}
+                                initialView="dayGridMonth"
+                                eventDisplay="list-item"
 
 
-                            eventContent={(info) => (
-                                <div
-                                    className="w-full min-w-0 rounded-sm bg-[#f0f0f2] p-1"
-                                    title={info.event.title}
-                                >
+                                eventContent={(info) => (
                                     <div
-                                        className="
-                min-w-0
-                overflow-hidden
-                text-xs sm:text-sm
-                leading-snug
-                text-[#222222]
-                whitespace-normal
-                wrap-break-word
-                line-clamp-2
-            "
+                                        className="w-full min-w-0 event"
+                                        title={info.event.title}
                                     >
-                                        {info.timeText && (
-                                            <span className="mr-1">
-                                                {info.timeText}
-                                            </span>
-                                        )}
-                                        {info.event.title}
+                                        <div
+                                            className="text-xs sm:text-sm leading-snug wrap-break-word line-clamp-2"
+                                        >
+                                            {info.timeText && (
+                                                <span className="mr-1">
+                                                    {info.timeText}
+                                                </span>
+                                            )}
+                                            {info.event.title}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
 
 
-                            eventDidMount={(info) => {
-                                const eventElement = info.el;
+                                eventDidMount={(info) => {
+                                    const eventElement = info.el;
 
-                                const dot = eventElement.firstElementChild;
+                                    const dot = eventElement.firstElementChild;
 
-                                if (
-                                    dot instanceof HTMLElement &&
-                                    dot.nextElementSibling
-                                ) {
-                                    dot.style.display = "none";
+                                    if (
+                                        dot instanceof HTMLElement &&
+                                        dot.nextElementSibling
+                                    ) {
+                                        dot.style.display = "none";
+                                    }
+                                }}
+                                headerToolbar={false}
+                                events={loadCalendarEvents}
+                                height="auto"
+                                fixedWeekCount={false}
+
+                                // month abd year formatting
+                                datesSet={(info) => {
+                                    // locale selector
+                                    const locale = language === "ru" ? "ru-RU" : "en-US";
+                                    const title = info.start.toLocaleDateString(locale, {
+                                        month: "long", // full month name
+                                        year: "numeric", // 4 digit year
+                                    });
+                                    // if russian, capitalize the month and remove "г."
+                                    const formattedTitle =
+                                        language === "ru"
+                                            ? title.charAt(0).toUpperCase() +
+                                            title.slice(1).replace(" г.", "")
+                                            : title;
+
+                                    setCalendarTitle(formattedTitle);
+                                }}
+
+                                eventClick={(info) =>
+                                    setSelectedEvent(
+                                        getSelectedEvent(info)
+                                    )
                                 }
-                            }}
-                            headerToolbar={false}
-                            events={loadCalendarEvents}
-                            height="auto"
-                            fixedWeekCount={false}
-
-                            // month abd year formatting
-                            datesSet={(info) => {
-                                // locale selector
-                                const locale = language === "ru" ? "ru-RU" : "en-US";
-                                const title = info.start.toLocaleDateString(locale, {
-                                    month: "long", // full month name
-                                    year: "numeric", // 4 digit year
-                                });
-                                // if russian, capitalize the month and remove "г."
-                                const formattedTitle =
-                                    language === "ru"
-                                        ? title.charAt(0).toUpperCase() +
-                                        title.slice(1).replace(" г.", "")
-                                        : title;
-
-                                setCalendarTitle(formattedTitle);
-                            }}
-                            
-                            eventMouseEnter={highlightEvent}
-                            eventMouseLeave={removeEventHighlight}
-                            eventClick={(info) =>
-                                setSelectedEvent(
-                                    getSelectedEvent(info)
-                                )
-                            }
-                        />
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

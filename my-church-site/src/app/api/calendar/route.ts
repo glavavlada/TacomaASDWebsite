@@ -1,9 +1,6 @@
 import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 export async function GET(request: NextRequest) {
   try {
     const calendar = google.calendar({
@@ -40,6 +37,8 @@ export async function GET(request: NextRequest) {
       maxResults: 100,
     });
 
+    
+
     /*
       Convert Google's format into the format
       FullCalendar understands.
@@ -64,7 +63,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(events, {
       headers: {
-        "Cache-Control": "no-store, max-age=0",
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=150",
       },
     });
   } catch (error) {

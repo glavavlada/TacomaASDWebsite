@@ -20,11 +20,26 @@ export function FontSizeProvider({
   children: React.ReactNode;
 }) {
   const [largeFont, setLargeFont] = useState(false);
+  const [fontLoaded, setFontLoaded] = useState(false);
 
-  // toggles the large-font class in body's css class list
+  // restore the saved font preference on load
   useEffect(() => {
+    const savedFont = localStorage.getItem("largeFont");
+
+    if (savedFont === "true") {
+      setLargeFont(true);
+    }
+
+    setFontLoaded(true);
+  }, []);
+
+  // apply and save the font preference on change
+  useEffect(() => {
+    if (!fontLoaded) return;
+
     document.body.classList.toggle("large-font", largeFont);
-  }, [largeFont]); // dependency array
+    localStorage.setItem("largeFont", String(largeFont));
+  }, [largeFont, fontLoaded]);
 
   return ( // creates the provider object and renders everything inside it
     <FontSizeContext.Provider value={{ largeFont, setLargeFont }}>

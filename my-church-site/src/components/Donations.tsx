@@ -65,13 +65,13 @@ export default function DonationPopup({
 
         {/* Close Button */}
         <button
-          className="absolute right-1 top-1 h-8 w-8 border border-[var(--highlight)] buttonDark flex items-center justify-center"
+          className="buttonDark buttonClose"
           onClick={onClose} // calls onClose
         >
-          X
+          ✕
         </button>
 
-        <h2 className="p-2">{t.donations.title}</h2>
+        <h2 className="mb-4 px-16 font-bold">{t.donations.title}</h2>
 
         <Image
           src="/DonationLink.png"

@@ -57,7 +57,7 @@ export default function EventPopup({
                 <button
                     onClick={onClose}
                     aria-label={data.closeButtonAriaLabel}
-                    className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center border border-[var(--highlight)] bg-[var(--buttonDark)] text-2xl font-bold text-[var(--textLight)] transition hover:bg-[var(--highlight)]"
+                    className="buttonDark buttonClose"
                 >
                     ✕
                 </button>

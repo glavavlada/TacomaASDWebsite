@@ -24,8 +24,8 @@ export default function ChurchTimeline() {
         language === "ru" ? russianTimeline : englishTimeline
     ) as TimelineData;
 
-    return (
-        <section className="pb-4">
+    return ( // defining variables for easy scaling and manipulation
+        <section className="pb-4 [--timeline-width:4px] [--timeline-left:0.5rem]">
             <div>
                 <h2>
                     {t.heading}
@@ -35,14 +35,12 @@ export default function ChurchTimeline() {
                     {/* Desktop timeline line */}
                     <div
                         aria-hidden="true"
-                        className="absolute bottom-0 left-1/2 top-0 hidden w-1 -translate-x-1/2 bg-[var(--highlight)] lg:block"
-                    />
+                        className="absolute bottom-0 left-1/2 top-0 hidden w-[var(--timeline-width)] -translate-x-1/2 bg-[var(--highlight)] lg:block" />
 
                     {/* Mobile timeline line */}
                     <div
                         aria-hidden="true"
-                        className="absolute bottom-0 left-2.5 top-0 w-1 bg-[var(--highlight)] lg:hidden"
-                    />
+                        className="absolute bottom-0 top-0 left-[var(--timeline-left)] w-[var(--timeline-width)] bg-[var(--highlight)] lg:hidden" />
 
                     <ol className="space-y-5 lg:space-y-0">
                         {/* creating timeline events */}
@@ -58,14 +56,14 @@ export default function ChurchTimeline() {
                                     {/* Timeline marker */}
                                     <span
                                         aria-hidden="true"
-                                        className="absolute left-2.5 top-2 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-[var(--highlight)] bg-[var(--main)] lg:left-1/2"
+                                        className="absolute left-[calc(var(--timeline-left)+var(--timeline-width)/2)] top-2 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-[var(--highlight)] bg-[var(--main)] lg:left-1/2"
                                     />
 
                                     {/* Event content */}
                                     <div
                                         className={`pl-9 ${isLeft
-                                                ? "lg:col-start-1 lg:row-start-1 lg:text-right"
-                                                : "lg:col-start-2 lg:row-start-1"
+                                            ? "lg:col-start-1 lg:row-start-1 lg:text-right"
+                                            : "lg:col-start-2 lg:row-start-1"
                                             }`}
                                     >
                                         <p className="font-semibold text-[var(--highlight)]">

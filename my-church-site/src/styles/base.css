@@ -18,6 +18,10 @@ h3 {
   font-size: 1.4rem;
 }
 
+p {
+  line-height: 1.8;
+}
+
 hr {
   margin: 1rem 0;
 }

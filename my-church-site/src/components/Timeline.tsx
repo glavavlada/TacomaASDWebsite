@@ -61,7 +61,7 @@ export default function ChurchTimeline() {
 
                                     {/* Event content */}
                                     <div
-                                        className={`pl-9 ${isLeft
+                                        className={`lg:pl-0 pl-6 ${isLeft
                                             ? "lg:col-start-1 lg:row-start-1 lg:text-right"
                                             : "lg:col-start-2 lg:row-start-1"
                                             }`}

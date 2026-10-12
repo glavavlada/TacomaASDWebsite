@@ -16,11 +16,11 @@ export default function Ministry() {
 
     return (
         <section className="mx-auto w-full max-w-6xl">
-            <h1 className="mb-4 text-center">
+            <h1>
                 {data.labels.pageTitle}
             </h1>
 
-            <p className="mb-12 text-center text-[var(--textDark)]">
+            <p className="pb-4">
                 {data.labels.introduction}
             </p>
 
@@ -38,7 +38,7 @@ export default function Ministry() {
                                 }`}
                         >
                             {/* Image placeholder */}
-                            <div className="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-[var(--tint)] md:w-1/2">
+                            <div className="flex aspect-[4/3] w-full items-center justify-center bg-[var(--tint)] md:w-1/2">
                                 <div className="text-center text-[var(--textDark)]">
                                     <span className="mb-2 block text-4xl">
                                         ◇
@@ -49,11 +49,11 @@ export default function Ministry() {
 
                             {/* Ministry information */}
                             <div className="w-full md:w-1/2">
-                                <h2 className="mb-4 font-bold text-[var(--textDark)]">
+                                <h2 className="mb-4">
                                     {ministry.title}
                                 </h2>
 
-                                <p className="leading-8 text-[var(--textDark)]">
+                                <p>
                                     {ministry.description}
                                 </p>
                             </div>

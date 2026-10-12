@@ -23,11 +23,14 @@ const nextConfig: NextConfig = {
               "script-src 'self' \
                 'sha256-OBTN3RiyCV4Bq7dFqZ5a2pAXjnCcCYeTJMO2I/LYKeo=' \
                 'sha256-FKmLIlivyRyLIlOEsRWVgnplsyQvNOXYObQg/lDxVQk=' \
-                'sha256-+hO/Bl4Yds6faAoaI/3c/TOe7Yzy6ReoejSW/xTE6yI='",
+                'sha256-+hO/Bl4Yds6faAoaI/3c/TOe7Yzy6ReoejSW/xTE6yI=' \
+                'sha256-xFTp/dMvc47YBGLmK3K5gCUgcs9rshYycdzU6XqBOqc=' \
+                'sha256-zWVJ+jNFd15Tril4iwFvR72+1gAk/ACgpu0QlmTb8Eg='",
               "style-src 'self' 'unsafe-hashes' \
                 'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=' \
                 'sha256-ZDrxqUOB4m/L0JWL/+gS52g1CRH0l/qwMhjTw5Z/Fsc=' \
-                'sha256-vKC/3e+58wt3AEEnUImhhkZlNJYe2iGGM4zT9jQL6x0='",
+                'sha256-vKC/3e+58wt3AEEnUImhhkZlNJYe2iGGM4zT9jQL6x0=' \
+                'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
               "img-src 'self'", // data: blob: <-- check with stream
               "font-src 'self' data:", // data:  <-- check with stream
               "connect-src 'self'",

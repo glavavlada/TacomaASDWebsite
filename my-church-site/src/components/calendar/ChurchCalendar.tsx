@@ -1,10 +1,6 @@
 "use client";
 
-import {
-    useCallback,
-    useRef,
-    useState
-} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useLanguage } from "@/app/context/LanguageContext";
 
@@ -14,6 +10,7 @@ import russianData from "@/locale/ru/events.json";
 import FullCalendar from "@fullcalendar/react";
 import type { EventSourceFunc } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import listPlugin from "@fullcalendar/list";
 
 import CalendarToolbar from "./CalendarToolBar";
 import EventPopup, {
@@ -73,6 +70,7 @@ export default function ChurchCalendar() {
                 }
 
                 const events = await response.json();
+                console.log("Events received by FullCalendar:", events);
 
                 successCallback(events);
             } catch (error) {
@@ -91,6 +89,27 @@ export default function ChurchCalendar() {
         },
         []
     );
+
+    // enables list view on small screens and month view on larger screens
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(width < 48rem)"); // md breakpoint
+
+        function updateCalendarView() {
+            const api = calendarRef.current?.getApi();
+            if (!api) return;
+
+            api.changeView(
+                mediaQuery.matches ? "listMonth" : "dayGridMonth"
+            );
+        }
+
+        updateCalendarView();
+        mediaQuery.addEventListener("change", updateCalendarView);
+
+        return () => {
+            mediaQuery.removeEventListener("change", updateCalendarView);
+        };
+    }, []);
 
     return (
         <>
@@ -121,9 +140,10 @@ export default function ChurchCalendar() {
                                 ref={calendarRef}
                                 locale={calendarLocale}
                                 timeZone="local"
-                                plugins={[dayGridPlugin]}
+                                plugins={[dayGridPlugin, listPlugin]}
                                 initialView="dayGridMonth"
                                 eventDisplay="list-item"
+                                noEventsContent={data.noEvents}
 
 
                                 eventContent={(info) => (
@@ -132,7 +152,7 @@ export default function ChurchCalendar() {
                                         title={info.event.title}
                                     >
                                         <div
-                                            className="text-xs sm:text-sm leading-snug wrap-break-word line-clamp-2"
+                                            className="leading-snug wrap-break-word line-clamp-2"
                                         >
                                             {info.timeText && (
                                                 <span className="mr-1">
@@ -146,6 +166,8 @@ export default function ChurchCalendar() {
 
 
                                 eventDidMount={(info) => {
+                                    if (info.view.type !== "dayGridMonth") return;
+
                                     const eventElement = info.el;
 
                                     const dot = eventElement.firstElementChild;
@@ -166,7 +188,7 @@ export default function ChurchCalendar() {
                                 datesSet={(info) => {
                                     // locale selector
                                     const locale = language === "ru" ? "ru-RU" : "en-US";
-                                    const title = info.start.toLocaleDateString(locale, {
+                                    const title = info.view.currentStart.toLocaleDateString(locale, {
                                         month: "long", // full month name
                                         year: "numeric", // 4 digit year
                                     });

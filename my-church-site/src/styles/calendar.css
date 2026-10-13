@@ -10,19 +10,90 @@
   background-color: color-mix(in srgb, var(--hoverMedium) 50%, transparent);
 }
 
+
+/* MONTH GRID STYLES */
+
 /* overall grid */
 .calendar-wrapper [role="grid"] {
-    background-color: var(--body);
-    color: var(--textDark);
+  background-color: var(--body);
+  color: var(--textDark);
 }
 
 /* column header */
 .calendar-wrapper [role="columnheader"] {
-    background-color: var(--buttonDark);
-    color: var(--textLight);
+  background-color: var(--buttonDark);
+  color: var(--textLight);
+}
+
+/* events */
+.calendar-wrapper .fc-daygrid-event {
+  white-space: normal;
 }
 
 /* current day */
-.calendar-wrapper .fc .fc-daygrid-day.fc-day-today{
-    background-color: color-mix(in srgb, var(--highlight) 25%, transparent);
+.calendar-wrapper .fc .fc-daygrid-day.fc-day-today {
+  background-color: color-mix(in srgb, var(--highlight) 25%, transparent);
+}
+
+
+
+/* LIST STYLES */
+
+/* Date headings */
+.calendar-wrapper .fc-list-day-cushion {
+  background: var(--buttonDark);
+  color: var(--textLight);
+}
+
+/* Event row */
+.calendar-wrapper .fc-list-event td {
+  background: color-mix(in srgb, var(--buttonMedium) 10%, transparent);
+  cursor: pointer;
+}
+.calendar-wrapper .fc-list-event:hover td {
+  background: color-mix(in srgb, var(--hoverMedium) 30%, transparent);
+}
+
+/* Make the event content transparent in list view */
+.calendar-wrapper .fc-list-event .event {
+  background: transparent;
+}
+
+/* Make the event hover transparent in list view */
+.calendar-wrapper .fc-list-event .event:hover {
+  background: transparent;
+}
+
+/* Event time */
+.calendar-wrapper .fc-list-event-time {
+  color: var(--textLightAlt);
+  vertical-align: middle;
+}
+
+/* Remove the event dot in list view */
+.calendar-wrapper .fc-list-event-graphic {
+  display: none;
+}
+
+/* Today's date heading */
+.calendar-wrapper .fc-list-day.fc-day-today .fc-list-day-cushion {
+  box-shadow: inset 0 0 0 999px
+    color-mix(in srgb, var(--highlight) 30%, transparent);
+}
+
+/* Today's date event */
+.calendar-wrapper .fc-list-event.fc-event-today td {
+  box-shadow: inset 0 0 0 999px
+    color-mix(in srgb, var(--highlight) 30%, transparent);
+}
+
+/* event title wrapping */
+.calendar-wrapper .fc-list-event-title .event > div {
+  overflow-wrap: anywhere;
+}
+
+/* no events */
+.calendar-wrapper .fc-list-empty {
+  background: var(--body);
+  color: var(--textLightAlt);
 }

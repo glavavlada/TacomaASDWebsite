@@ -10,5 +10,6 @@
   "location": "Location",
   "details": "Details",
   "joinMeeting": "Join Meeting",
-  "viewInCalendar": "View In Calendar"
+  "viewInCalendar": "View In Calendar",
+  "noEvents": "No events scheduled for this month."
 }

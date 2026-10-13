@@ -39,8 +39,10 @@ export default function BibleLessons() {
   }
 
   function handleLessonChange(index: number) {
-    setSelectedLesson(index);
-    resetViewer();
+    if (index !== selectedLesson) {
+      setSelectedLesson(index);
+      resetViewer();
+    }
   }
 
   function handleTeacherModeChange(value: boolean) {

@@ -13,8 +13,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 
 import Timeline from "@/components/Timeline";
 
-const churchImgOut = "/church_outside.jpg";
-const churchImgHall = "/church_hall.jpg";
+const churchImgOut = "/churchPics/churchImg1.jpg";
 const introImg = "/IntroPic.jpg";
 
 export default function About() {

@@ -30,7 +30,7 @@ export default function LessonScroll({
     language,
     mobileControls,
     mobileViewer,
-}: LessonScrollProps) { // checks that the props match the definition
+}: LessonScrollProps) {
     // reference to selected lesson <div>
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 

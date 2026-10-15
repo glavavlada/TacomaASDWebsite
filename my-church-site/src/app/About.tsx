@@ -11,9 +11,9 @@ import russianIntro from "@/locale/ru/intro.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
 
+import Slideshow from "@/components/Slideshow";
 import Timeline from "@/components/Timeline";
 
-const churchImgOut = "/churchPics/churchImg1.jpg";
 const introImg = "/IntroPic.jpg";
 
 export default function About() {
@@ -68,19 +68,11 @@ export default function About() {
       {/* Beliefs Section */}
       <h2>{data.labels.beliefsTitle}</h2>
       <section className="mb-12 flex flex-col items-start gap-8 lg:flex-row">
-        <section className="mx-auto flex shrink-0 flex-col items-center bg-[var(--tint)] p-4 text-center lg:w-[40vw]">
-          <Image
-            src={churchImgOut}
-            alt="Exterior of Tacoma Russian Seventh-day Adventist Church"
-            width={800}
-            height={1200}
-            className="h-auto max-h-[90vh] w-full object-contain py-4"
-          />
-
-          <h3 className="text-[var(--textLightAlt)]">
-            {data.beliefs.imageCaption}
-          </h3>
-        </section>
+        <Slideshow
+          caption={data.beliefs.imageCaption}
+          previousLabel={data.labels.previous}
+          nextLabel={data.labels.next}
+        />
 
         <div className="flex flex-1 flex-col gap-4 leading-[1.8]">
           <div className="flex flex-1 flex-col gap-4 leading-[1.8]">

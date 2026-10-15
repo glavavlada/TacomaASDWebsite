@@ -12,7 +12,7 @@ type SlideshowProps = {
 // Preload 8 images from churchPics/
 const images = Array.from(
     { length: 8 },
-    (_, index) => `/churchPics/churchImg${index + 1}.JPG`,
+    (_, index) => `/churchPics/churchImg${index + 1}.jpg`,
 );
 
 export default function Slideshow({

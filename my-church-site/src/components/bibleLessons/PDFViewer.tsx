@@ -66,7 +66,6 @@ export default function PDFViewer({
                 className="min-h-0 flex-1 overflow-auto"
             >
                 <Document
-                    key={file}
                     file={file}
                     onLoadSuccess={onDocumentLoadSuccess}
                     className="flex justify-center bg-transparent"

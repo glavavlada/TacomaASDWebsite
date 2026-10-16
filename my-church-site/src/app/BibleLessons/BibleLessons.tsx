@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import englishData from "@/locale/en/bibleLessons.json";
@@ -13,6 +13,8 @@ import PDFControls from "@/components/bibleLessons/PDFControls";
 import LessonViewer from "@/components/bibleLessons/LessonViewer";
 
 export default function BibleLessons() {
+  const LG_BREAKPOINT = "64rem";
+
   // language context and translation data
   const { language, languageLoaded } = useLanguage();
   const data = language === "en" ? englishData : russianData;
@@ -23,7 +25,7 @@ export default function BibleLessons() {
   const [selectedLesson, setSelectedLesson] = useState(0);
   const [teacherMode, setTeacherMode] = useState(false);
   const lesson = lessons[selectedLesson];
-   const lessonUrl = teacherMode
+  const lessonUrl = teacherMode
     ? lesson.teacher
     : lesson.student;
 
@@ -53,6 +55,24 @@ export default function BibleLessons() {
     resetViewer();
   }
 
+  function useIsDesktop() {
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+      const media = window.matchMedia("(min-width: " + LG_BREAKPOINT + ")");
+      const update = () => setIsDesktop(media.matches);
+
+      update();
+      media.addEventListener("change", update);
+
+      return () => media.removeEventListener("change", update);
+    }, []);
+
+    return isDesktop;
+  }
+
+  const isDesktop = useIsDesktop();
+
   // PDF controls, shows on EN
   const pdfControls = !isRussian ? (
     <PDFControls
@@ -63,7 +83,7 @@ export default function BibleLessons() {
   ) : null;
 
   // mobile viewer to be rendered in lesson accordion
-  const mobileViewer = (
+  const mobileViewer = !isDesktop ? (
     <LessonViewer
       isRussian={isRussian}
       lessonUrl={lessonUrl}
@@ -74,7 +94,7 @@ export default function BibleLessons() {
       pdfLoaded={pdfLoaded}
       mobile
     />
-  );
+  ) : null;
 
   // if the language context is not loaded avoid rendering
   if (!languageLoaded) {
@@ -135,15 +155,17 @@ export default function BibleLessons() {
 
         {/* Desktop Viewer */}
         <section className="hidden lg:col-start-2 lg:row-start-2 lg:block lg:h-[98vh]">
-          <LessonViewer
-            isRussian={isRussian}
-            lessonUrl={lessonUrl}
-            lessonTitle={lesson.title}
-            pageNumber={pageNumber}
-            onNumPagesChange={setNumPages}
-            onLoaded={() => setPdfLoaded(true)}
-            pdfLoaded={pdfLoaded}
-          />
+          {isDesktop && (
+            <LessonViewer
+              isRussian={isRussian}
+              lessonUrl={lessonUrl}
+              lessonTitle={lesson.title}
+              pageNumber={pageNumber}
+              onNumPagesChange={setNumPages}
+              onLoaded={() => setPdfLoaded(true)}
+              pdfLoaded={pdfLoaded}
+            />
+          )}
         </section>
 
       </div>

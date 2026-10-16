@@ -38,11 +38,22 @@ const nextConfig: NextConfig = {
               "object-src 'none'",
               "base-uri 'self'",
             ].join("; "),
-          }
+          },
+        ],
+      },
+
+      // Cache Bible lesson PDFs for one day
+      {
+        source: "/lessons/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
         ],
       },
     ];
-  }
+  },
 };
 
 export default nextConfig;

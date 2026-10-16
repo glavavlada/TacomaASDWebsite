@@ -1,7 +1,5 @@
 type CalendarData = {
     today: string;
-    expand: string;
-    fit: string;
     previousMonthAriaLabel: string;
     nextMonthAriaLabel: string;
 };
@@ -9,25 +7,21 @@ type CalendarData = {
 type CalendarToolbarProps = {
     calendarTitle: string;
     data: CalendarData;
-    calendarExpanded: boolean;
     goToToday: () => void;
     goToPreviousMonth: () => void;
     goToNextMonth: () => void;
-    toggleCalendarExpanded: () => void;
 };
 
 export default function CalendarToolbar({
     calendarTitle,
     data,
-    calendarExpanded,
     goToToday,
     goToPreviousMonth,
     goToNextMonth,
-    toggleCalendarExpanded,
 }: CalendarToolbarProps) {
     return (
         <div className="mb-5 flex flex-col items-center gap-4 md:flex-row md:justify-between">
-            <h2 className="text-center font-bold text-[var(--textDark)] md:text-left">
+            <h2 className="text-center md:text-left">
                 {calendarTitle}
             </h2>
 

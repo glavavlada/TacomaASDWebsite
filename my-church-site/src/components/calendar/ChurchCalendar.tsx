@@ -69,7 +69,6 @@ export default function ChurchCalendar() {
                 }
 
                 const events = await response.json();
-                console.log("Events received by FullCalendar:", events);
 
                 successCallback(events);
             } catch (error) {
@@ -102,8 +101,11 @@ export default function ChurchCalendar() {
             );
         }
 
-        updateCalendarView();
         mediaQuery.addEventListener("change", updateCalendarView);
+
+        // FullCalendar initializes with initialView="dayGridMonth"
+        // Only change immediately if the initial view is actually wrong
+        updateCalendarView();
 
         return () => {
             mediaQuery.removeEventListener("change", updateCalendarView);

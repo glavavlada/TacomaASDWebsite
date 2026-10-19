@@ -11,8 +11,9 @@ import russianIntro from "@/locale/ru/intro.json";
 
 import { useLanguage } from "@/app/context/LanguageContext";
 
-const churchImgOut = "/church_outside.jpg";
-const churchImgHall = "/church_hall.jpg";
+import Slideshow from "@/components/Slideshow";
+import Timeline from "@/components/Timeline";
+
 const introImg = "/IntroPic.jpg";
 
 export default function About() {
@@ -32,9 +33,9 @@ export default function About() {
     <div>
       <LiveStreamEmbed />
 
-      {/* Intro Section 
-      image gets loading priority*/}
-      <section className="relative mb-12 min-h-[500px] overflow-hidden flex items-center">
+      {/* Intro Section
+          image gets loading priority */}
+      <section className="relative mb-12 flex min-h-[500px] items-center overflow-hidden">
         <Image
           src={introImg}
           alt=""
@@ -44,14 +45,10 @@ export default function About() {
         />
 
         {/* Makes the left side darker so text stays readable */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--buttonDark)]/70 to-[var(--main)]/50 md:to-[var(--main)]/30 lg:to-[var(--main)]/20" />
 
         {/* Intro text */}
-        <div
-          className="z-10 max-w-xl px-[clamp(1rem,6vw,6rem)] text-[var(--textLight)]"
-        >
+        <div className="z-10 max-w-xl px-[clamp(1rem,6vw,6rem)] text-[var(--textLight)]">
           <h1 className="font-bold">
             {introData.intro.title}
           </h1>
@@ -70,53 +67,24 @@ export default function About() {
 
       {/* Beliefs Section */}
       <h2>{data.labels.beliefsTitle}</h2>
+      <section className="mb-12 flex flex-col items-start gap-8 lg:flex-row">
+        <Slideshow
+          caption={data.beliefs.imageCaption}
+          previousLabel={data.labels.previous}
+          nextLabel={data.labels.next}
+        />
 
-      <section className="infoSection">
-        <section className="imgWrapper">
-          <Image
-            src={churchImgOut}
-            alt="Exterior of Tacoma Russian Seventh-day Adventist Church"
-            width={800}
-            height={1200}
-            className="w-full py-4"
-          />
-
-          <h3 className="text-[var(--textLightAlt)]">
-            {data.beliefs.imageCaption}
-          </h3>
-        </section>
-
-        <div className="textContent">
-          {data.beliefs.paragraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+        <div className="flex flex-1 flex-col gap-4 leading-[1.8]">
+          <div className="flex flex-1 flex-col gap-4 leading-[1.8]">
+            {data.beliefs.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* History Section */}
-      <h2>{data.labels.historyTitle}</h2>
-
-      <section className="infoSection">
-        <div className="textContent">
-          {data.history.paragraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </div>
-
-        <section className="imgWrapper">
-          <Image
-            src={churchImgHall}
-            alt="Tacoma Russian Seventh-day Adventist Church Main Hall"
-            width={1200}
-            height={800}
-            className="w-full py-4"
-          />
-
-          <h3 className="text-[var(--textLightAlt)]">
-            {data.history.imageCaption}
-          </h3>
-        </section>
-      </section>
+      <Timeline />
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function LessonScroll({
     language,
     mobileControls,
     mobileViewer,
-}: LessonScrollProps) { // checks that the props match the definition
+}: LessonScrollProps) {
     // reference to selected lesson <div>
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -68,9 +68,9 @@ export default function LessonScroll({
                             separated from <button> to avoid visual bugs when moving the scroll reference*/}
                         <span
                             className={`block w-full border-l-[5px] bg-[var(--buttonLight)] p-4 text-left transition-transform duration-200 hover:translate-x-[0.3rem]
-                            ${selectedLesson === index 
-                                ? "font-bold border-l-[var(--main)]" 
-                                : "border-transparent"}`}
+                            ${selectedLesson === index
+                                    ? "font-bold border-l-[var(--main)]"
+                                    : "border-transparent"}`}
                         >
                             {lessonItem.title}
                         </span>
@@ -86,12 +86,17 @@ export default function LessonScroll({
                                 ? "grid-rows-[1fr] mb-2"
                                 : "grid-rows-[0fr]"
                             }`}
-                    >   {/* renders the accordion JSX */}
+                    >   {/* renders the accordion JSX only for the current lesson */}
                         <div className="min-h-0 overflow-hidden">
-                            {mobileControls}
-                            {mobileViewer}
+                            {selectedLesson === index && (
+                                <>
+                                    {mobileControls}
+                                    {mobileViewer}
+                                </>
+                            )}
                         </div>
                     </div>
+
                 </div>
             ))}
         </div>

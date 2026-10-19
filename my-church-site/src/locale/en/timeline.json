@@ -1,0 +1,38 @@
+{
+    "heading": "History",
+    "events": [
+        {
+            "date": "2004",
+            "title": "Our Beginnings",
+            "description": ["Our journey began with the establishment of the southern branch of the Center for Spiritual Enrichment in Tacoma, under the leadership of our first pastor, Ivan Bokov. The congregation flourished, offering spiritual nourishment and fellowship to many."]
+        },
+        {
+            "date": "2009",
+            "title": "Official Recognition as a Church",
+            "description": ["The congregation was officially recognized as a church, marking a significant milestone in our journey of faith and fellowship."]
+        },
+        {
+            "date": "2015",
+            "title": "A Permanent Place of Worship",
+            "description": ["Guided by faith and determination, the church took a bold step forward by purchasing a building to serve as our permanent place of worship."]
+        },
+        {
+            "date": "2024",
+            "title": "Consecration of Our Prayer House",
+            "description": ["The culmination of years of dedication and faith came with the consecration of our prayer house."]
+        },
+        {
+            "date": "2024",
+            "title": "New Head Pastor",
+            "description": ["Pastor Vitalii Glavatskiy took over as the head pastor of the church. Ivan Bokov continues to serve as an elder, sharing his experience and wisdom."]
+        },
+        {
+            "date": "Present",
+            "title": "Our Church Today",
+            "description": [
+                "Today, our church stands as a vibrant community of believers, united in our mission to share the gospel and demonstrate God's love to all. Our members include Russians, Ukrainians, Moldovans, Gagauz, Belorussians, Romanians, Rusins, Armenians, Uzbeks, Turkmens, and Americans, bringing diverse traditions and cultural heritage that foster unity and mutual respect.",
+                "Together, we worship as one body, celebrating our shared faith while embracing our differences. Over the years, our church has expanded in numbers, mission, and impact. Through worship services, Bible studies, and outreach initiatives, we strive to be a beacon of hope and love, serving both spiritual and practical needs and drawing people closer to Christ and one another."
+            ]
+        }
+    ]
+}

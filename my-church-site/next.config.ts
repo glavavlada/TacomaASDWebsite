@@ -8,7 +8,9 @@ const csp = [
     'sha256-+hO/Bl4Yds6faAoaI/3c/TOe7Yzy6ReoejSW/xTE6yI=' \
     'sha256-xFTp/dMvc47YBGLmK3K5gCUgcs9rshYycdzU6XqBOqc=' \
     'sha256-zWVJ+jNFd15Tril4iwFvR72+1gAk/ACgpu0QlmTb8Eg=' \
-    'sha256-+MTyk6wl8VZviJ9XNxZ9NjaOD6XGvKEyYPj4Tpuq3GU='",
+    'sha256-+MTyk6wl8VZviJ9XNxZ9NjaOD6XGvKEyYPj4Tpuq3GU=' \
+    'sha256-emW8bvrd5AUj1idnS1abKGLOMU5n1bBWDhUKBsNBVMI=' \
+    'sha256-4rvmcwxkp4wsPhbINyTzxGV09tnS/iNR4Q0LXr1mNUc='",
   "style-src 'self' 'unsafe-hashes' \
     'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=' \
     'sha256-ZDrxqUOB4m/L0JWL/+gS52g1CRH0l/qwMhjTw5Z/Fsc=' \
@@ -55,7 +57,7 @@ const nextConfig: NextConfig = {
         ],
         headers: [
           {
-            key: "Content-Security-Policy-Report-Only",
+            key: "Content-Security-Policy",
             value: csp,
           },
         ],

@@ -2,20 +2,8 @@ import type { NextConfig } from "next";
 
 const csp = [
   "default-src 'self'",
-  "script-src 'self' \
-    'sha256-OBTN3RiyCV4Bq7dFqZ5a2pAXjnCcCYeTJMO2I/LYKeo=' \
-    'sha256-FKmLIlivyRyLIlOEsRWVgnplsyQvNOXYObQg/lDxVQk=' \
-    'sha256-+hO/Bl4Yds6faAoaI/3c/TOe7Yzy6ReoejSW/xTE6yI=' \
-    'sha256-xFTp/dMvc47YBGLmK3K5gCUgcs9rshYycdzU6XqBOqc=' \
-    'sha256-zWVJ+jNFd15Tril4iwFvR72+1gAk/ACgpu0QlmTb8Eg=' \
-    'sha256-+MTyk6wl8VZviJ9XNxZ9NjaOD6XGvKEyYPj4Tpuq3GU=' \
-    'sha256-emW8bvrd5AUj1idnS1abKGLOMU5n1bBWDhUKBsNBVMI=' \
-    'sha256-4rvmcwxkp4wsPhbINyTzxGV09tnS/iNR4Q0LXr1mNUc='",
-  "style-src 'self' 'unsafe-hashes' \
-    'sha256-zlqnbDt84zf1iSefLU/ImC54isoprH/MRiVZGskwexk=' \
-    'sha256-ZDrxqUOB4m/L0JWL/+gS52g1CRH0l/qwMhjTw5Z/Fsc=' \
-    'sha256-vKC/3e+58wt3AEEnUImhhkZlNJYe2iGGM4zT9jQL6x0=' \
-    'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
+  "script-src 'self' unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
   "img-src 'self'",
   "font-src 'self' data:",
   "connect-src 'self'",

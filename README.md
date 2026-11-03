@@ -10,13 +10,13 @@ Made with Next.js and TypeScript and hosted on Vercel.
 <img src="my-church-site/screenshots/home-page.png" alt="Church website homepage" width="700">
 
 ### Bible Lessons
-<img src="my-church-site/screenshots/bible-lessons.png" alt="Church website homepage" width="700">
+<img src="my-church-site/screenshots/bible-lessons.png" alt="Bible lessons" width="700">
 
 ### Church Calendar
-<img src="my-church-site/screenshots/calendar-desktop.png" alt="Church website homepage" width="700">
+<img src="my-church-site/screenshots/calendar-desktop.png" alt="Church calendar" width="700">
 
 ### Calendar (Mobile) in Dark Mode
-<img src="my-church-site/screenshots/calendar-mobile-dark.png" alt="Church website homepage" width="300">
+<img src="my-church-site/screenshots/calendar-mobile-dark.png" alt="Mobile calendar view in dark mode" width="300">
 
 ## Features
 1. Livestream Integration: Displays church's YouTube livestreams when active.

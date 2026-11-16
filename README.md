@@ -30,13 +30,6 @@ This site provides access to church resources for members who are unable to atte
 - **External APIs:** YouTube, Google Calendar, Google OAuth 2.0
 - **Deployment:** Vercel
 
-### Architecture
-- **Frontend:** React components built with Next.js and Tailwind CSS provide the website's user interface, bilingual content, and font sizing.
-- **API Routes:** Next.js API routes handle server-side requests to external services.
-- **Calendar Integration:** The application retrieves church event data from the Google Calendar API and displays it using FullCalendar.
-- **Livestream Integration:** Google OAuth 2.0 credentials authorize server-side YouTube API requests to retrieve livestream information.
-- **Deployment:** The application is deployed on Vercel.
-
 ## Development
 ### Prerequisites
 - Node.js: A version compatible with Next.js 16 (Node.js 20.9 or later).

@@ -1,9 +1,7 @@
 # TacomaASDWebsite
 [Tacoma ASD Church](https://www.sdatacoma.com/) webiste.
 
-This site provides access to church resources for members who are unable to attend in-person events. It features an embedded livestream during services, general information about the church, current sabbath school lessons, information about the leadership team, overview of the ministries, and a synced events calendar.
-
-Made with Next.js and TypeScript and hosted on Vercel.
+This site provides access to church resources for members who are unable to attend in-person events. It features an embedded livestream during services, general information about the church, current sabbath school lessons, information about the leadership team, overview of the ministries, and a synced events calendar. Additionally, the bilingual interface supports both English- and Russian-speaking visitors.
 
 ## Screenshots
 ### Homepage
@@ -18,34 +16,32 @@ Made with Next.js and TypeScript and hosted on Vercel.
 ### Calendar (Mobile) in Dark Mode
 <img src="my-church-site/screenshots/calendar-mobile-dark.png" alt="Mobile calendar view in dark mode" width="300">
 
-## Features
+## Getting Started
+### Features
 1. Livestream Integration: Displays church's YouTube livestreams when active.
 2. Bible Lessons: Embeds Sabbath School lessons and study resources.
 3. Church Calendar: Shows upcoming church events and scheduled activities.
 4. Bilingual Interface: Supports English and Russian content.
 5. Font toggle: Provides a large font option for most text.
 
-## Tech Stack
+### Tech Stack
 - **Frontend:** React, Typescript, Tailwind CSS, FullCalendar
 - **Backend:** Next.js (App Router, API Routes)
 - **External APIs:** YouTube, Google Calendar, Google OAuth 2.0
 - **Deployment:** Vercel
 
-## Getting Started
+### Architecture
+- **Frontend:** React components built with Next.js and Tailwind CSS provide the website's user interface, bilingual content, and font sizing.
+- **API Routes:** Next.js API routes handle server-side requests to external services.
+- **Calendar Integration:** The application retrieves church event data from the Google Calendar API and displays it using FullCalendar.
+- **Livestream Integration:** Google OAuth 2.0 credentials authorize server-side YouTube API requests to retrieve livestream information.
+- **Deployment:** The application is deployed on Vercel.
 
+## Development
 ### Prerequisites
 - Node.js: A version compatible with Next.js 16 (Node.js 20.9 or later).
 
-### Installation
-
-```bash
-git clone https://github.com/glavavlada/TacomaASDWebsite.git
-cd repo
-npm install
-```
-
 ### Environment Variables
-
 Create a `.env.local` file based on `.env.example`.
 
 | Variable | Description | Required For |
@@ -57,22 +53,16 @@ Create a `.env.local` file based on `.env.example`.
 | `GOOGLE_CALENDAR_API_KEY` | Google Calendar API key and calendar IDs | Calendar |
 | `GOOGLE_CALENDAR_EN_ID` | Calendar ID for church events | Calendar |
 
-## Usage
-Visitors can browse church information and resources, view upcoming events through the church calendar, access YouTube livestreams, and study Sabbath School lessons. The bilingual interface supports both English- and Russian-speaking visitors.
 
-## Architecture
-- **Frontend:** React components built with Next.js and Tailwind CSS provide the website's user interface, bilingual content, and font sizing.
-- **API Routes:** Next.js API routes handle server-side requests to external services.
-- **Calendar Integration:** The application retrieves church event data from the Google Calendar API and displays it using FullCalendar.
-- **Livestream Integration:** Google OAuth 2.0 credentials authorize server-side YouTube API requests to retrieve livestream information.
-- **Deployment:** The application is deployed on Vercel.
-
-## Development
-Create a `.env.local` file using `.env.example` and configure the required environment variables before running the application.
-
-Install dependencies and start the local development server:
+### Installation
 ```bash
+git clone https://github.com/glavavlada/TacomaASDWebsite.git
+cd repo
 npm install
+```
+
+Start the local development server:
+```bash
 npm run dev
 ```
 
